@@ -2,14 +2,15 @@
  * @Author: zhangjicheng
  * @Date: 2022-11-15 15:12:00
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2022-11-15 18:49:35
- * @FilePath: \docs\index.html
+ * @LastEditTime: 2022-11-16 00:23:15
+ * @FilePath: /docs/index.html
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link rel="icon" href="assets/favicon.ico">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -26,10 +27,13 @@
       loadSidebar: true,
       loadNavbar: true,
       maxLevel: 4,
-      subMaxLevel: 4,
+      subMaxLevel: 2,
       executeScript: true,
       mergeNavbar: true,
       autoHeader: true,
+      relativePath: false,
+      formatUpdated: '{MM}/{DD} {HH}:{mm}',
+      routerMode: 'history',
       alias: {
         '/.*/_navbar.md': '/_navbar.md',
         '@assets': '/assets',
@@ -44,5 +48,9 @@
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <!-- 图片缩放 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <!-- 复制到剪切板 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
 </body>
 </html>

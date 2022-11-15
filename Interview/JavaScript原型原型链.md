@@ -13,7 +13,7 @@ person.name = 'Kevin';
 console.log(person.name) // Kevin
 ```
 
-在这个例子中，Person 就是一个构造函数，我们使用 new 创建了一个实例对象 person。
+在这个例子中，`Person` 就是一个构造函数，我们使用 `new` 创建了一个实例对象 `person`。
 
 很简单吧，接下来进入正题：
 
@@ -21,7 +21,7 @@ console.log(person.name) // Kevin
 
 ## prototype
 
-每个函数都有一个 prototype 属性，就是我们经常在各种例子中看到的那个 prototype ，比如：
+每个函数都有一个 `prototype` 属性，就是我们经常在各种例子中看到的那个 `prototype` ，比如：
 
 ``` js
 function Person() {
@@ -36,25 +36,25 @@ console.log(person1.name) // Kevin
 console.log(person2.name) // Kevin
 ```
 
-那这个函数的 prototype 属性到底指向的是什么呢？是这个函数的原型吗？
+那这个函数的 `prototype` 属性到底指向的是什么呢？是这个函数的原型吗？
 
-其实，函数的 prototype 属性指向了一个对象，这个对象正是调用该构造函数而创建的实例的原型，也就是这个例子中的 person1 和 person2 的原型。
+其实，函数的 `prototype` 属性指向了一个对象，这个对象正是调用该构造函数而创建的实例的原型，也就是这个例子中的 `person1` 和 `person2` 的原型。
 
-那什么是原型呢？你可以这样理解：每一个JavaScript对象(null除外)在创建的时候就会与之关联另一个对象，这个对象就是我们所说的原型，每一个对象都会从原型"继承"属性。
+那什么是原型呢？你可以这样理解：每一个JavaScript对象(`null` 除外)在创建的时候就会与之关联另一个对象，这个对象就是我们所说的原型，每一个对象都会从原型"继承"属性。
 
 让我们用一张图表示构造函数和实例原型之间的关系：
 
 ![](../assets/interview-javascript-原型原型链1.png)
 
-在这张图中我们用 Object.prototype 表示实例原型。
+在这张图中我们用 `Object.prototype` 表示实例原型。
 
-那么我们该怎么表示实例与实例原型，也就是 person 和 Person.prototype 之间的关系呢，这时候我们就要讲到第二个属性：
+那么我们该怎么表示实例与实例原型，也就是 `person` 和 `Person.prototype` 之间的关系呢，这时候我们就要讲到第二个属性：
 
 ---
 
-## __proto__
+## \__proto__
 
-这是每一个JavaScript对象(除了 null )都具有的一个属性，叫__proto__，这个属性会指向该对象的原型。
+这是每一个JavaScript对象(除了 `null`)都具有的一个属性，叫`__proto__`，这个属性会指向该对象的原型。
 
 为了证明这一点,我们可以在火狐或者谷歌中输入：
 
