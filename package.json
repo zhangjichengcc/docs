@@ -1,0 +1,14 @@
+{
+  "name": "my-docs",
+  "version": "1.0.0",
+  "description": "zhangjicheng 's docs",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "docs"
+  ],
+  "author": "zhangjicheng",
+  "license": "ISC"
+}
