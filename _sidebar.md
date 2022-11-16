@@ -9,6 +9,7 @@
 
   - JavaScript
     - [JavaScript 原型原型链](/Interview/JavaScript原型原型链.md)
+    - [JavaScript 继承](/Interview/JavaScript继承.md)
 
 - Customization
 

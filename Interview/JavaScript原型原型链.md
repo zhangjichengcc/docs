@@ -76,7 +76,7 @@ console.log(person.__proto__ === Person.prototype); // true
 
 ## constructor
 
-指向实例倒是没有，因为一个构造函数可以生成多个实例，但是原型指向构造函数倒是有的，这就要讲到第三个属性：constructor，每个原型都有一个 constructor 属性指向关联的构造函数。
+指向实例倒是没有，因为一个构造函数可以生成多个实例，但是原型指向构造函数倒是有的，这就要讲到第三个属性：`constructor`，每个原型都有一个 `constructor` 属性指向关联的构造函数。
 
 为了验证这一点，我们可以尝试：
 
@@ -130,9 +130,9 @@ delete person.name;
 console.log(person.name) // Kevin
 ```
 
-在这个例子中，我们给实例对象 person 添加了 name 属性，当我们打印 person.name 的时候，结果自然为 Daisy。
+在这个例子中，我们给实例对象 `person` 添加了 `name` 属性，当我们打印 `person.name` 的时候，结果自然为 Daisy。
 
-但是当我们删除了 person 的 name 属性时，读取 person.name，从 person 对象中找不到 name 属性就会从 person 的原型也就是 person.__proto__ ，也就是 Person.prototype中查找，幸运的是我们找到了 name 属性，结果为 Kevin。
+但是当我们删除了 `person` 的 `name` 属性时，读取 `person.name`，从 `person` 对象中找不到 `name` 属性就会从 `person` 的原型也就是 `person.__proto__` ，也就是 `Person.prototype` 中查找，幸运的是我们找到了 `name` 属性，结果为 Kevin。
 
 但是万一还没有找到呢？原型的原型又是什么呢？
 
@@ -194,13 +194,13 @@ var person = new Person();
 console.log(person.constructor === Person); // true
 ```
 
-当获取 person.constructor 时，其实 person 中并没有 constructor 属性,当不能读取到constructor 属性时，会从 person 的原型也就是 Person.prototype 中读取，正好原型中有该属性，所以：
+当获取 `person.constructor` 时，其实 `person` 中并没有 `constructor` 属性,当不能读取到 `constructor` 属性时，会从 `person` 的原型也就是 `Person.prototype` 中读取，正好原型中有该属性，所以：
 
 ``` js
 person.constructor === Person.prototype.constructor
 ```
 
-### `__proto__`
+### \__proto__
 
 其次是 `__proto__` ，绝大部分浏览器都支持这个非标准的方法访问原型，然而它并不存在于 `Person.prototype` 中，实际上，它是来自于 `Object.prototype` ，与其说是一个属性，不如说是一个 `getter/setter`，当使用 `obj.__proto__` 时，可以理解成返回了 `Object.getPrototypeOf(obj)`。
 
@@ -209,3 +209,13 @@ person.constructor === Person.prototype.constructor
 最后是关于继承，前面我们讲到“每一个对象都会从原型‘继承’属性”，实际上，继承是一个十分具有迷惑性的说法，引用《你不知道的JavaScript》中的话，就是：
 
 继承意味着复制操作，然而 JavaScript 默认并不会复制对象的属性，相反，JavaScript 只是在两个对象之间创建一个关联，这样，一个对象就可以通过委托访问另一个对象的属性和函数，所以与其叫继承，委托的说法反而更准确些。
+
+---
+
+## 参考文献
+
+[图解原型和原型链](https://juejin.cn/post/6844903797039300615)
+
+[es5 es6+ 类相关知识总结](https://juejin.cn/post/6908370250098540557)
+
+[JavaScript深入之从原型到原型链](https://github.com/mqyqingfeng/Blog/issues/2)

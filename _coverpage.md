@@ -1,12 +1,13 @@
 ![logo](_media/icon.svg)
 
-# docsify <small>4.13.0</small>
+# 朝花夕拾 <small>4.13.0</small>
 
-> A magical documentation site generator.
+> 个人笔记整理.
 
 - Simple and lightweight
 - No statically built html files
 - Multiple themes
 
-[GitHub](https://github.com/docsifyjs/docsify/)
-[Getting Started](#docsify)
+<!-- [GitHub](https://github.com/docsifyjs/docsify/) -->
+
+[Getting Started](#Headline)
