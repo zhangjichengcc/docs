@@ -1,0 +1,8 @@
+.sidebar ul li .sidebar-link {
+  display: flex;
+}
+.sidebar ul li .sidebar-link img {
+  margin-right: 4px;
+  width: 15px;
+  transform: translateY(-1px);
+}
