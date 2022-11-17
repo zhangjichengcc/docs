@@ -10,6 +10,7 @@
   - JavaScript
     - [JavaScript 原型原型链](/Interview/JavaScript原型原型链.md)
     - [JavaScript 继承](/Interview/JavaScript继承.md)
+    - [JavaScript 作用域](/Interview/JavaScript作用域.md)
 
 - Customization
 
