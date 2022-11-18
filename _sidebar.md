@@ -1,14 +1,14 @@
 - Memorandum
 
-  - [正则表达式手册](/Memorandum/正则表达式手册.md)
-  - [YAML基本语法](/Memorandum/YAML基本语法.md)
+  - [正则表达式手册](/memorandum/正则表达式手册.md)
+  - [YAML基本语法](/memorandum/YAML基本语法.md)
 
-- Interview
+- Knowledge
 
   - JavaScript
-    - [JavaScript 原型原型链](/Interview/JavaScript原型原型链.md)
-    - [JavaScript 继承](/Interview/JavaScript继承.md)
-    - [JavaScript 作用域](/Interview/JavaScript作用域.md)
+    - [JavaScript 原型原型链](/knowledge/JavaScript原型原型链.md)
+    - [JavaScript 继承](/knowledge/JavaScript继承.md)
+    - [JavaScript 作用域](/knowledge/JavaScript作用域.md)
 
 <!-- - Customization
 

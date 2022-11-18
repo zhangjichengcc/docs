@@ -2,7 +2,7 @@
 
 # 朝花夕拾<small>2.0.0</small>
 
-Zhangjicheng's Docs 
+Zhangjicheng's Docs
 
 > 个人笔记整理.
 
@@ -12,4 +12,4 @@ Zhangjicheng's Docs
 
 - 命名“朝花夕拾”是取其含义，意为提醒自己“拾”的重要性，总结是一个必要的过程，聚沙成塔、集腋成裘。
 
-[Getting Started](#Headline)
+[Getting Started](#my-docs)

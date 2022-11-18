@@ -178,7 +178,7 @@ console.log(child2.colors); // ["red", "blue", "green"]
   
 - 两次调用父类（`Child.prototype = new Parent(); Parent.call(this)`）会导致子类实例会存在两份相同的属性/方法
 
-![image-20221116190209056](../assets/img/interview-javascript-继承.png)
+![image-20221116190209056](../assets/img/knowledge-javascript-继承.png)
 
 ## 4.原型式继承
 
