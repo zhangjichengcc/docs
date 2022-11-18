@@ -22,6 +22,8 @@
 - Object.prototype.toString.call()
 - isArray
 
+---
+
 ## typeof
 
 > `typeof` 一般被用于判断一个变量的类型，我们可以利用 `typeof` 来判断`number`,  `string`,  `object`,  `boolean`,  `function`, `undefined`,  `symbol` 这七种类型，这种判断能帮助我们搞定一些问题，比如在判断不是 object 类型的数据的时候，`typeof`能比较清楚的告诉我们具体是哪一类的类型。
@@ -83,5 +85,7 @@ nicole instanceof person // true
 nicole instanceof programmer // true
 ```
 
+## 参考文献
 
+[浅谈 instanceof 和 typeof 的实现原理](https://juejin.cn/post/6844903613584654344)
 
