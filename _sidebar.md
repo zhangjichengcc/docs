@@ -1,9 +1,7 @@
-- Getting started
+- Memorandum
 
-  - [Quick start](quickstart.md)
-  - [Writing more pages](more-pages.md)
-  - [Custom navbar](/custorm-navbar.md)
-  - [Cover page](cover.md)
+  - [正则表达式手册](/Memorandum/正则表达式手册.md)
+  - [YAML基本语法](/Memorandum/YAML基本语法.md)
 
 - Interview
 
@@ -12,7 +10,7 @@
     - [JavaScript 继承](/Interview/JavaScript继承.md)
     - [JavaScript 作用域](/Interview/JavaScript作用域.md)
 
-- Customization
+<!-- - Customization
 
   - [Configuration](configuration.md)
   - [Themes](themes.md)
@@ -33,9 +31,9 @@
   - [Embed Files](embed-files.md)
 
 - [Awesome docsify](awesome.md)
-- [Changelog](changelog.md)
+- [Changelog](changelog.md) -->
 
-- **Links**
+- <p class="sidebar-link-title"><img src="/assets/img/link.svg"></img>Links</p>
 
 - <a class="sidebar-link" target="_blank" href="https://portfolio.zhangjc.cn/"><img src="/assets/img/portfolio.svg"></img>Portfolio</a>
 - <a class="sidebar-link" target="_blank" href="https://github.com/zhangjichengcc"><img src="/assets/img/github.svg"></img>Github</a>
