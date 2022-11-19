@@ -9,6 +9,7 @@
     - [JavaScript 原型原型链](/knowledge/JavaScript原型原型链.md)
     - [JavaScript 继承](/knowledge/JavaScript继承.md)
     - [JavaScript 作用域](/knowledge/JavaScript作用域.md)
+    - [JavaScript 类型判断](/knowledge/JavaScript类型判断.md)
 
 <!-- - Customization
 

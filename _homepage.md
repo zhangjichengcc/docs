@@ -10,6 +10,6 @@
 
 - knowledge 前端需要掌握的知识点
 
-## end
+## End
 
-enjoy！
+Enjoy it！
