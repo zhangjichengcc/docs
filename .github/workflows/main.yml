@@ -1,0 +1,68 @@
+# main.yml
+name: deploy mailServer to aliyun
+# 触发方式
+on: 
+  push:
+    branches:
+      # - main
+# 任务
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      REMOTE_HOST: 118.190.52.53
+      REMOTE_USER: root
+      TARGET_PATH: /opt/nodejs/mailServer
+      TARGET_DIR: mail-server
+      APP_NAME: mailServer
+    # 步骤
+    steps:
+      # 切换分支
+      - name: Checkout
+        # 先将仓库的代码checkout到环境中，github提供了checkout的方法，只需要我们加上这条即可
+        uses: actions/checkout@master
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      # 链接服务器-备份原代码
+      - name: connect Server & backups
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.REMOTE_HOST }} # 下面三个配置与上一步类似
+          username: ${{ env.REMOTE_USER }}
+          key: ${{ secrets.AL_ACCESS_TOKEN }}
+          script: |
+            cd ${{ env.TARGET_PATH }}
+            pm2 list
+            pm2 stop ${{ env.APP_NAME }}
+            # 备份原项目，并新建空文件
+            # 删除依赖包，减少服务器压力
+            rm -rf ${{ env.TARGET_DIR }}/node_modules/
+            tar czvf ${{ env.TARGET_DIR }}_$(date "+%Y%m%d(%H%M%S)").tar.gz ${{ env.TARGET_DIR }} --remove-files
+            mkdir ${{ env.TARGET_DIR }}
+            
+      # 上传代码到服务器
+      - name: upload code to Server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.AL_ACCESS_TOKEN }}
+          ARGS: "-avz --delete"
+          # SOURCE: "./"
+          REMOTE_HOST: ${{ env.REMOTE_HOST }}
+          REMOTE_USER: ${{ env.REMOTE_USER }}
+          TARGET: ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}
+          EXCLUDE: "/.git/, /node_modules/"
+      
+      # 链接服务器并启动服务
+      - name: connect Server & start Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.REMOTE_HOST }} # 下面三个配置与上一步类似
+          username: ${{ env.REMOTE_USER }}
+          key: ${{ secrets.AL_ACCESS_TOKEN }}
+          script: |
+            cd ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}
+            npm install
+            pm2 start ${{ env.APP_NAME }}
+            pm2 show ${{ env.APP_NAME }}
