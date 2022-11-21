@@ -10,6 +10,7 @@
     - [JavaScript 继承](/knowledge/JavaScript继承.md)
     - [JavaScript 作用域](/knowledge/JavaScript作用域.md)
     - [JavaScript 类型判断](/knowledge/JavaScript类型判断.md)
+    - [JavaScript 手写bind、call、apply](/knowledge/JavaScript手写bind_call_apply.md)
 
 <!-- - Customization
 
