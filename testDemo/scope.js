@@ -2,7 +2,7 @@
  * @Author: zhangjicheng
  * @Date: 2022-11-17 23:58:13
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2022-11-18 00:45:40
+ * @LastEditTime: 2022-11-19 00:51:24
  * @FilePath: /docs/testDemo/scope.js
  */
 // function func1() {
@@ -24,20 +24,29 @@
 // const fn3 = fn2();
 // fn3();
 
+// (function(){
+//   function doSomething(value, fn){
+//     fn(value);
+//   }
+
+//   function logName(name) {
+//     console.log(name);
+//     console.log(doSomething)
+//     debugger
+//   }
+
+//   doSomething('tom', logName);
+// })()
+
 (function(){
-  function doSomething(value, fn){
-    fn(value);
+  let a = 1;
+
+  function fn1() {
+    console.log(a);
   }
 
-  function logName(name) {
-    console.log(name);
-    console.log(doSomething)
-    debugger
+  function fn2() {
+    a = 2;
+    fn1();
   }
-
-  doSomething('tom', logName);
-  // doSomething('tom', function(name){
-  //   console.log(name);
-  //   debugger
-  // })
 })()
