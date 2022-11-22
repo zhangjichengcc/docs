@@ -75,7 +75,7 @@ a === b; // true
 缺点：
 
 - `typeof` 在判断一个 object的数据的时候只能告诉我们这个数据是 object, 而不能细致的具体到是哪一种 object
-- `typeof` 无法识别 `null` 
+- `typeof` 无法识别 `null`
 
 ``` js
 const str = new String('abc');
@@ -237,4 +237,3 @@ Object.prototype.toString.call(window);           // [object global] window 是�
 [如何判断JS类型](https://zhuanlan.zhihu.com/p/89238840)  
 
 [判断JS数据类型的四种方法](https://www.cnblogs.com/onepixel/p/5126046.html)
-
