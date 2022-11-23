@@ -24,16 +24,16 @@
 
 - 改变 `this` 指向；
 - 执行方法；
-- 入参为剩余参数 `obj, ...args`;
+- 入参为剩余参数 `thisArg, ...argArray`;
 
 ``` js
-Function.prototype.myCall = function(obj, ...args) {
-  // 将调用call的方法[this]绑定到obj上，用临时方法fn接收，这一步使fn的this指向obj
-  obj.fn = this;
-  // 将执行结果赋值给临时变量，此处是为了删除obj不存在的fn
-  const tmp = obj.fn(...args);
-  // 删除obj.fn
-  delete obj.fn;
+Function.prototype.myCall = function(thisArg, ...argArray) {
+  // 将调用call的方法[this]绑定到thisArg上，用临时方法fn接收，这一步使fn的this指向thisArg
+  thisArg.fn = this;
+  // 将执行结果赋值给临时变量，此处是为了删除thisArg不存在的fn
+  const tmp = thisArg.fn(...argArray);
+  // 删除thisArg.fn
+  delete thisArg.fn;
   return tmp;
 }
 ```
@@ -43,10 +43,10 @@ Function.prototype.myCall = function(obj, ...args) {
 `apply` 和 `call` 方法基本相同，只是传参方式为数组
 
 ``` js
-Function.prototype.myApply = function(obj, args) {
-  obj.fn = this;
-  const tmp = obj.fn(...args);
-  delete obj.fn;
+Function.prototype.myApply = function(thisArg, argArray) {
+  thisArg.fn = this;
+  const tmp = thisArg.fn(...argArray);
+  delete thisArg.fn;
   return tmp;
 }
 ```
@@ -66,18 +66,18 @@ Function.prototype.myApply = function(obj, args) {
 
 ``` js
 // 使用call
-Function.prototype.myBind = function(obj, ...args) {
+Function.prototype.myBind = function(thisArg, ...argArray) {
   const that = this;
   return function() {
-    that.call(obj, ...args, ...arguments);
+    that.call(thisArg, ...argArray, ...arguments);
   }
 }
 
 // 不使用call
-Function.prototype.myBind = function(obj, ...args) {
-  obj.fn = this;
+Function.prototype.myBind = function(thisArg, ...argArray) {
+  thisArg.fn = this;
   return function() {
-    obj.fn(...args, ...arguments);
+    thisArg.fn(...argArray, ...arguments);
   }
 }
 ```
@@ -139,7 +139,8 @@ Fn {sex: 'man'}
 以上，完善一下 `myBind`
 
 ``` js
-Function.prototype.myBind = function(obj, ...args) {
+// 使用call
+Function.prototype.myBind = function(thisArg, ...argArray) {
   const that = this;
   
   function fn() {
@@ -149,13 +150,32 @@ Function.prototype.myBind = function(obj, ...args) {
      * 当以普通函数调用，this 为调用者（windows）
      */
     if (this instanceof fn) {
-      that.call(this, ...args, ...arguments);
+      that.call(this, ...argArray, ...arguments);
     } else {
-      that.call(obj, ...args, ...arguments);
+      that.call(thisArg, ...argArray, ...arguments);
     }
   }
 
   fn.prototype = that.prototype;
+
+  return fn;
+}
+
+// 不使用call
+Function.prototype.myBind = function(thisArg, ...argArray) {
+  const that = this;
+
+  function fn() {
+    if (this instanceof fn) {
+      this.fn = that;
+      this.fn(...argArray, ...arguments);
+    } else {
+      thisArg.fn = that;
+      thisArg.fn(...argArray, ...arguments);
+    }
+  }
+
+  fn.prototype = this.prototype;
 
   return fn;
 }
