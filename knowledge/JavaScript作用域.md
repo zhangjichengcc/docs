@@ -9,7 +9,7 @@ var name = 'tom';
 在JS执行过程中，可以看作如下：
 
 ``` js
-var name;     // 编译阶段
+var name;       // 编译阶段
 name = 'tom';   // 执行阶段
 ```
 

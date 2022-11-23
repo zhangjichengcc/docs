@@ -231,6 +231,14 @@ Object.prototype.toString.call(document);         // [object HTMLDocument]
 Object.prototype.toString.call(window);           // [object global] window 是全局对象 global 的引用
 ```
 
+## isArray
+
+对于数组类型，可以使用 `Array.isArray()` 进行判断
+
+``` js
+Array.isArray([]); // true
+```
+
 ## 参考文献
 
 [JS判断数据类型](https://note.zhangjc.cn/src/1_JS%E5%9F%BA%E7%A1%80/20211026_JS%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html)
