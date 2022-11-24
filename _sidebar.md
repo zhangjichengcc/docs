@@ -12,6 +12,7 @@
     - [JavaScript 类型判断](/post/knowledge/JavaScript类型判断.md)
     - [JavaScript 手写bind、call、apply](/post/knowledge/JavaScript手写bind_call_apply.md)
     - [JavaScript 手写new](/post/knowledge/JavaScript手写new.md)
+    - [JavaScript 函数柯里化](/post/knowledge/JavaScript函数柯里化.md)
 
 - Performance
 

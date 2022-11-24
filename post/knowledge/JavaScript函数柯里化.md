@@ -55,4 +55,3 @@ postFromTest("name=kevin");
 [JavaScript专题之函数柯里化](https://github.com/mqyqingfeng/Blog/issues/42)
 
 [详解JS函数柯里化](https://www.jianshu.com/p/2975c25e4d71)
- 
