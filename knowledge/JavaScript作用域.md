@@ -349,7 +349,7 @@ ExecutionContext = {
 抽象地讲，词法环境在伪代码中看起来像这样：
 
 ``` yml
-GlobalExectionContext = {
+GlobalExecutionContext = {
   LexicalEnvironment: {
     EnvironmentRecord: {
       Type: "Object",
@@ -359,7 +359,7 @@ GlobalExectionContext = {
   }
 }
 
-FunctionExectionContext = {
+FunctionExecutionContext = {
   LexicalEnvironment: {
     EnvironmentRecord: {
       Type: "Declarative",
@@ -395,7 +395,7 @@ c = multiply(20, 30);
 执行上下文伪代码如下：
 
 ``` yml
-GlobalExectionContext = {
+GlobalExecutionContext = {
 
   ThisBinding: <Global Object>,
 
@@ -420,7 +420,7 @@ GlobalExectionContext = {
   }
 }
 
-FunctionExectionContext = {
+FunctionExecutionContext = {
   ThisBinding: <Global Object>,
 
   LexicalEnvironment: {
@@ -452,6 +452,100 @@ VariableEnvironment: {
 这就是为什么你可以在声明之前访问 `var` 定义的变量（虽然是 `undefined`），但是在声明之前访问 `let` 和 `const` 的变量会得到一个引用错误。
 
 这就是我们说的变量声明提升。
+
+---
+
+## 变量提升
+
+1) 变量提升：
+
+``` js
+var x = 1;
+function f() {
+  console.log(x);
+  var x = 2;
+}
+
+f();
+```
+
+如上，其实际执行可以看作
+
+``` js
+var x = 1;
+function f() {
+  var x;
+  console.log(x);
+  x = 2;
+}
+
+f();
+```
+
+故输出为
+
+``` output
+undefined
+```
+
+2) 函数提升:
+
+``` js
+function f() {
+  x();
+  
+  function x() {
+    console.log(1);
+  }
+}
+
+f();
+```
+
+如上，其实际执行可以看作
+
+``` js
+function f() {
+  function x() {
+    console.log(1);
+  }
+  
+  x();
+}
+
+f();
+```
+
+故输出为:
+
+``` output
+1
+```
+
+?> 函数声明提升要高于变量声明
+
+``` js
+var x = 1;
+function x() {}
+
+console.log(typeof x);  // number
+```
+
+如上，可以看作：
+
+``` js
+function x() {}
+
+var x;
+
+x = 1;
+```
+
+?> 进入执行上下文时，首先会处理**函数声明**，其次会处理**变量声明**，如果变量名称跟已经声明的形式参数或函数相同，则变量声明不会干扰已经存在的这类属性。
+
+>作用域是在函数声明的时候就确定的一套变量访问规则，而执行上下文是函数执行时才产生的一系列变量的环境。也就是说作用域定义了执行上下文中的变量的访问规则，执行上下文在这个作用域规则的前提下进行变量查找，函数引用等具体操作。
+
+---
 
 ## 总结
 

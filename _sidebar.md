@@ -12,28 +12,11 @@
     - [JavaScript 类型判断](/knowledge/JavaScript类型判断.md)
     - [JavaScript 手写bind、call、apply](/knowledge/JavaScript手写bind_call_apply.md)
 
-<!-- - Customization
+- Performance
 
-  - [Configuration](configuration.md)
-  - [Themes](themes.md)
-  - [List of Plugins](plugins.md)
-  - [Write a Plugin](write-a-plugin.md)
-  - [Markdown configuration](markdown.md)
-  - [Language highlighting](language-highlight.md)
-  - [Emoji](emoji.md)
-
-- Guide
-
-  - [Deploy](deploy.md)
-  - [Helpers](helpers.md)
-  - [Vue compatibility](vue.md)
-  - [CDN](cdn.md)
-  - [Offline Mode (PWA)](pwa.md)
-  - [Server-Side Rendering (SSR)](ssr.md)
-  - [Embed Files](embed-files.md)
-
-- [Awesome docsify](awesome.md)
-- [Changelog](changelog.md) -->
+  - PageOptimization
+    - [骨架屏方案](/performance/骨架屏方案.md)
+  - PerformanceOptimization
 
 - <p class="sidebar-link-title"><img src="/assets/img/link.svg"></img>Links</p>
 
