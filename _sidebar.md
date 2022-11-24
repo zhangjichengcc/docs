@@ -1,39 +1,26 @@
 - Memorandum
 
-  - [正则表达式手册](/memorandum/正则表达式手册.md)
-  - [YAML基本语法](/memorandum/YAML基本语法.md)
+  - [正则表达式手册](/post/memorandum/正则表达式手册.md)
+  - [YAML基本语法](/post/memorandum/YAML基本语法.md)
 
 - Knowledge
 
   - JavaScript
-    - [JavaScript 原型原型链](/knowledge/JavaScript原型原型链.md)
-    - [JavaScript 继承](/knowledge/JavaScript继承.md)
-    - [JavaScript 作用域](/knowledge/JavaScript作用域.md)
-    - [JavaScript 类型判断](/knowledge/JavaScript类型判断.md)
-    - [JavaScript 手写bind、call、apply](/knowledge/JavaScript手写bind_call_apply.md)
+    - [JavaScript 原型原型链](/post/knowledge/JavaScript原型原型链.md)
+    - [JavaScript 继承](/post/knowledge/JavaScript继承.md)
+    - [JavaScript 作用域](/post/knowledge/JavaScript作用域.md)
+    - [JavaScript 类型判断](/post/knowledge/JavaScript类型判断.md)
+    - [JavaScript 手写bind、call、apply](/post/knowledge/JavaScript手写bind_call_apply.md)
+    - [JavaScript 手写new](/post/knowledge/JavaScript手写new.md)
+    - [JavaScript 函数柯里化](/post/knowledge/JavaScript函数柯里化.md)
 
-<!-- - Customization
+- Performance
 
-  - [Configuration](configuration.md)
-  - [Themes](themes.md)
-  - [List of Plugins](plugins.md)
-  - [Write a Plugin](write-a-plugin.md)
-  - [Markdown configuration](markdown.md)
-  - [Language highlighting](language-highlight.md)
-  - [Emoji](emoji.md)
+  - PageOptimization
+    - [骨架屏方案](/post/performance/骨架屏方案.md)
+  - PerformanceOptimization
 
-- Guide
-
-  - [Deploy](deploy.md)
-  - [Helpers](helpers.md)
-  - [Vue compatibility](vue.md)
-  - [CDN](cdn.md)
-  - [Offline Mode (PWA)](pwa.md)
-  - [Server-Side Rendering (SSR)](ssr.md)
-  - [Embed Files](embed-files.md)
-
-- [Awesome docsify](awesome.md)
-- [Changelog](changelog.md) -->
+- Framework
 
 - <p class="sidebar-link-title"><img src="/assets/img/link.svg"></img>Links</p>
 
