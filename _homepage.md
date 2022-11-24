@@ -10,6 +10,8 @@
 
 - knowledge 前端需要掌握的知识点
 
+- performance 前端优化
+
 ## End
 
-Enjoy it！
+Enjoy it，Thanks！
