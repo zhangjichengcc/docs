@@ -4,7 +4,7 @@
 
 首先附上一张原型链图
 
-![](../assets/img/knowledge-javascript-手写new.jpg)
+![](../../assets/img/knowledge-javascript-手写new.jpg)
 
 1. 内存中创建对象
 2. 新对象的`__proto__`属性赋值为构造函数的`prototype`属性

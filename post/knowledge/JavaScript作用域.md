@@ -151,7 +151,7 @@ fn3();
 
 ?> 我们所考虑的这个解决方案：销毁父作用域后，把用到的变量包起来，打包给子函数，放到一个属性上。这就是闭包的机制。
 
-![](../assets/img/knowledge-javascript-作用域2.jpg)
+![](../../assets/img/knowledge-javascript-作用域2.jpg)
 
 其实还是有闭包的，闭包最少会包含全局作用域。
 
@@ -178,7 +178,7 @@ const fn3 = fn2();
 fn3();
 ```
 
-![](../assets/img/knowledge-javascript-作用域3.jpg)
+![](../../assets/img/knowledge-javascript-作用域3.jpg)
 
 如图，`value1`和`value2`均被打包到 \[\[Scopes\]\] 里，`value3` 并非外部引用，故不需要打包。
 
@@ -289,7 +289,7 @@ first();
 console.log('Inside Global Execution Context');
 ```
 
-![](../assets/img/knowledge-javascript-作用域1.jpg)
+![](../../assets/img/knowledge-javascript-作用域1.jpg)
 
 上述代码的执行上下文栈。
 
