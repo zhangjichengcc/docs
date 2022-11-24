@@ -40,7 +40,6 @@
     - [15.提升构建速度](/post/framework/Webpack/15.提升构建速度.md)
     - [16.开发loader](/post/framework/Webpack/16.开发loader.md)
     - [17.开发plugin](/post/framework/Webpack/17.开发plugin.md)
-    - [10.拆分代码](/post/framework/Webpack/10.拆分代码.md)
 
 - <p class="sidebar-link-title"><img src="/assets/img/link.svg"></img>Links</p>
 
