@@ -3,6 +3,9 @@
     "coverpage",
     "docsify",
     "enduml",
+    "macrotask",
+    "microtask",
+    "Mutaion",
     "plantuml",
     "startuml"
   ]
