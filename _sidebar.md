@@ -5,16 +5,16 @@
 
 - Knowledge
 
-  - JavaScript
-    - [JavaScript 原型原型链](/post/knowledge/JavaScript原型原型链.md)
-    - [JavaScript 继承](/post/knowledge/JavaScript继承.md)
-    - [JavaScript 作用域](/post/knowledge/JavaScript作用域.md)
-    - [JavaScript 类型判断](/post/knowledge/JavaScript类型判断.md)
-    - [JavaScript 手写bind、call、apply](/post/knowledge/JavaScript手写bind_call_apply.md)
-    - [JavaScript 手写new](/post/knowledge/JavaScript手写new.md)
-    - [JavaScript 函数柯里化](/post/knowledge/JavaScript函数柯里化.md)
-    - [JavaScript 浮点数精度](/post/knowledge/JavaScript浮点数精度.md)
-    - [JavaScript EventLoot](/post/knowledge/JavaScriptEventLoop.md)
+  - JavaScript基础
+    - [JavaScript 原型原型链](/post/knowledge/JavaScript基础/JavaScript原型原型链.md)
+    - [JavaScript 继承](/post/knowledge/JavaScript基础/JavaScript继承.md)
+    - [JavaScript 作用域](/post/knowledge/JavaScript基础/JavaScript作用域.md)
+    - [JavaScript 类型判断](/post/knowledge/JavaScript基础/JavaScript类型判断.md)
+    - [JavaScript 手写bind、call、apply](/post/knowledge/JavaScript基础/JavaScript手写bind_call_apply.md)
+    - [JavaScript 手写new](/post/knowledge/JavaScript基础/JavaScript手写new.md)
+    - [JavaScript 函数柯里化](/post/knowledge/JavaScript基础/JavaScript函数柯里化.md)
+    - [JavaScript 浮点数精度](/post/knowledge/JavaScript基础/JavaScript浮点数精度.md)
+    - [JavaScript EventLoot](/post/knowledge/JavaScript基础/JavaScriptEventLoop.md)
 
 - Performance
 
