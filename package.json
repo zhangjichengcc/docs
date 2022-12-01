@@ -6,11 +6,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "docsify serve --open",
-    "publish": "docsify serve --port 8060"
+    "publish": "docsify serve --port 8060",
+    "commit": "git-cz"
   },
   "keywords": [
     "docs"
   ],
   "author": "zhangjicheng",
-  "license": "ISC"
+  "license": "ISC",
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
+  "devDependencies": {
+    "cz-customizable": "^7.0.0"
+  }
 }
