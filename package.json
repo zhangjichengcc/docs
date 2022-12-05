@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "docsify serve --open",
     "publish": "docsify serve --port 8060",
-    "commit": "./node_modules/cz-customizable/standalone.js"
+    "commit": "node ./node_modules/cz-customizable/standalone.js"
   },
   "keywords": [
     "docs"
