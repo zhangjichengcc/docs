@@ -10,13 +10,13 @@
     - [JavaScript 继承](/post/knowledge/JavaScript基础/JavaScript继承.md)
     - [JavaScript 作用域](/post/knowledge/JavaScript基础/JavaScript作用域.md)
     - [JavaScript 类型判断](/post/knowledge/JavaScript基础/JavaScript类型判断.md)
-    - [JavaScript 手写bind、call、apply](/post/knowledge/JavaScript基础/JavaScript手写bind_call_apply.md)
-    - [JavaScript 手写new](/post/knowledge/JavaScript基础/JavaScript手写new.md)
     - [JavaScript 函数柯里化](/post/knowledge/JavaScript基础/JavaScript函数柯里化.md)
     - [JavaScript 浮点数精度](/post/knowledge/JavaScript基础/JavaScript浮点数精度.md)
     - [JavaScript EventLoot](/post/knowledge/JavaScript基础/JavaScriptEventLoop.md)
 
   - JavaScript 手写方法
+    - [JavaScript 手写bind、call、apply](/post/knowledge/JavaScript手写方法/JavaScript手写bind_call_apply.md)
+    - [JavaScript 手写new](/post/knowledge/JavaScript手写方法/JavaScript手写new.md)
 
   - JavaScript 高级属性
 
