@@ -239,7 +239,8 @@ user = new Proxy(user, {
       throw new Error("Access denied");
     }
     let value = target[prop];
-    return (typeof value === 'function') ? value.bind(target) : value; // (*)
+    // !注意：此处绑定target是为了规避 `checkPassword` 访问this的时候触发get钩子，导致_password无法访问；将方法绑定到targe上可以防止触发get
+    return (typeof value === 'function') ? value.bind(target) : value; // (1)
   },
   set(target, prop, val) { // 拦截写入操作
     if (prop.startsWith('_')) {
@@ -264,22 +265,63 @@ user = new Proxy(user, {
 
 // “get” 不允许读取 _password
 try {
-  alert(user._password); // Error: Access denied
-} catch(e) { alert(e.message); }
+  console.log(user._password); // Error: Access denied
+} catch(e) { console.log(e.message); }
 
 //  “set” 不允许写入 _password
 try {
   user._password = "test"; // Error: Access denied
-} catch(e) { alert(e.message); }
+} catch(e) { console.log(e.message); }
 
 // “deleteProperty” 不允许删除 _password 属性
 try {
   delete user._password; // Error: Access denied
-} catch(e) { alert(e.message); }
+} catch(e) { console.log(e.message); }
 
 // “ownKeys” 过滤排除 _password
-for(let key in user) alert(key); // name
+for(let key in user) console.log(key); // name
 ```
+
+!> 注意：方法中(1)解决了方法中`this`绕过代理的方法，该解决方案通常可行，但并不理想，因为一种方法可能会将未代理的对象传递到其他地方，然后我们会陷入困境：原始对象在哪里，代理的对象在哪里？
+
+!> 此外，一个对象可能会被代理多次（多个代理可能会对该对象添加不同的“调整”），并且如果我们将未包装的对象传递给方法，则可能会产生意想不到的后果。因此，在任何地方都不应使用这种代理。
+
+?> 现代 Javascript 引擎原生支持私有属性，其以 # 作为前缀。但是，此类属性有其自身的问题。特别是，它们是**不可继承的**。
+
+## \[[has\]]
+
+> `handler.has()` 方法是针对 `in` 操作符的代理方法。
+
+``` js
+var p = new Proxy(target, {
+  has: function(target, prop) {
+  }
+});
+```
+
+应用场景：
+
+我们想使用 `in` 运算符来检查数字是否在 `range` 范围内。
+
+``` js
+let range = {
+  begin: 1,
+  end: 10,
+}
+
+range = new Proxy(range, {
+  has(target, prop) {
+    return prop >= target.begin && prop <= target.end;
+  }
+})
+
+console.log(0 in range); // false
+console.log(5 in range); // true
+```
+
+## 总结
+
+钩子内的 `this` 指向的是 `handle`.
 
 ## 参考文献
 
