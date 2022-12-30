@@ -22,15 +22,24 @@
   - JavaScript 高级属性
     - [JavaScript Proxy](/post/knowledge/JavaScript属性/Proxy.md)
 
-  - Css 基础
+  <!-- - Css 基础 -->
 
   - TypeScript 基本类型
+    - [TypeScript 指北](/post/knowledge/TypeScript基础/README.md)
+    - [1.枚举类型](/post/knowledge/TypeScript基础/1_枚举类型.md)
+    - [2.object](/post/knowledge/TypeScript基础/2_object.md)
+    - [3.Never类型](/post/knowledge/TypeScript基础/3_Never类型.md)
+    - [4.断言](/post/knowledge/TypeScript基础/4_断言.md)
+    - [5.类型守卫](/post/knowledge/TypeScript基础/5_类型守卫.md)
+    - [6.接口与类型别名](/post/knowledge/TypeScript基础/6_接口与类型别名.md)
 
-  - TypeScript 内置类型
+  <!-- - TypeScript 内置类型 -->
+    <!-- - [infer关键字] -->
 
-  - TypeScript 技巧
+  - TypeScript 实用技巧
+    - [条件接口](/post/knowledge/TypeScript实用技巧/20221230_条件接口.md)
 
-- NodeJS
+<!-- - NodeJS -->
 
 - Performance
 
@@ -40,7 +49,7 @@
 
 - Framework
 
-  - React
+  <!-- - React -->
 
   - Webpack4.0
     - [1.快速开始](/post/framework/Webpack/1.快速开始.md)
@@ -61,9 +70,9 @@
     - [16.开发loader](/post/framework/Webpack/16.开发loader.md)
     - [17.开发plugin](/post/framework/Webpack/17.开发plugin.md)
 
-- 数据结构
+<!-- - 数据结构 -->
 
-- 算法
+<!-- - 算法 -->
 
 - <p class="sidebar-link-title"><img src="/assets/img/link.svg"></img>Links</p>
 

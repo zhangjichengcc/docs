@@ -21,3 +21,7 @@
 .sidebar .sidebar-nav {
   padding-left: 8px;
 }
+
+.sidebar li > p {
+  font-weight: normal !important;
+}
