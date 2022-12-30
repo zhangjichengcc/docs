@@ -20,8 +20,15 @@
     - [JavaScript 手写new](/post/knowledge/JavaScript手写方法/JavaScript手写new.md)
 
   - JavaScript 高级属性
+    - [JavaScript Proxy](/post/knowledge/JavaScript属性/Proxy.md)
 
   - Css 基础
+
+  - TypeScript 基本类型
+
+  - TypeScript 内置类型
+
+  - TypeScript 技巧
 
 - NodeJS
 
