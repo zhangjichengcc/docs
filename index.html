@@ -2,8 +2,8 @@
  * @Author: zhangjicheng
  * @Date: 2022-11-15 15:12:00
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2022-12-04 23:35:59
- * @FilePath: /docs/index.html
+ * @LastEditTime: 2023-01-12 16:35:24
+ * @FilePath: \docs\index.html
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -93,6 +93,11 @@
   <script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
   <!-- 绘图 -->
   <script src="//unpkg.com/docsify-plantuml/dist/docsify-plantuml.min.js"></script>
+  <script>
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.register('sw.js')
+    }
+  </script>
   <noscript>本页面需要浏览器支持 (启用) JavaScript</noscript>
 </body>
 </html>

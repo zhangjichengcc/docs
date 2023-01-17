@@ -33,8 +33,10 @@
     - [5.类型守卫](/post/knowledge/TypeScript基础/5_类型守卫.md)
     - [6.接口与类型别名](/post/knowledge/TypeScript基础/6_接口与类型别名.md)
 
-  <!-- - TypeScript 内置类型 -->
-    <!-- - [infer关键字] -->
+  - TypeScript 高级
+    - [infer关键字](/post/knowledge/TypeScript高级/20210816_infer关键字.md)
+    - [泛型](/post/knowledge/TypeScript高级/20210901_泛型.md)
+    - [协变与逆变](/post/knowledge/TypeScript高级/20220816_协变逆变.md)
 
   - TypeScript 实用技巧
     - [条件接口](/post/knowledge/TypeScript实用技巧/20221230_条件接口.md)
