@@ -92,7 +92,7 @@ CSS2.1 中只有 **BFC**  和**IFC**, CSS3 中还增加了 **G(grid)FC** 和 **F
 
 ### 相邻Box水平方向margin重叠
 
-``` html
+``` diff html
 <!doctype HTML>
 <html>
 <head>
@@ -157,7 +157,7 @@ CSS2.1 中只有 **BFC**  和**IFC**, CSS3 中还增加了 **G(grid)FC** 和 **F
 
 ### 多栏布局
 
-``` html
+``` diff
 <style>
   body {
     width: 300px;
