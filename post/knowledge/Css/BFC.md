@@ -47,9 +47,7 @@ CSS2.1 中只有 **BFC**  和**IFC**, CSS3 中还增加了 **G(grid)FC** 和 **F
 
 ## BFC在布局中的应用
 
-### 4.1 防止margin重叠（塌陷）
-
-两个相邻`Box`垂直方向`margin`重叠.
+### 两个相邻`Box`垂直方向`margin`重叠
 
 ``` html
 <style>
@@ -92,7 +90,7 @@ CSS2.1 中只有 **BFC**  和**IFC**, CSS3 中还增加了 **G(grid)FC** 和 **F
 </body>
 ```
 
-相邻Box水平方向margin重叠
+### 相邻Box水平方向margin重叠
 
 ``` html
 <!doctype HTML>
@@ -132,4 +130,74 @@ CSS2.1 中只有 **BFC**  和**IFC**, CSS3 中还增加了 **G(grid)FC** 和 **F
 </html>
 ```
 
-https://github.com/zuopf769/notebook/blob/master/fe/BFC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/README.md
+### 清除内部浮动
+
+``` html
+<style>
+  .par {
+    border: 5px solid #fcc;
+    width: 300px;
+    overflow: hidden;
+  }
+
+  .child {
+    border: 5px solid #f66;
+    width:100px;
+    height: 100px;
+    float: left;
+  }
+</style>
+<body>
+  <div class="par">
+    <div class="child"></div>
+    <div class="child"></div>
+  </div>
+</body>
+```
+
+### 多栏布局
+
+``` html
+<style>
+  body {
+    width: 300px;
+    position: relative;
+  }
+
+  .aside {
+    width: 100px;
+    height: 150px;
+    float: left;
+    background: #f66;
+  }
+
+  .main {
+    height: 200px;
+    background: #fcc;
++   // main 形成独立的BFC    
++   overflow: hidden;    
+  }
+</style>
+<body>
+  <div class="aside"></div>
+  <div class="main"></div>
+</body>
+```
+
+当触发 `main` 生成 **BFC** 后，这个新的 **BFC** 不会与浮动的 `aside` 重叠。因此会根据包含块的宽度，和 `aside` 的宽度，自动变窄。
+
+---
+
+## 总结
+
+!> `BFC` 就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
+
+因为 **BFC** 内部的元素和外部的元素绝对不会互相影响，因此，
+
+当 **BFC** 外部存在浮动时，它不应该影响 **BFC** 内部 Box 的布局，**BFC** 会通过变窄，而不与浮动有重叠。 同样的，当 **BFC** 内部有浮动时，为了不影响外部元素的布局，**BFC** 计算高度时会包括浮动的高度。 避免 `margin` 重叠也是这样的一个道理。
+
+---
+
+## 参考文献
+
+[史上最全面、最透彻的BFC原理剖析](https://github.com/zuopf769/notebook/blob/master/fe/BFC%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90/README.md)
