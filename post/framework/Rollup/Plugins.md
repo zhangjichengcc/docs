@@ -4,7 +4,7 @@
 
 我们可以通过在npm 中搜索 @rollup 来查看插件汇总，下面总结一些常见插件。
 
-## rollup-plugin-babel
+## @rollup/plugin-babel
 
 > 集成 rollup 和 Babel 之间的无缝连接。
 
@@ -106,6 +106,25 @@ export default {
 ## @rollup/plugin-json
 
 > .json 文件转换成 ES6模块
+
+[@rollup/plugin-json](https://www.npmjs.com/package/@rollup/plugin-json)
+
+``` bash
+npm install @rollup/plugin-json --save-dev
+```
+
+``` js
+import json from '@rollup/plugin-json';
+
+export default {
+  input: 'src/index.js',
+  output: {
+    dir: 'output',
+    format: 'cjs'
+  },
+  plugins: [json()]
+};
+```
 
 ## rollup-plugin-typescript2
 
