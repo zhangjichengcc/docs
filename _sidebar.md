@@ -14,6 +14,7 @@
     - [JavaScript 浮点数精度](/post/knowledge/JavaScript基础/JavaScript浮点数精度.md)
     - [JavaScript EventLoot](/post/knowledge/JavaScript基础/JavaScriptEventLoop.md)
     - [JavaScript V8引擎垃圾回收机制](/post/knowledge/JavaScript基础/JavaScriptV8引擎垃圾回收.md)
+    - [JavaScript 浏览器缓存机制](/post/knowledge/JavaScript基础/JavaScript缓存机制/artical.md)
 
   - JavaScript 手写方法
     - [JavaScript 手写bind、call、apply](/post/knowledge/JavaScript手写方法/JavaScript手写bind_call_apply.md)
@@ -77,6 +78,10 @@
 
   - Vite
     - [README](/post/framework/Vite/README.md)
+
+  - Rollup
+    - [README](/post/framework/Rollup/README.md)
+    - [README](/post/framework/Rollup/Plugins.md)
 
 <!-- - 数据结构 -->
 
