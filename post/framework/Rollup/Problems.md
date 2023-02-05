@@ -89,3 +89,77 @@ export default {
 // src/index.js
 import pkg from '../package.json';
 ```
+
+## 使用 typeScript 的配置文件
+
+> 使配置文件支持 `typescript`提示
+
+### 使用ts配置文件 `rollup.config.ts`
+
+``` typescript
+import type { RollupOptions } from 'rollup';
+
+const config: RollupOptions = {
+  /* your config */
+};
+export default config;
+```
+
+?> ⚠️注意，我们需要引入插件 `@rollup/plugin-typescript`, 并确保在 `tsconfig.json` 的 `include` 路径中有 `rollup`配置文件:
+
+``` json
+// tsconfig.json
+{
+  "compilerOptions": {
+    /** options */
+  },
+  "include": ["src/**/*", "types/**/*", "rollup.config.ts"]
+}
+```
+
+使用如下命令启动：
+
+``` shell
+rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript
+```
+
+或者在 `package.json` 配置启动命令
+
+``` json
+// package.json
+{
+  /** config options */
+
+  "scripts": {
+    "build": "rollup -c rollup.config.ts --configPlugin @rollup/plugin-typescript",
+  },
+}
+```
+
+### 使用 JSDoc 类型提示
+
+[JSDoc Reference](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)
+
+``` js
+// rollup.config.js
+/**
+ * @type {import('rollup').RollupOptions}
+ */
+const config = {
+  /* your config */
+};
+export default config;
+```
+
+### 使用 defineConfig
+
+> 使用 `defineConfig` 助手，它提供智能感知而不需要 JSDoc 注释
+
+``` js
+// rollup.config.js
+import { defineConfig } from 'rollup';
+
+export default defineConfig({
+  /* your config */
+});
+```
