@@ -9,3 +9,19 @@
 ``` bash
 tsc --init
 ```
+
+## 自动生成 .d.ts 声明文件
+
+``` shell
+tsc -d
+```
+
+``` json
+// ts.config.json
+{
+  "compilerOptions": {
+    // ...
+    "declaration": true,
+  }
+}
+```

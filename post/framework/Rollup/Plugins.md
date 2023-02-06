@@ -10,7 +10,7 @@
 
 [@rollup/plugin-babel](https://www.npmjs.com/package/@rollup/plugin-babel)
 
-``` bash
+``` shell
 npm install @rollup/plugin-babel --save-dev
 ```
 
@@ -37,7 +37,7 @@ export default config;
 
 [@rollup/plugin-commonjs](https://www.npmjs.com/package/@rollup/plugin-commonjs)
 
-``` bash
+``` shell
 npm install @rollup/plugin-commonjs --save-dev
 ```
 
@@ -79,7 +79,7 @@ const config = {
 
 > 使用 Node 解析算法定位模块，用于在 Node _ module 中使用第三方模块
 
-``` bash
+``` shell
 npm install @rollup/plugin-node-resolve --save-dev
 ```
 
@@ -109,7 +109,7 @@ export default {
 
 [@rollup/plugin-json](https://www.npmjs.com/package/@rollup/plugin-json)
 
-``` bash
+``` shell
 npm install @rollup/plugin-json --save-dev
 ```
 
@@ -138,7 +138,7 @@ export default {
 
 > Allows the node builtins to be required/imported.
 
-``` bash
+``` shell
 npm install --save-dev rollup-plugin-node-polyfills
 ```
 
@@ -158,7 +158,7 @@ rollup({
 
 [@rollup/plugin-terser]()
 
-``` bash
+``` shell
 import terser from '@rollup/plugin-terser';
 ```
 
@@ -168,7 +168,7 @@ import terser from '@rollup/plugin-terser';
 
 [@rollup/plugin-eslint](https://www.npmjs.com/package/@rollup/plugin-eslint)
 
-``` bash
+``` shell
 npm install @rollup/plugin-eslint --save-dev
 ```
 
@@ -180,6 +180,36 @@ export default {
   plugins: [
     eslint({
       /* your options */
+    })
+  ]
+};
+```
+
+## @rollup/plugin-alias
+
+> rollup 别名配置插件，注意，不含 `ts` 文件的别名处理 `.ts` 的别名直接在TS中配置即可.
+
+[@rollup/plugin-alias](https://www.npmjs.com/package/@rollup/plugin-alias)
+
+``` shell
+npm install @rollup/plugin-alias --save-dev
+```
+
+``` js
+import alias from '@rollup/plugin-alias';
+
+module.exports = {
+  input: 'src/index.js',
+  output: {
+    dir: 'output',
+    format: 'cjs'
+  },
+  plugins: [
+    alias({
+      entries: [
+        { find: 'utils', replacement: '../../../utils' },
+        { find: 'batman-1.0.0', replacement: './joker-1.5.0' }
+      ]
     })
   ]
 };
