@@ -4,6 +4,8 @@
 
 我们可以通过在npm 中搜索 @rollup 来查看插件汇总，下面总结一些常见插件。
 
+持续更新：[https://github.com/rollup/plugins](https://github.com/rollup/plugins)
+
 ## @rollup/plugin-babel
 
 > 集成 rollup 和 Babel 之间的无缝连接。
