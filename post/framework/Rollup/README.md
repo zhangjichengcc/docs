@@ -45,7 +45,7 @@ export default {
 
     // advanced output options
     assetFileNames,
-    banner,
+    banner,                      // 打包后的文件头，当我们打包 node 脚本时，可以通过此字段添加头部注释 "#!/usr/bin/env node" 
     chunkFileNames,
     compact,
     entryFileNames,
