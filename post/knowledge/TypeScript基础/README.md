@@ -171,7 +171,7 @@ tsconfig 推荐默认配置可以参考官方的包：[@tsconfig/recommended](ht
 
 > 只用 tsc 来编译导出 ts 的 d.ts 类型声明文件
 
-当我们希望 tsc 仅用来编译声明文件，而ts使用babel进行转化时，可使用此配置
+当我们希望 tsc 仅用来编译声明文件，而 ts 使用 babel 进行编译时，可使用此配置。
 
 ### declaration
 
@@ -219,7 +219,7 @@ import TestModule from 'moduleA/index.js' // 模块实际位置: src/libs/module
 
 !> ⚠️ 如果需要自动生成(导出)类型定义文件，**TSC 不会处理路径别名**，需要引入 [typescript-transform-paths](https://www.npmjs.com/package/typescript-transform-paths) 插件，以及 [ttypescript](https://github.com/cevek/ttypescript) 来转换路径别名为相对路径。
 
-由于当前的 TypeScript 不支持 tsconfig.json 中的自定义转换器，且无法使用 tsc 命令使用自定义转换器编译文件，所以引入了 TTypescript 作为包装器
+由于当前的 TypeScript 不支持 tsconfig.json 中的自定义转换器，且无法使用 tsc 命令使用自定义转换器编译文件，所以引入了 ttypescript 作为包装器
 
 ``` json
 // tsconfig.json 
