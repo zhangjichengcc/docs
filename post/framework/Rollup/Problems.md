@@ -168,11 +168,11 @@ export default defineConfig({
 
 rollup 提供了 `@rollup/plugin-typescript` 进行 typescript 编译，如上的 .ts 配置文件就是采用该插件进行编译。
 
->? 需要注意的是，当我们使用 `babel` 编译ts时，`babel` 与 `@rollup/plugin-typescript` 二选一即可，若只需要编译ts，我们推荐使用 `@rollup/plugin-typescript`.
+?> 需要注意的是，当我们使用 `babel` 编译ts时，`babel` 与 `@rollup/plugin-typescript` 二选一即可，若只需要编译ts，我们推荐使用 `@rollup/plugin-typescript`.
 
->? 若需要使用 `babel` 进行一些代码的特殊处理，则可以使用 `babel`，或两者兼用，但推荐使用 `@rollup/plugin-typescript` 进行ts编译，`babel` 进行其他处理，因为 `@rollup/plugin-typescript` 对 ts 的处理更好。
+?> 若需要使用 `babel` 进行一些代码的特殊处理，则可以使用 `babel`，或两者兼用，但推荐使用 `@rollup/plugin-typescript` 进行ts编译，`babel` 进行其他处理，因为 `@rollup/plugin-typescript` 对 ts 的处理更好。
 
->! 注意，当我们同时使用 `babel` 和 `@rollup/plugin-typescript` 时，ts编译的目标需要在 `tsconfig.json` 中的 `target` 字段指定.
+!> 注意，当我们同时使用 `babel` 和 `@rollup/plugin-typescript` 时，ts编译的目标需要在 `tsconfig.json` 中的 `target` 字段指定.
 
 ## external
 

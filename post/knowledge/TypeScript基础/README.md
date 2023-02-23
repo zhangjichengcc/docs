@@ -120,7 +120,7 @@ tsconfig 推荐默认配置可以参考官方的包：[@tsconfig/recommended](ht
 } 
 ```
 
->! tsc 的代码降级编译并不能完全处理兼容性。
+!> tsc 的代码降级编译并不能完全处理兼容性。
 
 ### lib
 
@@ -145,7 +145,7 @@ tsconfig 推荐默认配置可以参考官方的包：[@tsconfig/recommended](ht
 
 > TSC 的编译结果只有部分特性做了 `pollyfill` 处理，ES6 的一些特性仍然被保留，想要支持完全的降级到 `ES5` 还是需要额外引入 `pollyfill`(也就是我们在项目的入口文件处 `import 'core-js'`)，但建议是将 `target` 字段值设置为 `ES6`，提升 TSC 的速度。
 
->! 不应该将 TSC 作为编译项目的工具，应该**将 TSC 作为类型检查工具**，代码编译的工作尽量交给 Rollup、Webpack 或 Babel 等打包工具!
+!> 不应该将 TSC 作为编译项目的工具，应该**将 TSC 作为类型检查工具**，代码编译的工作尽量交给 Rollup、Webpack 或 Babel 等打包工具!
 
 ### module
 
@@ -186,7 +186,7 @@ tsconfig 推荐默认配置可以参考官方的包：[@tsconfig/recommended](ht
 }
 ```
 
->! 自动生成声明文件时，若存在别名则配置文件别名不会被编译为相对路径，解决方案见下文
+!> 自动生成声明文件时，若存在别名则配置文件别名不会被编译为相对路径，解决方案见下文
 
 ### baseUrl & paths
 
@@ -217,7 +217,7 @@ import Toast from '@/components/Toast.ts' // 模块实际位置: src/components/
 import TestModule from 'moduleA/index.js' // 模块实际位置: src/libs/moduleA/index.js 
 ```
 
->! ⚠️ 如果需要自动生成(导出)类型定义文件，**TSC 不会处理路径别名**，需要引入 [typescript-transform-paths](https://www.npmjs.com/package/typescript-transform-paths) 插件，以及 [ttypescript](https://github.com/cevek/ttypescript) 来转换路径别名为相对路径。
+!> ⚠️ 如果需要自动生成(导出)类型定义文件，**TSC 不会处理路径别名**，需要引入 [typescript-transform-paths](https://www.npmjs.com/package/typescript-transform-paths) 插件，以及 [ttypescript](https://github.com/cevek/ttypescript) 来转换路径别名为相对路径。
 
 由于当前的 TypeScript 不支持 tsconfig.json 中的自定义转换器，且无法使用 tsc 命令使用自定义转换器编译文件，所以引入了 TTypescript 作为包装器
 
