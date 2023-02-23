@@ -2,8 +2,8 @@
  * @Author: zhangjicheng
  * @Date: 2022-12-02 00:07:18
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2022-12-02 00:47:04
- * @FilePath: /docs/.cz-config.js
+ * @LastEditTime: 2023-02-23 18:24:54
+ * @FilePath: \docs\.cz-config.js
  */
 module.exports = {
   types: [
@@ -19,6 +19,7 @@ module.exports = {
   scopes: [
     {value: 'framework',   name: 'Framework:      框架'},
     {value: 'knowledge',   name: 'Knowledge:      知识点'},
+    {value: 'node',        name: 'nodejs:         Node'},
     {value: 'memorandum',  name: 'Memorandum:     备忘录'},
     {value: 'performance', name: 'Performance:    优化'},
     {value: 'total',       name: 'Total:          项目整体'},
