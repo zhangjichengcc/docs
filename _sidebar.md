@@ -53,6 +53,10 @@
     - [骨架屏方案](/post/performance/骨架屏方案.md)
   - PerformanceOptimization
 
+- Extension
+
+  - [搭建Cli脚手架](/post/extension/搭建Cli脚手架.md)
+
 - Framework
 
   <!-- - React -->
