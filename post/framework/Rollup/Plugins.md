@@ -216,3 +216,122 @@ module.exports = {
   ]
 };
 ```
+
+## rollup-plugin-dts
+
+> This is a plugin that lets you roll-up your .d.ts definition files.
+
+[rollup-plugin-dts](https://www.npmjs.com/package/rollup-plugin-dts)
+
+``` js
+// rollup.config.js
+import dts from "rollup-plugin-dts";
+
+const config = [
+  // …
+  {
+    input: "./my-input/index.d.ts",
+    output: [{ file: "dist/my-library.d.ts", format: "es" }],
+    plugins: [dts()],
+  },
+];
+```
+
+``` json
+# package.json
+ "types": "dist/my-library.d.ts",
+```
+
+## rollup-plugin-visualizer
+
+> 可视化并分析 Rollup 包，以查看哪些模块占用了空间。
+
+[rollup-plugin-visualizer](https://www.npmjs.com/package/rollup-plugin-visualizer)
+
+## rollup-plugin-clear
+
+> 清理文件
+
+[rollup-plugin-clear](https://www.npmjs.com/package/rollup-plugin-clear)
+
+## rollup-plugin-serve
+
+> rollup 本地服务
+
+[rollup-plugin-serve](https://www.npmjs.com/package/rollup-plugin-serve)
+
+``` js
+// rollup.config.js
+import serve from 'rollup-plugin-serve'
+
+export default {
+  input: 'src/main.js',
+  output: {
+    file: 'dist/bundle.js',
+    format: ...
+  },
+  plugins: [
+    serve('dist')
+  ]
+}
+```
+
+## rollup-plugin-generate-html-template / @rollup/plugin-html
+
+> A Rollup plugin which creates HTML files to serve Rollup bundles.
+> 一个 Rollup 插件，它创建 HTML 文件来服务 Rollup 捆绑包。
+
+[@rollup/plugin-html](https://www.npmjs.com/package/@rollup/plugin-html)
+
+``` js
+// rollup.config.js
+const html = require('@rollup/plugin-html');
+
+module.exports = {
+  input: 'src/index.js',
+  output: {
+    dir: 'output',
+    format: 'cjs'
+  },
+  plugins: [html()]
+};
+```
+
+## rollup-plugin-generate-html-template
+
+> 通过脚本和链接标记将结果汇总包自动注入到 HTML 模板中。
+
+``` js
+// rollup.config.js
+import htmlTemplate from 'rollup-plugin-generate-html-template';
+ 
+export default {
+  entry: 'src/index.js',
+  dest: 'dist/js/bundle.js',
+  plugins: [
+    htmlTemplate({
+      template: 'src/template.html',
+      target: 'index.html',
+    }),
+  ],
+};
+```
+
+## rollup-plugin-postcss
+
+[rollup-plugin-postcss](https://www.npmjs.com/package/rollup-plugin-postcss)
+
+> Seamless integration between Rollup and PostCSS.
+
+``` js
+// rollup.config.js
+import postcss from 'rollup-plugin-postcss'
+
+export default {
+  plugins: [
+    postcss({
+      plugins: []
+    })
+  ]
+}
+```
