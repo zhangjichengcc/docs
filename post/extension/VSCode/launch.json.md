@@ -123,32 +123,32 @@ configurations
 
 - `runtimeArgs` 传递给运行时可执行文件的参数,例如：
 
-  - ``` json
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "npm launch app",
-      "args":["a"],
-      "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run-script",
-        "app",
-        "b"
-      ],
-      "port": 6666
-    }
-    ```
+  ``` json
+  {
+    "type": "node",
+    "request": "launch",
+    "name": "npm launch app",
+    "args":["a"],
+    "runtimeExecutable": "npm",
+    "runtimeArgs": [
+      "run-script",
+      "app",
+      "b"
+    ],
+    "port": 6666
+  }
+  ```
 
-    打印参数可以发现 `args 、runtimeArgs`都会传给程序，但是`runtimeArgs`参数会紧跟可执行文件
+  打印参数可以发现 `args 、runtimeArgs`都会传给程序，但是`runtimeArgs`参数会紧跟可执行文件
 
-    ``` shell
-    C:\Program Files\nodejs\npm.cmd\run-script app b a
-    Debugger listening on wS://127.0.0.1:6666/3d146f17-87eb-402e-9d3d-2c0e415386e1 
-    For help, see: https://nodejs.orgLen/docs/inspector 
-    Debugger attached.
-    
-    > Array(4) ["C:\Program Files\nodejs\node.exe", "F:\owerProject\demo\express-app.js","b","a"]
-    ```
+  ``` bash
+  C:\Program Files\nodejs\npm.cmd\run-script app b a
+  Debugger listening on wS://127.0.0.1:6666/3d146f17-87eb-402e-9d3d-2c0e415386e1 
+  For help, see: https://nodejs.orgLen/docs/inspector 
+  Debugger attached.
+  
+  > Array(4) ["C:\Program Files\nodejs\node.exe", "F:\owerProject\demo\express-app.js","b","a"]
+  ```
 
 - `runtimeVersion` 设置运行时可执行程序的版本，如果使用`nvm`，可以切换node.js版本
 
