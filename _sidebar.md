@@ -57,6 +57,8 @@
 - Extension
 
   - [搭建Cli脚手架](/post/extension/搭建Cli脚手架.md)
+  - [VSCode]
+    - [launch.json]((/post/extension/)VSCode/launch.json.md)
 
 - Framework
 
