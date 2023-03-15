@@ -11,6 +11,7 @@
   - JavaScript
 
     - JavaScript 基础
+      - [JavaScript 详解this](/post/knowledge/JavaScript/JavaScript基础/JavaScript详解this.md)
       - [JavaScript 原型原型链](/post/knowledge/JavaScript/JavaScript基础/JavaScript原型原型链.md)
       - [JavaScript 继承](/post/knowledge/JavaScript/JavaScript基础/JavaScript继承.md)
       - [JavaScript 作用域](/post/knowledge/JavaScript/JavaScript基础/JavaScript作用域.md)
@@ -57,6 +58,8 @@
   - NodeJS
     - [README](/post/knowledge/NodeJS/README.md)
     - [Nodejs纯esm模块的迁移方法](/post/knowledge/NodeJS/Nodejs纯esm模块的迁移方法.md)
+    - [package.json](/post/knowledge/NodeJS/package.json.md)
+    - [npm-link](/post/knowledge/NodeJS/npm-link.md)
 
 - Performance
 
