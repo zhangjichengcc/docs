@@ -25,3 +25,9 @@
 .sidebar li > p {
   font-weight: normal !important;
 }
+
+/* 右侧文章导航样式 toc */
+.page_toc {
+  font-size: 12px;
+  padding-right: 18px;
+}

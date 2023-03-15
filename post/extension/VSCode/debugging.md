@@ -70,16 +70,16 @@ configurations
 
 **`launch` 与 `attach` 共有字段**
 
-- protocol: 设置调试协议 
+- protocol: 设置调试协议
 
-​	 `auto` 尝试自动检测目标运行时使用的协议
- 	`inspector` 新的V8调试器协议，解决遗留版本的多数问题，node versions >= 6.3 and Electron versions >= 1.7.4.
- 	`legacy` 原始的v8调试器协议，node versions < v8.0 and Electron versions < 1.7.4.
+  `auto` 尝试自动检测目标运行时使用的协议
+  `inspector` 新的V8调试器协议，解决遗留版本的多数问题，node versions >= 6.3 and Electron versions >= 1.7.4.
+  `legacy` 原始的v8调试器协议，node versions < v8.0 and Electron versions < 1.7.4.
 
 - port: 调试使用的端口
 - address: TCP/IP地址，用于远程调试
 
-**`lauch` 特有字段**
+**`launch` 特有字段**
 
 - `localRoot` 远程调试时映射的本地地址
 
@@ -108,8 +108,6 @@ configurations
   ```
 
 - `trace`启用诊断输出
-
-  
 
 **`attach` 特有字段**
 
@@ -178,7 +176,7 @@ configurations
 
 ## Question
 
-###### 1. 如果使用了符号链接怎么调试？
+### 1. 如果使用了符号链接怎么调试？
 
 传递参数:
 
@@ -190,7 +188,7 @@ configurations
 
 如果主脚本也在符号链接路径里面，需要再传递一个参数`"--preserve-symlinks-main"`，支持的版本是 `Node 10+.`
 
-###### 2. 如何调试 ECMAScript 模块？
+### 2. 如何调试 ECMAScript 模块？
 
 如果使用esm或传递`--experimental-modules`给Node.js以便使用ECMAScript模块，则可以传递这些选项通过`runtimeArgs`属性：
 
