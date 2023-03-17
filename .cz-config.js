@@ -2,15 +2,15 @@
  * @Author: zhangjicheng
  * @Date: 2022-12-02 00:07:18
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2023-02-23 18:24:54
- * @FilePath: \docs\.cz-config.js
+ * @LastEditTime: 2023-03-16 17:45:57
+ * @FilePath: /docs/.cz-config.js
  */
 module.exports = {
   types: [
     {value: 'update',      name: 'Update:         更新 更新文章'},
     {value: 'add docs',    name: 'Docs:           文档 新增文章'},
     {value: 'merge',       name: 'Merge:          合并 合并代码'},
-    {value: 'fix',          name: 'Fix             修复 修复一个Bug'},
+    {value: 'fix',         name: 'Fix             修复 修复一个Bug'},
     {value: 'feat',        name: 'Feat:           特性 一个新的特性'},
     {value: 'style',       name: 'Style:          格式 空格, 分号等格式修复'},
     {value: 'refactor',    name: 'Refactor:       重构 代码重构，注意和特性、修复区分开'},

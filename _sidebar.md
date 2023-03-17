@@ -40,7 +40,7 @@
       - [1.枚举类型](/post/knowledge/TypeScript/TypeScript基础/1_枚举类型.md)
       - [2.object](/post/knowledge/TypeScript/TypeScript基础/2_object.md)
       - [3.Never类型](/post/knowledge/TypeScript/TypeScript基础/3_Never类型.md)
-      - [4.断言](/post/knowledge/TypeScript/TypeScript基础/4_断言.md)
+      - [4.断言](/post/knowledge/TypeScript/TypeScript基础/4_TS断言.md)
       - [5.类型守卫](/post/knowledge/TypeScript/TypeScript基础/5_类型守卫.md)
       - [6.接口与类型别名](/post/knowledge/TypeScript/TypeScript基础/6_接口与类型别名.md)
 
@@ -95,7 +95,7 @@
     - Webpack4.0
       - [1.快速开始](/post/framework/Webpack/Webpack4.0/1.快速开始.md)
       - [2.基本概念](/post/framework/Webpack/Webpack4.0/2.基本概念.md)
-      - [3.资源利用](/post/framework/Webpack/Webpack4.0/1.资源利用.md)
+      - [3.资源利用](/post/framework/Webpack/Webpack4.0/3.资源利用.md)
       - [4.前端构建基础配置](/post/framework/Webpack/Webpack4.0/4.前端构建基础配置.md)
       - [5.入口和模块](/post/framework/Webpack/Webpack4.0/5.入口和模块.md)
       - [6.使用loader](/post/framework/Webpack/Webpack4.0/6.使用loader.md)

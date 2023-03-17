@@ -46,6 +46,78 @@ Sindre Sorhus 本人也发布了迁移 pure esm 的推荐手法：[esm-package.m
 
 - 更改 `tsconfig.json` 中编译的目标为 `es` 格式，即 `module: "es2020"` （未来 ts 4.6+ 将支持新的 `node` 系 `module` 选项来更好的应对 to esm 转换）。
 
+示例：
+
+``` diff
+// package.json
+{
+  "name": "debug-in-vscode",
+  "version": "0.0.1",
+  
++  "type": "module",
+  "scripts": {
+-    "start": "node -r ts-node/register src/index.ts"
++    "start": "node --loader ts-node/esm src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.3",
+    "esno": "^0.16.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  }
+}
+```
+
+``` diff
+// tsconfig.json
+{
+  "compilerOptions": {
++    "module": "ES2022",
++    "esModuleInterop": true,
+    // "skipLibCheck": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "outDir": "./out"
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}
+```
+
+``` diff
+// ts
+- import * as fs from 'fs';
+- import * as path from 'path';
+- import * as http from 'http';
++ import fs from 'node:fs';
++ import path from 'node:path';
++ import http from 'node:http';
++ import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+http.createServer((req, res) => {
+  if (req.url === '/') {
+    fs.createReadStream(
+      path.join(__dirname, '../index.html')
+    ).pipe(res);
+  } else {
+    res.end(req.url);
+  }
+}).listen(8001, () => {
+  console.log('run at 8001');
+});
+```
+
+
+
 ## 迁移 cjs 内置变量的成本
 
 1. `require` 到 `import` 的转换

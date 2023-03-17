@@ -1,0 +1,1 @@
+https://typescript.bootcss.com/tsconfig-json.html
