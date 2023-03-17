@@ -40,6 +40,7 @@ html {
   --theme-switch-bg-color: #eee;
   --theme-switch-check-bg-color: #fff;
   --theme-switch-check-shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 1px 2px rgba(0, 0, 0, .06);
+  --spin-bg-color: #fff;
 }
 
 html[data-theme=dark] {
@@ -48,6 +49,7 @@ html[data-theme=dark] {
   --theme-switch-bg-color: #313136;
   --theme-switch-check-bg-color: #000;
   --theme-switch-check-shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 1px 2px rgba(0, 0, 0, .06);
+  --spin-bg-color: #000;
 }
 
 .theme-bar {
@@ -123,3 +125,29 @@ html[data-theme=dark] .markdown-section p.tip,
 html[data-theme=dark] .markdown-section tr:nth-child(2n) {
   background-color: #4a4a4a;
 }
+
+
+#spin {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vw;
+  background-color: var(--spin-bg-color);
+  opacity: 1;
+  transition: opacity ease .25s;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  padding-top: 40vh;
+}
+
+#spin.leave {
+  opacity: 0;
+}
+
+/* spin 关闭前，body不可滚动，当spin关闭后取消 */
+/* body {
+  overflow: hidden;
+} */
