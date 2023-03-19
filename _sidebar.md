@@ -4,7 +4,7 @@
   - [Git不完全指南](/post/memorandum/GIT不完全指南.md)
   - [YAML基本语法](/post/memorandum/YAML基本语法.md)
 
-- Knowledge
+- 知识-Knowledge
 
   <!-- JavaScript -->
 
@@ -61,20 +61,7 @@
     - [package.json](/post/knowledge/NodeJS/package.json.md)
     - [npm-link](/post/knowledge/NodeJS/npm-link.md)
 
-- Performance
-
-  - PageOptimization
-    - [骨架屏方案](/post/performance/骨架屏方案.md)
-  - PerformanceOptimization
-
-- Extension
-
-  - [搭建Cli脚手架](/post/extension/搭建Cli脚手架.md)
-
-  - VSCode
-    - [VSCode 调试](/post/extension/VSCode/debugging.md)
-
-- Framework
+- 框架-Framework
 
   - React
 
@@ -121,6 +108,23 @@
     - [README](/post/framework/Rollup/README.md)
     - [plugins](/post/framework/Rollup/Plugins.md)
     - [problem](/post/framework/Rollup/Problems.md)
+
+- 算法-algorithm
+
+  - [十大经典排序算法](/post/algorithm/sort-algorithm.md)
+
+- 优化-Performance
+
+  - PageOptimization
+    - [骨架屏方案](/post/performance/骨架屏方案.md)
+  - PerformanceOptimization
+
+- 拓展-Extension
+
+  - [搭建Cli脚手架](/post/extension/搭建Cli脚手架.md)
+
+  - VSCode
+    - [VSCode 调试](/post/extension/VSCode/debugging.md)
 
 <!-- - 数据结构 -->
 
