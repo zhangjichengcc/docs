@@ -2,7 +2,7 @@
  * @Author: zhangjicheng
  * @Date: 2022-12-02 00:07:18
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2023-03-20 00:00:51
+ * @LastEditTime: 2023-03-22 17:15:49
  * @FilePath: /docs/.cz-config.js
  */
 module.exports = {
@@ -20,9 +20,9 @@ module.exports = {
     {value: 'framework',   name: 'Framework:      框架'},
     {value: 'knowledge',   name: 'Knowledge:      知识点'},
     {value: 'algorithm',   name: 'Algorithm:      算法'},
-    {value: 'node',        name: 'nodejs:         Node'},
     {value: 'memorandum',  name: 'Memorandum:     备忘录'},
     {value: 'performance', name: 'Performance:    优化'},
+    {value: 'extension',   name: 'Extension:      技能提升'},
     {value: 'total',       name: 'Total:          项目整体'},
   ],
   
