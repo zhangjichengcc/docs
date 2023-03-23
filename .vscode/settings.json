@@ -9,5 +9,6 @@
     "Mutaion",
     "plantuml",
     "startuml"
-  ]
+  ],
+  "editor.formatOnSave": true
 }

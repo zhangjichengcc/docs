@@ -122,9 +122,9 @@
 - 拓展-Extension
 
   - [搭建Cli脚手架](/post/extension/搭建Cli脚手架.md)
-
   - VSCode
     - [VSCode 调试](/post/extension/VSCode/debugging.md)
+  - [Prettier](/post/extension/Prettier.md)
 
 <!-- - 数据结构 -->
 
