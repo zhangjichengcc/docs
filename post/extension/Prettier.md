@@ -345,6 +345,175 @@ Prettier 反复强调自己是一个 Opinionated code formatter，而且只有 f
 
 github 上已经有 cli 来帮助我们生成配置，[create-prettier-eslint](https://github.com/leggsimon/create-prettier-eslint)，为了方便我们也可以使用。
 
+## 六. 配置示例
+
+> 下面给一份本文示例，供参考
+
+`.husky/pre-commit`
+
+``` shell
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npx lint-staged
+```
+
+`.vscode/settings.json`
+
+``` json
+{
+  // 文件保存时格式化, 默认使用 prettier
+  "editor.formatOnSave": true,
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // 针对共用的语言如js、ts、jsx、tsx关闭文件保存自动格式化功能，通过eslint来做这件事
+  // "[javascript]": {
+  //   "editor.formatOnSave": false
+  // },
+  // "[javascriptreact]": {
+  //   "editor.formatOnSave": false
+  // },
+  // "[typescript]": {
+  //   "editor.formatOnSave": false
+  // },
+  // "[typescriptreact]": {
+  //   "editor.formatOnSave": false
+  // },
+
+  // 指定 js 的 formatter 为 eslint
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+
+  // 开启 eslint 校验
+  "eslint.enable": true,
+
+  // 代码保存时触发
+  "editor.codeActionsOnSave": {
+    // 使用eslint来fix，包括格式化会自动fix和代码质量检查会给出错误提示
+    "source.fixAll.eslint": false
+  }
+}
+```
+
+`.eslintignore`
+
+``` yaml
+node_modules/
+build/
+dist/
+*.md
+```
+
+`.eslint`
+
+``` json
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "settings": {
+    "react": {
+      "version": "18.0.0"
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:prettier/recommended"
+  ],
+  "overrides": [],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "es5"
+      }
+    ]
+  }
+}
+```
+
+`.prettierrc`
+
+``` json
+{
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "printWidth": 100,
+  "tabWidth": 2
+}
+```
+
+`package.json`
+
+``` json
+{
+  "private": true,
+  "author": "zhangjicheng <zhangjichengcc@163.com>",
+  "scripts": {
+    "dev": "umi dev",
+    "build": "umi build",
+    "postinstall": "umi setup",
+    "setup": "umi setup",
+    "start": "npm run dev",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "ahooks": "^3.7.5",
+    "antd-mobile": "^5.28.1",
+    "axios": "^1.3.4",
+    "react-document-title": "^2.0.3",
+    "umi": "^4.0.61"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-document-title": "^2.0.5",
+    "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "husky": ">=7",
+    "lint-staged": ">=10",
+    "prettier": "^2.8.6",
+    "typescript": "^4.1.2"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.{json,yaml,md,less,css}": [
+      "prettier --write"
+    ]
+  }
+}
+
+```
+
 ## 参考文献
 
 [prettier 官网](https://prettier.io/)
