@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "docsify serve --open",
     "publish": "docsify serve --port 8060",
-    "commit": "node ./node_modules/cz-customizable/standalone.js"
+    "commit": "node ./node_modules/cz-customizable/standalone.js",
+    "prepare": "husky install"
   },
   "keywords": [
     "docs"
@@ -20,8 +21,14 @@
     }
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.5.0",
     "cz-customizable": "^7.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
     "markdownlint-cli": "^0.33.0",
     "prettier": "^2.8.7"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }
