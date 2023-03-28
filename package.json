@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^17.5.0",
+    "commitlint-config-cz": "^0.13.3",
     "cz-customizable": "^7.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
