@@ -10,5 +10,8 @@
     "plantuml",
     "startuml"
   ],
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  }
 }

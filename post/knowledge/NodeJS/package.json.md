@@ -16,18 +16,17 @@
 
 这是您的 `包` 的名称。 它在URL中使用，作为参数命令行，以及 `node_modules` 中的目录名。
 
-
-```sh
+```shell
 yarn add [包名]
 # or
 npm install [包名]
 ```
 
-```
+``` bash
 node_modules/[包名]
 ```
 
-```
+``` bash
 https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 ```
 
@@ -44,7 +43,6 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 - 不要在名字里包含 `js` 或者 `node` 单词。
 - 短小精悍，让人看到名字就大概了解包的功能，记住它也会被用在 `require()` 调用里。
 - 保证名字在 [npm registry](https://www.npmjs.com/) 里是唯一的。
-
 
 ### `version`
 
@@ -67,7 +65,7 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 - < version 小于版本
 - <= version 小于等于版本
 
-### `type` 
+### `type`
 
 1. `type`字段的产生用于定义`package.json`文件和该文件所在目录根目录中`.js`文件和无拓展名文件的处理方式。值为`'moduel'`则当作es模块处理；值为`'commonjs'`则被当作commonJs模块处理
 2. 目前node默认的是如果`pacakage.json`没有定义`type`字段，则按照commonJs规范处理
@@ -396,7 +394,7 @@ https://cdn.jsdelivr.net/npm/包名@版本号/目录
 - `postversion`: 改变包版本后运行，然后提交。
 - `pretest`, `test`, `posttest`: 由 `npm test` 命令运行。
 - `prestop`, `stop`, `poststop`: 由 `npm stop` 命令运行。
-- `prestart`, `start`, `poststart`: 由 `npm start` 命令运行。 
+- `prestart`, `start`, `poststart`: 由 `npm start` 命令运行。
 - `prerestart`, `restart`, `postrestart`: 由 `npm restart` 命令运行。 注意：如果没有提供重启脚本，`npm restart` 将运行 `stop` 和`start` 脚本。
 - `preshrinkwrap`, `shrinkwrap`, `postshrinkwrap`: 由 `npm shrinkwrap` 命令运行。
 
@@ -543,7 +541,6 @@ console.log(process.env.npm_package_config_port); // 8080
   "os": ["!win32"]
 }
 ```
-
 
 ### `cpu`
 

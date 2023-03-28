@@ -1,0 +1,18 @@
+"default": true
+"MD024": 
+  "siblings_only": true
+
+"MD013":
+  "code_block_line_length": 500
+  "line_length": 1000
+
+"MD033": false
+"MD045": false
+"MD042": false
+"MD014": false
+"MD029": false
+"MD041": false
+"MD036": false
+"MD051": false
+"MD028": false
+
