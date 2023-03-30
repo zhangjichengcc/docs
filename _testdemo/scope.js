@@ -2,9 +2,10 @@
  * @Author: zhangjicheng
  * @Date: 2022-11-17 23:58:13
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2022-11-25 15:21:50
- * @FilePath: \docs\_testdemo\scope.js
+ * @LastEditTime: 2023-03-30 11:17:48
+ * @FilePath: /docs/_testdemo/scope.js
  */
+
 // function func1() {
 //   const value1 = 'value1';
 //   function func2() {
@@ -24,15 +25,15 @@
 // const fn3 = fn2();
 // fn3();
 
-(function(){
-  function doSomething(value, fn){
+(function () {
+  function doSomething(value, fn) {
     fn(value);
   }
 
   function logName(name) {
     console.log(name);
-    console.log(doSomething)
-    debugger
+    console.log(doSomething);
+    debugger;
   }
 
   doSomething('tom', logName);
@@ -40,4 +41,4 @@
   //   console.log(name);
   //   debugger
   // })
-})()
+})();

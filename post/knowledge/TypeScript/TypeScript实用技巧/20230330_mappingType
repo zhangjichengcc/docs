@@ -1,0 +1,51 @@
+# typeScript 映射类型应用
+
+## 应用场景
+
+你用过 `Partial、Required、Pick` 和 `Readonly` 这些工具类型吗？
+
+``` js
+type Partial<T> = {
+  [K in keyof T]?: T[K];
+}
+
+type Required<T> = {
+  [k in keyof T]-?: T[K];
+}
+
+type Pick<T, K extends keyof T> = {
+  [P in K]: T[P];
+}
+
+type Readonly<T> = {
+  readonly [K in keyof T]: T[K];
+}
+
+type Record<K extends keyof any, T> = {
+  [P in K]: T
+}
+```
+
+## 应用
+
+为对象类型生成对应的 Getter 类型
+
+``` js
+type Person = {
+  name: string;
+  age: number;
+  location: string;
+}
+
+// type GetPerson = {
+//   getName: () => string;
+//   getAge: () => number;
+//   getLocation: () => string;
+// }
+
+type Getters<T> = {
+  [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K];
+}
+
+type GetPerson = Getters<Person>
+```
