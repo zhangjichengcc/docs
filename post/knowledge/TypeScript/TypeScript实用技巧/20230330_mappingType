@@ -47,5 +47,15 @@ type Getters<T> = {
   [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K];
 }
 
-type GetPerson = Getters<Person>
+type GetPerson = Getters<Person>;
 ```
+
+此外，在对键进行重新映射的过程中，我们可以通过返回 never 类型对键进行过滤：
+
+``` js
+type Exclude<T, K extends T> = {
+  [P in keyof T extends K ? never : P]: 
+}
+```
+
+待完成
