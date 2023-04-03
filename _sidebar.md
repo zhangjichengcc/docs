@@ -52,6 +52,7 @@
     - TypeScript 实用技巧
       - [条件接口](/post/knowledge/TypeScript/TypeScript实用技巧/20221230_条件接口.md)
       - [Record](/post/knowledge/TypeScript/TypeScript实用技巧/20210926_Record.md)
+      - [映射类型应用](/post/knowledge/TypeScript/TypeScript实用技巧/20230330_mappingType.md)
 
   <!-- NodeJS -->
 
