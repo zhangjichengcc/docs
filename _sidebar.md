@@ -62,6 +62,12 @@
     - [package.json](/post/knowledge/NodeJS/package.json.md)
     - [npm-link](/post/knowledge/NodeJS/npm-link.md)
 
+  - Algorithm
+    - [经典排序算法](/post/knowledge/Algorithm/sort-algorithm.md)
+
+  - DesignMode
+    - []
+
 - 框架-Framework
 
   - React
@@ -110,10 +116,6 @@
     - [plugins](/post/framework/Rollup/Plugins.md)
     - [problem](/post/framework/Rollup/Problems.md)
 
-- 算法-algorithm
-
-  - [十大经典排序算法](/post/algorithm/sort-algorithm.md)
-
 - 优化-Performance
 
   - PageOptimization
@@ -128,8 +130,6 @@
   - [Prettier](/post/extension/Prettier.md)
 
 <!-- - 数据结构 -->
-
-<!-- - 算法 -->
 
 - <p class="sidebar-link-title"><img src="/assets/img/link.svg"></img>Links</p>
 
