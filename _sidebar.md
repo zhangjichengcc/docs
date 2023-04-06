@@ -66,7 +66,10 @@
     - [经典排序算法](/post/knowledge/Algorithm/sort-algorithm.md)
 
   - DesignMode
-    - []
+    - [README](/post/knowledge/DesignMode/README.md)
+    - [策略模式](/post/knowledge/DesignMode/StrategyMode.md)
+    - [发布监听者模式](/post/knowledge/DesignMode/PublishSubscribePattern.md)
+    - [观察者模式](/post/knowledge/DesignMode/ObserverMode.md)
 
 - 框架-Framework
 
