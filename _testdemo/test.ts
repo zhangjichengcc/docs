@@ -159,28 +159,71 @@ class EventEmitter {
     this.events = {};
   }
 
-  on(name, cb) {
+  on(name: string, cb: (...args) => unknown) {
     const callbacks = this.events[name] || [];
     callbacks.push(cb);
     this.events[name] = callbacks;
   }
 
-  emit(name, ...args) {
+  emit(name: string, ...args) {
     const callbacks = this.events[name] || [];
     callbacks.forEach((cb) => cb(args));
   }
 
-  off(name, cb) {
+  off(name: string, cb: (...args) => unknown) {
     const callbacks = this.events[name] || [];
-    this.events[name] = !!cb ? callbacks.filter((item) => item !== cb) : [];
+    this.events[name] = !!cb
+      ? callbacks.filter((fn) => fn !== cb && fn.initialCallback !== cb)
+      : [];
   }
 
-  once(eventName, callback) {
-    const one = (...args) => {
-      callback(...args);
-      this.off(eventName, one);
+  once(name: string, cb: (...args) => unknown) {
+    const one: any = (...args: string[]) => {
+      cb(...args);
+      this.off(name, one);
     };
-    one.initialCallback = callback;
-    this.on(eventName, one);
+    one.initialCallback = cb;
+    this.on(name, one);
   }
 }
+
+// 观察者
+class Observer {
+  cb: () => unknown;
+
+  constructor(cb) {
+    this.cb = cb;
+  }
+
+  update() {
+    this.cb();
+  }
+}
+
+// 目标对象
+class Subject {
+  observers: Array<Observer>;
+
+  constructor() {
+    this.observers = [];
+  }
+
+  addObserver(observer) {
+    this.observers.push(observer);
+  }
+
+  notify() {
+    this.observers.forEach((observer) => observer.update());
+  }
+}
+
+const observer1 = new Observer(() => console.log('notify 1'));
+const observer2 = new Observer(() => console.log('notify 2'));
+const observer3 = new Observer(() => console.log('notify 3'));
+
+const subject = new Subject();
+subject.addObserver(observer1);
+subject.addObserver(observer2);
+subject.addObserver(observer3);
+
+subject.notify();

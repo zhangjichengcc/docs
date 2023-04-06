@@ -6,7 +6,7 @@
 
 - 发布订阅模式中，对于发布者 `Publisher` 和订阅者 `Subscriber` 没有特殊的约束，他们好似是匿名活动，借助事件调度中心提供的接口发布和订阅事件，互不了解对方是谁。
 - 松散耦合，灵活度高，常用作事件总线
-- 易理解，可类比于DOM事件中的dispatchEvent和addEventListener。
+- 易理解，可类比于DOM事件中的 `dispatchEvent` 和 `addEventListener`。
 
 缺点：
 
