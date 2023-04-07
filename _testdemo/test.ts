@@ -290,4 +290,3 @@ class Personnel extends User {
 
 const user1 = new Development('tom', ['开发', '架构']);
 const user2 = new Personnel('sam', '招聘');
-debugger;
