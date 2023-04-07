@@ -10,6 +10,9 @@
 
 ``` js
 class Factory {
+  username: string;
+  password: string;
+  userRole: Array<string>;
   constructor(user, pwd, role) {
     this.username = user;
     this.password = pwd;
@@ -18,38 +21,81 @@ class Factory {
 }
 
 class CreateFactory {
-  static create(user, pwd, role) {
+  static create(user: string, pwd: string, role: Array<string>) {
     return new Factory(user, pwd, role);
   }
 }
 
-const admin = CreateRoleFactory.create('张三', '222', 'admin');
+const user = CreateFactory.create('tom', '12345', ['admin']);
 ```
 
 在实际工作中，各用户角色所具备的能力是不同的，因此简单工厂是无法满足的，这时候就可以考虑使用工厂方法来代替。工厂方法的本意是将实际创建对象的工作推迟到子类中。
 
 ``` js
 class User {
+  username: string;
+  menuAuth: Array<string>;
   constructor(name, menuAuth) {
     this.username = name;
     this.menuAuth = menuAuth;
   }
 }
 
+type RoleType = 'admin' | 'user';
+
 class UserFactory extends User {
-  constructor(...props) {
-    supper(...props);
+  constructor(...props: [string, Array<string>]) {
+    super(...props);
   }
 
-  static create(role) {
-    const roleCollection = new Map([
+  static create(role: RoleType) {
+    const roleCollection: Map<RoleType, () => UserFactory> = new Map([
       ['admin', () => new UserFactory('admin', ['homepage', 'userCenter'])],
       ['user', () => new UserFactory('user', ['homepage'])],
-    ])
+    ]);
 
-    return roleCollection.get(role)();
+    return roleCollection.get(role)?.();
   }
 }
+
+const admin = UserFactory.create('admin');
+const user = UserFactory.create('user');
 ```
 
-<!-- 待完成 -->
+随着业务形态的变化，一个用户可能在多个平台上同时存在，显然工厂方法也不再满足了，这时候就要用到抽象工厂。抽象工厂模式是对类的工厂抽象用来创建产品类簇，不负责创建某一类产品的实例。
+
+``` js
+type Department = '基础研发部' | '业务交付部' | '人事部';
+class User {
+  department: string;
+
+  constructor(department) {
+    this.department = department;
+  }
+}
+
+class Development extends User {
+  name: string;
+  role: Array<string>;
+
+  constructor(name: string, role: Array<string>) {
+    super('基础研发部');
+    this.name = name;
+    this.role = role;
+  }
+}
+
+class Personnel extends User {
+  name: string;
+  responsibility: string;
+
+  constructor(name: string, responsibility: string) {
+    super('人事部');
+    this.name = name;
+    this.responsibility = responsibility;
+  }
+}
+
+const user1 = new Development('tom', ['开发', '架构']);
+const user2 = new Personnel('sam', '招聘');
+```

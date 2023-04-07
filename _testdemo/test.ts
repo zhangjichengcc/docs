@@ -152,78 +152,142 @@
 
 // execute('web', 'a');
 
-class EventEmitter {
-  events: {};
+// class EventEmitter {
+//   events: {};
 
-  constructor() {
-    this.events = {};
-  }
+//   constructor() {
+//     this.events = {};
+//   }
 
-  on(name: string, cb: (...args) => unknown) {
-    const callbacks = this.events[name] || [];
-    callbacks.push(cb);
-    this.events[name] = callbacks;
-  }
+//   on(name: string, cb: (...args) => unknown) {
+//     const callbacks = this.events[name] || [];
+//     callbacks.push(cb);
+//     this.events[name] = callbacks;
+//   }
 
-  emit(name: string, ...args) {
-    const callbacks = this.events[name] || [];
-    callbacks.forEach((cb) => cb(args));
-  }
+//   emit(name: string, ...args) {
+//     const callbacks = this.events[name] || [];
+//     callbacks.forEach((cb) => cb(args));
+//   }
 
-  off(name: string, cb: (...args) => unknown) {
-    const callbacks = this.events[name] || [];
-    this.events[name] = !!cb
-      ? callbacks.filter((fn) => fn !== cb && fn.initialCallback !== cb)
-      : [];
-  }
+//   off(name: string, cb: (...args) => unknown) {
+//     const callbacks = this.events[name] || [];
+//     this.events[name] = !!cb
+//       ? callbacks.filter((fn) => fn !== cb && fn.initialCallback !== cb)
+//       : [];
+//   }
 
-  once(name: string, cb: (...args) => unknown) {
-    const one: any = (...args: string[]) => {
-      cb(...args);
-      this.off(name, one);
-    };
-    one.initialCallback = cb;
-    this.on(name, one);
+//   once(name: string, cb: (...args) => unknown) {
+//     const one: any = (...args: string[]) => {
+//       cb(...args);
+//       this.off(name, one);
+//     };
+//     one.initialCallback = cb;
+//     this.on(name, one);
+//   }
+// }
+
+// // 观察者
+// class Observer {
+//   cb: () => unknown;
+
+//   constructor(cb) {
+//     this.cb = cb;
+//   }
+
+//   update() {
+//     this.cb();
+//   }
+// }
+
+// // 目标对象
+// class Subject {
+//   observers: Array<Observer>;
+
+//   constructor() {
+//     this.observers = [];
+//   }
+
+//   addObserver(observer) {
+//     this.observers.push(observer);
+//   }
+
+//   notify() {
+//     this.observers.forEach((observer) => observer.update());
+//   }
+// }
+
+// const observer1 = new Observer(() => console.log('notify 1'));
+// const observer2 = new Observer(() => console.log('notify 2'));
+// const observer3 = new Observer(() => console.log('notify 3'));
+
+// const subject = new Subject();
+// subject.addObserver(observer1);
+// subject.addObserver(observer2);
+// subject.addObserver(observer3);
+
+// subject.notify();
+
+// class User {
+//   username: string;
+//   menuAuth: Array<string>;
+//   constructor(name, menuAuth) {
+//     this.username = name;
+//     this.menuAuth = menuAuth;
+//   }
+// }
+
+// type RoleType = 'admin' | 'user';
+
+// class UserFactory extends User {
+//   constructor(...props: [string, Array<string>]) {
+//     super(...props);
+//   }
+
+//   static create(role: RoleType) {
+//     const roleCollection: Map<RoleType, () => UserFactory> = new Map([
+//       ['admin', () => new UserFactory('admin', ['homepage', 'userCenter'])],
+//       ['user', () => new UserFactory('user', ['homepage'])],
+//     ]);
+
+//     return roleCollection.get(role)?.();
+//   }
+// }
+
+// const admin = UserFactory.create('admin');
+// const user = UserFactory.create('user');
+
+type Department = '基础研发部' | '业务交付部' | '人事部';
+class User {
+  department: string;
+
+  constructor(department) {
+    this.department = department;
   }
 }
 
-// 观察者
-class Observer {
-  cb: () => unknown;
+class Development extends User {
+  name: string;
+  role: Array<string>;
 
-  constructor(cb) {
-    this.cb = cb;
-  }
-
-  update() {
-    this.cb();
+  constructor(name: string, role: Array<string>) {
+    super('基础研发部');
+    this.name = name;
+    this.role = role;
   }
 }
 
-// 目标对象
-class Subject {
-  observers: Array<Observer>;
+class Personnel extends User {
+  name: string;
+  responsibility: string;
 
-  constructor() {
-    this.observers = [];
-  }
-
-  addObserver(observer) {
-    this.observers.push(observer);
-  }
-
-  notify() {
-    this.observers.forEach((observer) => observer.update());
+  constructor(name: string, responsibility: string) {
+    super('人事部');
+    this.name = name;
+    this.responsibility = responsibility;
   }
 }
 
-const observer1 = new Observer(() => console.log('notify 1'));
-const observer2 = new Observer(() => console.log('notify 2'));
-const observer3 = new Observer(() => console.log('notify 3'));
-
-const subject = new Subject();
-subject.addObserver(observer1);
-subject.addObserver(observer2);
-subject.addObserver(observer3);
-
-subject.notify();
+const user1 = new Development('tom', ['开发', '架构']);
+const user2 = new Personnel('sam', '招聘');
+debugger;
