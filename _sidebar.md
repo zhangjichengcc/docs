@@ -67,12 +67,15 @@
 
   - DesignMode
     - [README](/post/knowledge/DesignMode/README.md)
-    - [策略模式](/post/knowledge/DesignMode/StrategyMode.md)
-    - [发布监听者模式](/post/knowledge/DesignMode/PublishSubscribePattern.md)
-    - [观察者模式](/post/knowledge/DesignMode/ObserverMode.md)
-    - [迭代器模式](/post/knowledge/DesignMode/Iterator.md)
-    - [单列模式](/post/knowledge/DesignMode/SingleColumnPattern.md)
-    - [工厂方法模式](/post/knowledge/DesignMode/FactoryMethodPattern.md)
+    - 行为型
+      - [策略模式](/post/knowledge/DesignMode/StrategyMode.md)
+      - [发布监听者模式](/post/knowledge/DesignMode/PublishSubscribePattern.md)
+      - [观察者模式](/post/knowledge/DesignMode/ObserverMode.md)
+      - [迭代器模式](/post/knowledge/DesignMode/Iterator.md)
+    - 创建型
+      - [单列模式](/post/knowledge/DesignMode/SingleColumnPattern.md)
+      - [工厂方法模式](/post/knowledge/DesignMode/FactoryMethodPattern.md)
+      - [原型模式](/post/knowledge/DesignMode/PrototypePattern.md)
 
 - 框架-Framework
 

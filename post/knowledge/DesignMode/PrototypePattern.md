@@ -8,6 +8,8 @@
 
 ## 示例
 
+`Object.create()` 实现原型模式
+
 ``` js
 const user = {
   name: 'tom',
@@ -19,4 +21,33 @@ let user2 = Object.create(user);
 user2.__proto__; // {name: 'tom', age: 18}
 ```
 
-<!-- 未完待续 -->
+类的继承，原型链方式
+
+``` js
+class User {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  getName() {
+    return this.name;
+  }
+}
+
+class Admin extends User {
+  constructor(name: string) {
+    super(name);
+  }
+
+  setName(name: string) {
+    this.name = name;
+  }
+}
+
+const admin = new Admin('admin');
+
+admin.name // 'admin'
+admin.__proto__ // User {constructor: ƒ, setName: ƒ}
+admin.__proto__.proto__ // {constructor: ƒ, getName: ƒ}
+```
