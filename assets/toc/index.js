@@ -82,6 +82,7 @@ var jumpBack = function (currentWrapper, offset) {
 };
 
 var buildTOC = function (options) {
+  debugger;
   var ret = document.createElement('ul');
   var wrapper = ret;
   var lastLi = null;
