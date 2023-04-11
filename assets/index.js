@@ -3,5 +3,5 @@ import initToc from './toc-autoActive.js';
 
 window.onload = function () {
   init();
-  initToc();
+  // initToc();
 };

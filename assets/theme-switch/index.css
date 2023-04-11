@@ -5,17 +5,21 @@ html {
   --theme-switch-border-hover-color: #8e8e93;
   --theme-switch-bg-color: #eee;
   --theme-switch-check-bg-color: #fff;
-  --theme-switch-check-shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 1px 2px rgba(0, 0, 0, .06);
+  --theme-switch-check-shadow: 0 1px 2px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.06);
   --spin-bg-color: #fff;
+  --theme-color: #42b983;
 }
 
-html[data-theme=dark] {
+html[data-theme='dark'] {
   --theme-switch-border-color: rgb(82 82 89 / 68%);
   --theme-switch-border-hover-color: #8e8e93;
   --theme-switch-bg-color: #313136;
   --theme-switch-check-bg-color: #000;
-  --theme-switch-check-shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 1px 2px rgba(0, 0, 0, .06);
+  --theme-switch-check-shadow: 0 1px 2px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.06);
   --spin-bg-color: #000;
+  --theme-color: #ea6f5a;
 }
 
 .theme-bar {
@@ -37,7 +41,7 @@ html[data-theme=dark] {
   flex-shrink: 0;
   border: 1px solid var(--theme-switch-border-color);
   background-color: var(--theme-switch-bg-color);
-  transition: border-color .25s;
+  transition: border-color 0.25s;
   cursor: pointer;
 }
 
@@ -54,7 +58,7 @@ html[data-theme=dark] {
   border-radius: 50%;
   background-color: var(--theme-switch-check-bg-color);
   box-shadow: var(--theme-switch-check-shadow);
-  transition: transform .25s;
+  transition: transform 0.25s;
 }
 
 .theme-switch-check svg {
@@ -63,7 +67,7 @@ html[data-theme=dark] {
   top: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: opacity .25s;
+  transition: opacity 0.25s;
 }
 
 .theme-switch-check .icon-sun {
@@ -74,15 +78,15 @@ html[data-theme=dark] {
   fill: rgb(255 255 245 / 86%);
 }
 
-.theme-switch[data-theme=light] .theme-switch-check .icon-sun {
+.theme-switch[data-theme='light'] .theme-switch-check .icon-sun {
   opacity: 1;
 }
 
-.theme-switch[data-theme=dark] .theme-switch-check .icon-moon {
+.theme-switch[data-theme='dark'] .theme-switch-check .icon-moon {
   opacity: 1;
 }
 
-.theme-switch[data-theme=dark] .theme-switch-check {
+.theme-switch[data-theme='dark'] .theme-switch-check {
   transform: translate(18px);
 }
 
@@ -95,7 +99,7 @@ html[data-theme=dark] {
   height: 100vw;
   background-color: var(--spin-bg-color);
   opacity: 1;
-  transition: opacity ease .25s;
+  transition: opacity ease 0.25s;
   display: flex;
   justify-content: center;
   font-size: 30px;

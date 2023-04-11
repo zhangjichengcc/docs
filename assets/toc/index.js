@@ -1,114 +1,214 @@
-var defaultOptions = {
-  headings: 'h1, h2',
+/*
+ * @Author: zhangjicheng
+ * @Date: 2023-04-10 17:33:34
+ * @LastEditors: zhangjicheng
+ * @LastEditTime: 2023-04-11 18:04:35
+ * @FilePath: /docs/assets/toc/indexs.js
+ */
+
+const defaultOptions = {
+  headings: 'h1, h2, h3,',
   scope: '.markdown-section',
-
-  // To make work
   title: 'Contents',
-  listType: 'ul',
 };
 
-// Element builders
-var tocHeading = function (Title) {
-  return document
-    .createElement('h2')
-    .appendChild(document.createTextNode(Title));
-};
+/** 滚动高亮锁 控制是否允许页面滚动时高亮TOC */
+let enableScrollEvent = true;
 
-var aTag = function (src) {
-  var a = document.createElement('a');
-  var content = src.firstChild.innerHTML;
+// 函数节流
+function throttle(fn, ms = 300) {
+  let timer = 0;
+  return function () {
+    if (timer) return;
+    fn.call(this, ...arguments);
+    timer = setTimeout(function () {
+      clearTimeout(timer);
+      timer = 0;
+    }, ms);
+  };
+}
 
-  // Use this to clip text w/ HTML in it.
-  // https://github.com/arendjr/text-clipper
-  a.innerHTML = content;
-  a.href = src.firstChild.href;
-  a.onclick = tocClick;
+// 函数防抖
+function debounce(fn, ms = 300) {
+  let timer = 0;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.call(this, ...args);
+    }, ms);
+  };
+}
 
-  // In order to remove this gotta fix the styles.
+/**
+ * @description: 获取文章所有标题
+ * @param {string} selector
+ * @return {Array<dom>}
+ */
+function getHeaders(selector = 'article h1, h2, h3') {
+  const headers = document.querySelectorAll(selector);
+  return [].map.call(headers, (dom) => dom);
+}
+
+/**
+ * @description: 获取标题级数
+ * @param {string} headersStr
+ * @return {number} level
+ */
+function getLevel(headersStr) {
+  const decs = headersStr.match(/\d/g) || 1;
+  return Math.min.apply(null, decs);
+}
+
+/**
+ * @description: 构建a标签
+ * @param {HTMLHeadingElement} src
+ * @return {HTMLAnchorElement}
+ */
+function aTag(src) {
+  const a = document.createElement('a'),
+    { href, innerHTML, textContent } = src.firstChild;
+  a.href = href;
+  a.innerHTML = innerHTML;
   a.setAttribute('class', 'anchor');
-
+  a.setAttribute('data-toc', textContent);
+  a.onclick = onTocClick;
   return a;
-};
+}
 
-var tocClick = function (e) {
-  var divs = document.querySelectorAll('.page_toc .active');
+/**
+ * @description: 返回指定层级
+ * @param {HTMLLIElement} wrapper
+ * @param {number} offset
+ * @return {HTMLUListElement | HTMLLIElement}
+ */
+function jumpBack(wrapper, offset) {
+  while (offset--) {
+    wrapper = wrapper.parentElement;
+  }
+  return wrapper;
+}
 
-  // Remove the previous classes
-  [].forEach.call(divs, function (div) {
-    div.setAttribute('class', 'anchor');
+/**
+ * @description: 下钻指定层级
+ * @param {HTMLLIElement} wrapper
+ * @param {number} offset
+ * @return {HTMLUListElement | HTMLLIElement}
+ */
+function jumpIn(wrapper, offset) {
+  while (offset--) {
+    wrapper = wrapper.appendChild(document.createElement('ul'));
+    if (offset) wrapper = wrapper.appendChild(document.createElement('li'));
+  }
+  return wrapper;
+}
+
+/**
+ * @description: 构建列表
+ * @return {*}
+ */
+function buildList(wrapper, offset) {
+  // 每次跳出需要跳出一个 li 和 ul 故 offset * 2
+  return offset > 0 ? jumpIn(wrapper, offset) : jumpBack(wrapper, -offset * 2);
+}
+
+/**
+ * @description: 构建目录
+ * @param {*} options
+ * @return {*}
+ */
+function buildTOC(options) {
+  const { scope, headings } = options;
+  const toc = document.createElement('ul'),
+    headers = getHeaders(`${scope} ${headings}`);
+
+  headers.reduce(
+    function (prev, curr) {
+      const currentLevel = getLevel(curr.tagName),
+        offset = currentLevel - prev.level,
+        li = document.createElement('li');
+      li.appendChild(aTag(curr));
+      prev.wrapper = buildList(prev.wrapper, offset);
+      prev.wrapper.appendChild(li);
+      return {
+        level: currentLevel,
+        wrapper: prev.wrapper,
+      };
+    },
+    {
+      level: getLevel(headings),
+      wrapper: toc,
+    }
+  );
+
+  return toc;
+}
+
+/** ------------------------------------------------------------------------------------ */
+
+/**
+ * @description: 设置激活目录
+ * @param {string} title 标题内容 === data-toc
+ * @return {*}
+ */
+function setActiveAnchor(title) {
+  const anchors = document.querySelectorAll('.page_toc .anchor');
+  [].forEach.call(anchors, function (anchor) {
+    anchor.setAttribute('class', 'anchor');
   });
 
-  // Make sure this is attached to the parent not itself
-  e.target.parentNode.setAttribute('class', 'active');
-};
+  document
+    .querySelector(`[data-toc="${title}"]`)
+    ?.setAttribute('class', 'anchor active');
+}
 
-var createList = function (wrapper, count) {
-  while (count--) {
-    wrapper = wrapper.appendChild(document.createElement('ul'));
+/**
+ * @description: 点击目录触发
+ * @param {Event} e
+ * @return {*}
+ */
+function onTocClick(e) {
+  // 点击目录跳转时，锁住滚动的高亮监听
+  enableScrollEvent = false;
+  const {
+    target: { textContent },
+  } = e;
+  setActiveAnchor(textContent);
+}
 
-    if (count) {
-      wrapper = wrapper.appendChild(document.createElement('li'));
+/** 设置滚动结束事件 */
+const scrollEnd = debounce(function () {
+  // 滚动结束，解锁
+  enableScrollEvent = true;
+}, 400);
+
+/** 触发目录高亮 */
+function highlight() {
+  // 通过函数防抖来捕获滚动结束
+  scrollEnd();
+
+  // 滚动锁
+  if (!enableScrollEvent) return;
+
+  const articleDom = document.querySelector('article'),
+    article_anchors = articleDom.querySelectorAll('.anchor') || [],
+    doc = document.documentElement,
+    top = (doc && doc.scrollTop) || document.body.scrollTop;
+
+  let active_node = null;
+
+  for (let node of article_anchors) {
+    if (node.offsetTop > top) {
+      if (!active_node) active_node = node;
+      break;
+    } else {
+      active_node = node;
     }
   }
 
-  return wrapper;
-};
+  setActiveAnchor(active_node.textContent);
+}
 
-//------------------------------------------------------------------------
-
-var getHeaders = function (selector) {
-  var headings2 = document.querySelectorAll(selector);
-  var ret = [];
-
-  [].forEach.call(headings2, function (heading) {
-    ret = ret.concat(heading);
-  });
-
-  return ret;
-};
-
-var getLevel = function (header) {
-  var decs = header.match(/\d/g);
-
-  return decs ? Math.min.apply(null, decs) : 1;
-};
-
-var jumpBack = function (currentWrapper, offset) {
-  while (offset--) {
-    currentWrapper = currentWrapper.parentElement;
-  }
-
-  return currentWrapper;
-};
-
-var buildTOC = function (options) {
-  debugger;
-  var ret = document.createElement('ul');
-  var wrapper = ret;
-  var lastLi = null;
-  var selector = options.scope + ' ' + options.headings;
-  var headers = getHeaders(selector);
-
-  headers.reduce(function (prev, curr, index) {
-    var currentLevel = getLevel(curr.tagName);
-    var offset = currentLevel - prev;
-
-    wrapper =
-      offset > 0 ? createList(lastLi, offset) : jumpBack(wrapper, -offset * 2);
-
-    wrapper = wrapper || ret;
-
-    var li = document.createElement('li');
-
-    wrapper.appendChild(li).appendChild(aTag(curr));
-
-    lastLi = li;
-
-    return currentLevel;
-  }, getLevel(options.headings));
-
-  return ret;
-};
+/** ------------------------------------------------------------------------------------ */
 
 // Docsify plugin functions
 function plugin(hook, vm) {
@@ -158,6 +258,9 @@ function plugin(hook, vm) {
     }
 
     nav.appendChild(container);
+
+    const fn = throttle(highlight);
+    window.addEventListener('scroll', fn);
   });
 }
 
