@@ -40,3 +40,32 @@ var arr = [0, 1, 2, 3, 4];
 arr.splice(1, 2, 'a', 'b'); // 下标1开始，删除2位，替换为 ‘a', 'b'
 arr // [0, 'a', 'b', 3, 4]
 ```
+
+## 解构 `...` 应用
+
+- 条件添加数组项
+
+``` js
+var isAdmin = false;
+var authority = [
+  'read',
+  'insert',
+  ... isAdmin
+  ? ['update', 'delete']
+  : [],
+]
+```
+
+- 条件添加对象
+
+``` js
+var isAdmin = false;
+var user = {
+  id: '978',
+  name: 'tom',
+  age: 18,
+  ... isAdmin && {
+    authority: 'read, insert, delete, update'
+  }
+}
+```
