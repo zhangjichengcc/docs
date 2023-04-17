@@ -36,9 +36,13 @@ jobs:
           key: ${{ secrets.AL_ACCESS_TOKEN }}
           script: |
             cd ${{ env.TARGET_PATH }}
-            # 备份原项目，并新建空文件
-            tar czvf ${{ env.TARGET_DIR }}_$(date "+%Y%m%d(%H%M%S)").tar.gz ${{ env.TARGET_DIR }} --remove-files
-            mkdir ${{ env.TARGET_DIR }}
+            if [ -d "./pm2-webui"]; then
+              # 备份原项目，并新建空文件
+              tar czvf ${{ env.TARGET_DIR }}_$(date "+%Y%m%d(%H%M%S)").tar.gz ${{ env.TARGET_DIR }} --remove-files
+              mkdir ${{ env.TARGET_DIR }}
+              else
+              echo "无需备份"
+            fi
             
       # 上传代码到服务器
       - name: upload code to Server
