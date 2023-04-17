@@ -36,7 +36,7 @@ jobs:
           key: ${{ secrets.AL_ACCESS_TOKEN }}
           script: |
             cd ${{ env.TARGET_PATH }}
-            if [ -d "./pm2-webui"]; then
+            if [ -d "./pm2-webui" ]; then
               # 备份原项目，并新建空文件
               tar czvf ${{ env.TARGET_DIR }}_$(date "+%Y%m%d(%H%M%S)").tar.gz ${{ env.TARGET_DIR }} --remove-files
               mkdir ${{ env.TARGET_DIR }}
