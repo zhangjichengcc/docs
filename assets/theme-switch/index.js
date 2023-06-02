@@ -40,26 +40,7 @@ function themeConf() {
   updateTheme(theme);
 }
 
-// loading 隐藏
-function spinHide() {
-  const spinDom = document.getElementById('spin');
-  const timer = setTimeout(function () {
-    spinDom.setAttribute('class', 'leave');
-    clearTimeout(timer);
-  }, 500);
-
-  function handler() {
-    spinDom.removeEventListener('transitionend', handler);
-    spinDom.remove();
-    document.body.setAttribute('style', 'overflow: auto;');
-  }
-
-  spinDom.addEventListener('transitionend', handler);
-}
-
-document.body.setAttribute('style', 'overflow: hidden;');
-
 export default function () {
   themeConf();
-  spinHide();
+  // spinHide();
 }

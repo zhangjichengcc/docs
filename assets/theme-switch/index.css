@@ -89,23 +89,3 @@ html[data-theme='dark'] {
 .theme-switch[data-theme='dark'] .theme-switch-check {
   transform: translate(18px);
 }
-
-#spin {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  width: 100vw;
-  height: 100vw;
-  background-color: var(--spin-bg-color);
-  opacity: 1;
-  transition: opacity ease 0.25s;
-  display: flex;
-  justify-content: center;
-  font-size: 30px;
-  padding-top: 40vh;
-}
-
-#spin.leave {
-  opacity: 0;
-}

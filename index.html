@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="assets/themes/vue.css" data-style-theme title="light" disabled>
   <link rel="stylesheet" href="assets/themes/dark.css" data-style-theme title="dark" disabled>
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/theme-switch/index.css">
+  <link rel="stylesheet" href="assets/spin/index.css">
+  
   
   <!-- 文章生成目录导航 -->
   <!-- <link rel="stylesheet" href="https://unpkg.com/docsify-toc@1.0.0/dist/toc.css"> -->
@@ -22,6 +25,7 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
 </head>
 <body>
+  <div id="spin">Loading</div>
   <nav>
     <p class="theme-bar">
       <span class="label">Appearance</span>
@@ -38,7 +42,6 @@
     </p>
   </nav>
   <div id="app"></div>
-  <div id="spin">Loading</div>
   <script>
 
     window.$docsify = {
