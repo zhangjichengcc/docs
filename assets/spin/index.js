@@ -1,7 +1,7 @@
 (function () {
   console.log('初始化spin');
   function spinHide() {
-    const spinDom = document.getElementById('spin');
+    let spinDom = document.getElementById('spin');
     const timer = setTimeout(function () {
       spinDom.setAttribute('class', 'leave');
       clearTimeout(timer);
