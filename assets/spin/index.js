@@ -5,7 +5,7 @@
     const timer = setTimeout(function () {
       spinDom.setAttribute('class', 'leave');
       clearTimeout(timer);
-    }, 10000);
+    }, 1000);
 
     function handler() {
       spinDom.removeEventListener('transitionend', handler);
