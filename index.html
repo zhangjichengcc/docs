@@ -52,7 +52,7 @@
       coverpage: true,
       homepage: '_homepage.md',
       loadSidebar: true,
-      loadNavbar: true,
+      loadNavbar: false,
       maxLevel: 3,
       subMaxLevel: 0,
       executeScript: true,
@@ -83,6 +83,9 @@
       plantuml: {
         skin: 'default',
       },
+    }
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.register('sw.js')
     }
   </script>
   <!-- Docsify v4 -->
