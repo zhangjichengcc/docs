@@ -2,8 +2,8 @@
  * @Author: zhangjicheng
  * @Date: 2023-04-10 17:33:34
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2023-04-11 18:04:35
- * @FilePath: /docs/assets/toc/indexs.js
+ * @LastEditTime: 2023-06-08 10:01:18
+ * @FilePath: /docs/assets/toc/index.js
  */
 
 const defaultOptions = {
@@ -82,6 +82,9 @@ function aTag(src) {
  * @return {HTMLUListElement | HTMLLIElement}
  */
 function jumpBack(wrapper, offset) {
+  if (offset === 0) return wrapper;
+  // 每次跳出需要跳出一个 ul 或者 <ul><li><ul></ul></li></ul> 一个ul + 一个ul、li ==》 1,3,5 故 offset * 2 - 1
+  offset = Math.abs(offset * 2) - 1;
   while (offset--) {
     wrapper = wrapper.parentElement;
   }
@@ -95,6 +98,7 @@ function jumpBack(wrapper, offset) {
  * @return {HTMLUListElement | HTMLLIElement}
  */
 function jumpIn(wrapper, offset) {
+  if (offset === 0) return wrapper;
   while (offset--) {
     wrapper = wrapper.appendChild(document.createElement('ul'));
     if (offset) wrapper = wrapper.appendChild(document.createElement('li'));
@@ -107,8 +111,7 @@ function jumpIn(wrapper, offset) {
  * @return {*}
  */
 function buildList(wrapper, offset) {
-  // 每次跳出需要跳出一个 li 和 ul 故 offset * 2
-  return offset > 0 ? jumpIn(wrapper, offset) : jumpBack(wrapper, -offset * 2);
+  return offset > 0 ? jumpIn(wrapper, offset) : jumpBack(wrapper, offset);
 }
 
 /**
@@ -120,7 +123,6 @@ function buildTOC(options) {
   const { scope, headings } = options;
   const toc = document.createElement('ul'),
     headers = getHeaders(`${scope} ${headings}`);
-
   headers.reduce(
     function (prev, curr) {
       const currentLevel = getLevel(curr.tagName),
