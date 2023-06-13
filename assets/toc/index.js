@@ -2,7 +2,7 @@
  * @Author: zhangjicheng
  * @Date: 2023-04-10 17:33:34
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2023-06-08 10:01:18
+ * @LastEditTime: 2023-06-13 17:03:17
  * @FilePath: /docs/assets/toc/index.js
  */
 
@@ -41,12 +41,13 @@ function debounce(fn, ms = 300) {
 
 /**
  * @description: 获取文章所有标题
- * @param {string} selector
+ * @param {string} scope
+ * @param {string} headers
  * @return {Array<dom>}
  */
-function getHeaders(selector = 'article h1, h2, h3') {
-  const headers = document.querySelectorAll(selector);
-  return [].map.call(headers, (dom) => dom);
+function getHeaders(scope = 'article', headers = 'h1, h2, h3') {
+  const _headers = document.querySelector(scope).querySelectorAll(headers);
+  return [].map.call(_headers, (dom) => dom);
 }
 
 /**
@@ -122,7 +123,7 @@ function buildList(wrapper, offset) {
 function buildTOC(options) {
   const { scope, headings } = options;
   const toc = document.createElement('ul'),
-    headers = getHeaders(`${scope} ${headings}`);
+    headers = getHeaders(scope, headings);
   headers.reduce(
     function (prev, curr) {
       const currentLevel = getLevel(curr.tagName),
