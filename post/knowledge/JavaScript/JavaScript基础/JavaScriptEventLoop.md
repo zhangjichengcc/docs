@@ -47,6 +47,7 @@ setTimeout
 但是在不同浏览器上的结果却是让人懵逼的。
 
 >Microsoft Edge, Firefox 40, iOS Safari 和 desktop Safari 8.0.8在 `promise1`，`promise2` 之前打印了 `setTimeout`，--虽然看起来像竞态条件。[目前大部分浏览器已经支持]
+
 ?> 每个线程都会有它自己的`event loop`(事件循环)，所以都能独立运行。然而所有同源窗口会共享一个`event loop`以同步通信。`event loop`会一直运行，来执行进入队列的**宏任务**。一个`event loop`有多种的**宏任务源**（event等等），这些**宏任务源**保证了在本任务源内的顺序。但是浏览器每次都会选择一个源中的一个宏任务去执行。这保证了浏览器给与一些宏任务（如用户输入）以更高的优先级。
 
 ## 浏览器环境下js引擎的事件循环机制
@@ -476,7 +477,7 @@ timers阶段执行外层setTimeout的回调，遇到同步代码先执行，也�
 
 [JS事件循环(Event Loop)](https://blog.csdn.net/chenrongwei92/article/details/120877134)
 
-[[js进阶]全面理解Event Loop这一篇就够了](https://blog.csdn.net/qq_31967985/article/details/110310685)
+[[js进阶]全面理解Event Loop这一篇就够了](<https://blog.csdn.net/qq_31967985/article/details/110310685>)
 
 [详解JavaScript中的Event Loop（事件循环）机制](https://zhuanlan.zhihu.com/p/33058983)
 
