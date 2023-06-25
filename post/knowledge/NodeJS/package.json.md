@@ -54,6 +54,20 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 }
 ```
 
+``` bash
+  x.y.z-预发布版本+编译版本
+
+  x.y.z
+
+  x.y.z-alpha/beta.? 预发布版本
+
+  x-主版本 （不兼容的更新/截断性更新 breaking update）
+  y-此版本  （兼容，新增功能）
+  z-修订版本 （优化，bug修复）
+
+  每次版本号增加，其低位版本号必须清零
+```
+
 有关指定版本范围的详细信息，请参见[semver](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fnpm%2Fnode-semver%23versions)。
 
 下面列出几种常见的：
