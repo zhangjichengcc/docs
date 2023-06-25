@@ -41,6 +41,8 @@ $ npx prettier --write [filename]
 
 ![vscode 保存格式化](./img/prettier-vscode-onsave.png)
 
+若保存时某一行代码不需要自动格式化，则可以使用注释 `// ingore-prettier`
+
 ## 三. 整合 Git
 
 和 Git 整合，有四种方法：
@@ -265,7 +267,7 @@ $ npm i --save-dev eslint-plugin-prettier eslint-config-prettier
   ```
 
 **2、vscode 配置 (文件保存格式化)**
-  
+
 > vscode 我们用来配置文件保存格式化，通常这一步会有 eslint 和 prettier 的冲突，这是由于 js 一类的文件同时被 eslint 和 prettier 格式化处理了，我们要做的是，**对于js一类文件，我们只用一种处理器去格式化，由于上文，我们已经将 prettier 的规则交给 eslint 来处理了，所以对于这类文件，我们用 eslint 的规则来处理，而其他文件则交由 prettier 规则去处理**
 
 配置大体分为两类
