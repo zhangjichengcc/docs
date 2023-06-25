@@ -365,6 +365,12 @@ error: cannot lock ref 'refs/remotes/origin/master': unable to resolve reference
 rm .git/refs/remotes/origin/master
 ```
 
+**Git 大小写问题**
+
+``` bash
+git config core.ignorecase false
+```
+
 ## 参考文献
 
 [git 常用命令](https://www.cnblogs.com/xiaogangfan/p/6038597.html)
