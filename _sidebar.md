@@ -15,14 +15,16 @@
       - [JavaScript EventLoot](/post/knowledge/JavaScript/JavaScript基础/JavaScriptEventLoop.md)
       - [JavaScript V8引擎垃圾回收机制](/post/knowledge/JavaScript/JavaScript基础/JavaScriptV8引擎垃圾回收.md)
       - [JavaScript 浏览器缓存机制](/post/knowledge/JavaScript/JavaScript基础/JavaScript缓存机制/artical.md)
+      - [JavaScript 惰性函数](/post/knowledge/JavaScript/JavaScript基础/JavaScript惰性函数l.md)
     - JavaScript 手写方法
       - [JavaScript 手写bind、call、apply](/post/knowledge/JavaScript/JavaScript手写方法/JavaScript手写bind_call_apply.md)
       - [JavaScript 手写new](/post/knowledge/JavaScript/JavaScript手写方法/JavaScript手写new.md)
     - JavaScript 技巧
       - [Proxy](/post/knowledge/JavaScript/JavaScript属性/Proxy.md)
       - [Array](/post/knowledge/JavaScript/JavaScript属性/Array.md)
-  <!-- Css -->
-  <!-- TypeScript -->
+      - [惰性函数](/post/knowledge/JavaScript/JavaScript属性/JavaScript惰性函数.md)
+      <!-- Css -->
+      <!-- TypeScript -->
   - TypeScript
     - TypeScript 基础
       - [TypeScript 指北](/post/knowledge/TypeScript/TypeScript基础/README.md)
@@ -41,7 +43,7 @@
       - [Record](/post/knowledge/TypeScript/TypeScript实用技巧/20210926_Record.md)
       - [映射类型应用](/post/knowledge/TypeScript/TypeScript实用技巧/20230330_mappingType.md)
     - [Problem](/post/knowledge/TypeScript/Problem.md)
-  <!-- NodeJS -->
+    <!-- NodeJS -->
   - NodeJS
     - [README](/post/knowledge/NodeJS/README.md)
     - [Nodejs纯esm模块的迁移方法](/post/knowledge/NodeJS/Nodejs纯esm模块的迁移方法.md)
