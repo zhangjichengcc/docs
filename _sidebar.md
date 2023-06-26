@@ -22,6 +22,7 @@
       - [Proxy](/post/knowledge/JavaScript/JavaScript属性/Proxy.md)
       - [Array](/post/knowledge/JavaScript/JavaScript属性/Array.md)
       - [惰性函数](/post/knowledge/JavaScript/JavaScript属性/JavaScript惰性函数.md)
+      - [属性描述符 defineProperty](/post/knowledge/JavaScript/JavaScript属性/JavaScript属性描述符.md)
   <!-- TypeScript -->
   - TypeScript
     - TypeScript 基础
