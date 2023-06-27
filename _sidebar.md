@@ -46,6 +46,8 @@
   - Css 相关
     - [剪切属性](/post/knowledge/Css/clip-path.md)
     - [滚动相关](/post/knowledge/Css/滚动相关.md)
+    - [块级格式化上下文BFC](/post/knowledge/Css/BFC.md)
+    - [文字排列](/post/knowledge/Css/文字排列.md)
 
   <!-- NodeJS -->
   - NodeJS
