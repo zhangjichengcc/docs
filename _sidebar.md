@@ -43,8 +43,10 @@
       - [映射类型应用](/post/knowledge/TypeScript/TypeScript实用技巧/20230330_mappingType.md)
     - [Problem](/post/knowledge/TypeScript/Problem.md)
   <!-- Css -->
-  - Css 技巧
+  - Css 相关
     - [剪切属性](/post/knowledge/Css/clip-path.md)
+    - [滚动相关](/post/knowledge/Css/滚动相关.md)
+
   <!-- NodeJS -->
   - NodeJS
     - [README](/post/knowledge/NodeJS/README.md)
