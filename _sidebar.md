@@ -55,6 +55,7 @@
     - [Nodejs纯esm模块的迁移方法](/post/knowledge/NodeJS/Nodejs纯esm模块的迁移方法.md)
     - [package.json](/post/knowledge/NodeJS/package.json.md)
     - [npm-link](/post/knowledge/NodeJS/npm-link.md)
+    - [ts+node执行器](/post/knowledge/NodeJS/node执行器.md)
   - Algorithm
     - [经典排序算法](/post/knowledge/Algorithm/sort-algorithm.md)
   - DesignMode
