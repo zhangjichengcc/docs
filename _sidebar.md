@@ -16,6 +16,7 @@
       - [JavaScript EventLoot](/post/knowledge/JavaScript/JavaScript基础/JavaScriptEventLoop.md)
       - [JavaScript V8引擎垃圾回收机制](/post/knowledge/JavaScript/JavaScript基础/JavaScriptV8引擎垃圾回收.md)
       - [JavaScript 浏览器缓存机制](/post/knowledge/JavaScript/JavaScript基础/JavaScript缓存机制/artical.md)
+      - [JavaScript 实时通信](/post/knowledge/JavaScript/JavaScript基础/JavaScript实时通信.md)
     - JavaScript 手写方法
       - [JavaScript 手写bind、call、apply](/post/knowledge/JavaScript/JavaScript手写方法/JavaScript手写bind_call_apply.md)
       - [JavaScript 手写new](/post/knowledge/JavaScript/JavaScript手写方法/JavaScript手写new.md)
