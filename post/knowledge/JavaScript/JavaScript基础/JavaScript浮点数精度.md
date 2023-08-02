@@ -283,6 +283,10 @@ var floatObj = function() {
 
 ## 其他
 
+十进制转其他进制 `toString(radix)`
+
+其他进制转十进制 `parseInt(string, radix)`、`parseFloat(string, radix)`
+
 ``` js
 // 十进制转二进制
 parseFloat(0.1).toString(2);
