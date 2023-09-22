@@ -9,12 +9,12 @@
 
 // can be an array (for multiple inputs)
 export default {
-  // core input options
-  external,
-  input, // conditionally required
-  plugins,
+  // 核心入口配置
+  external,    // 外部依赖
+  input,       // 入口文件
+  plugins,     // 插件列表
 
-  // advanced input options
+  // 高级入口配置
   cache,
   onwarn,
   preserveEntrySignatures,

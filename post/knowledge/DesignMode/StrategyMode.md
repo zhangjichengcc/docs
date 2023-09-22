@@ -53,7 +53,7 @@ function onSubmit(phoneNum, pwd) {
 
 大量`if-else`
 
-``` js
+``` javascript
 function demo(type, target) {
   if (type === 'weixin') {
     if (target === 'a') {

@@ -73,6 +73,21 @@ const ProxySingle = (function() {
 })()
 ```
 
+通过 `Proxy` 实现
+
+``` javascript
+function singleton(class) {
+  let ins = null;
+  return new Proxy(class, {
+    constructor(target, args) {
+      return ins || (ins = Reflect.constructor(target, args));
+    }
+  })
+}
+```
+
+
+
 ## 应用
 
 “单例模式的特点，意图解决：维护一个全局实例对象。”
