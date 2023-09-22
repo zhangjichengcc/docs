@@ -58,3 +58,11 @@ $ pnpm unlink /Users/name/workSpace/project/reactDemo/node_modules/react
 $ pnpm unlink /Users/name/workSpace/project/reactDemo/node_modules/react-dom
 
 ```
+
+## npm publish
+
+发布的时候，如果我们使用package name 为 `@username/packageName`; 使用下述命令规避，这是因为以 @username 开头的插件名，默认为私有包，所以这里需要显示制定为共有包 `--access public`
+
+``` bash
+npm publish --access public
+```
