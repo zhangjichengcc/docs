@@ -27,3 +27,9 @@
 ?> 所以该类问题的解决方案便是：重设 `min-width = 0`（或任何小于 `width` 的值），让 `width`v属性重新拿到元素宽度的控制权，因为 `width` 属性默认为内容区域的宽度，所以会自适应弹性盒子宽度，不会撑开容器。
 
 高度也是同理，使用 `min-height: 0` 解决
+
+<iframe height="600" style="width: 100%;" scrolling="no" title="test" src="https://codepen.io/zhangjichengcc/embed/KKJdYNa?default-tab=html%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/zhangjichengcc/pen/KKJdYNa">
+  test</a> by zhangjicheng (<a href="https://codepen.io/zhangjichengcc">@zhangjichengcc</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
