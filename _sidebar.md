@@ -26,6 +26,7 @@
       - [Array](/post/knowledge/JavaScript/JavaScript属性/Array.md)
       - [惰性函数](/post/knowledge/JavaScript/JavaScript属性/JavaScript惰性函数.md)
       - [属性描述符 defineProperty](/post/knowledge/JavaScript/JavaScript属性/JavaScript属性描述符.md)
+      - [Flip 动画](/post/knowledge/JavaScript/JavaScript属性/Flip动画.md)
   <!-- TypeScript -->
   - TypeScript
     - TypeScript 基础
