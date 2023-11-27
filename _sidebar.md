@@ -26,7 +26,6 @@
       - [Array](/post/knowledge/JavaScript/JavaScript属性/Array.md)
       - [惰性函数](/post/knowledge/JavaScript/JavaScript属性/JavaScript惰性函数.md)
       - [属性描述符 defineProperty](/post/knowledge/JavaScript/JavaScript属性/JavaScript属性描述符.md)
-      - [Flip 动画](/post/knowledge/JavaScript/JavaScript属性/Flip动画.md)
   <!-- TypeScript -->
   - TypeScript
     - TypeScript 基础
@@ -54,7 +53,10 @@
     - [文字排列](/post/knowledge/Css/文字排列.md)
     - [环绕运动效果](/post/knowledge/Css/环绕运动.md)
     - [grid布局](/post/knowledge/Css/grid布局.md)
-
+  <!-- Animation -->
+  - 动画
+    - [Flip 动画](/post/knowledge/Animation/Flip动画.md)
+    - [多元素组合动画](/post/knowledge/Animation/多元素组合动画.md)
   <!-- NodeJS -->
   - NodeJS
     - [README](/post/knowledge/NodeJS/README.md)
