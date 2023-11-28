@@ -12,6 +12,7 @@
       - [JavaScript 作用域](/post/knowledge/JavaScript/JavaScript基础/JavaScript作用域.md)
       - [JavaScript 类型判断](/post/knowledge/JavaScript/JavaScript基础/JavaScript类型判断.md)
       - [JavaScript 函数柯里化](/post/knowledge/JavaScript/JavaScript基础/JavaScript函数柯里化.md)
+      - [JavaScript 函数重载](/post/knowledge/JavaScript/JavaScript基础/JavaScript函数重载.md)
       - [JavaScript 浮点数精度](/post/knowledge/JavaScript/JavaScript基础/JavaScript浮点数精度.md)
       - [JavaScript EventLoot](/post/knowledge/JavaScript/JavaScript基础/JavaScriptEventLoop.md)
       - [JavaScript V8引擎垃圾回收机制](/post/knowledge/JavaScript/JavaScript基础/JavaScriptV8引擎垃圾回收.md)
