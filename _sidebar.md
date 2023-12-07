@@ -45,6 +45,7 @@
       - [条件接口](/post/knowledge/TypeScript/TypeScript实用技巧/20221230_条件接口.md)
       - [Record](/post/knowledge/TypeScript/TypeScript实用技巧/20210926_Record.md)
       - [映射类型应用](/post/knowledge/TypeScript/TypeScript实用技巧/20230330_mappingType.md)
+      - [函数重载](/post/knowledge/TypeScript/TypeScript实用技巧/20231206_函数重载.md)
     - [Problem](/post/knowledge/TypeScript/Problem.md)
   <!-- Css -->
   - Css 相关
