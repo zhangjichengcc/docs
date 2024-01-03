@@ -59,6 +59,7 @@
   - 动画
     - [Flip 动画](/post/knowledge/Animation/Flip动画.md)
     - [多元素组合动画](/post/knowledge/Animation/多元素组合动画.md)
+    - [svg动画](/post/knowledge/Animation/svg动画.md)
   <!-- NodeJS -->
   - NodeJS
     - [README](/post/knowledge/NodeJS/README.md)
