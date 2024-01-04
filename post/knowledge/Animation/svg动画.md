@@ -205,6 +205,43 @@ paths.forEach(node => {
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
+## 其他技巧
+
+- 当我们希望 `svg` 能够跟随其父级改变颜色的时候，通常使用 `currentColor` 来指定颜色，如:
+
+  ``` html
+  <!-- 设定填充及描边颜色继承父级 -->
+  <svg fill="currentColor" stroke="currentColor">
+    <path>...</path>
+  </svg>
+  ```
+
+- 当我们希望 `svg` 大小可控，则可以通过设置 `svg` 的 `width`、`height` 属性来实现
+
+  ```html
+  <svg width="100" height="200" fill="currentColor" stroke="currentColor">
+    <path>...</path>
+  </svg>
+
+  <!-- 👇 -->
+
+  <svg width="1em" height="2em" fill="currentColor" stroke="currentColor">
+    <path>...</path>
+  </svg>
+  ```
+
+  此时我们可以通过设置父级的 `font-size` 属性，来控制 `svg` 的大小;
+
+  需要注意的是，通常我们希望 `path` 可以根据我们设置的宽高进行缩放，此时我们需要设置 `viewBox`, **`viewBox` 定义了一个用户坐标系统和视口之间的映射。**
+
+  ``` html
+  <svg width="1em" height="2em" viewBox="0 0 100 200" fill="currentColor" stroke="currentColor">
+    <path>...</path>
+  </svg>
+  ```
+
+  这里保证 `viewBox` 对应 `svg` 原始大小，而 `viewBox` 将确保路径的比例保持不变。
+
 ## 参考文献
 
 [你要知道的svg的常用标签属性](https://juejin.cn/post/6997581167272656932)  
