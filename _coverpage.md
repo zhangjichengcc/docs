@@ -43,7 +43,7 @@ Zhangjicheng's Docs
     }
     .path {
       fill: transparent;
-      stroke-with: 2px;
+      stroke-width: 1;
       stroke: var(--font-color);
       stroke-dasharray: var(--path-length);
       stroke-linecap: round;

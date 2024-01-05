@@ -33,7 +33,7 @@ export default PopOver;
 
 > React hooks 父组件传值变化（props）不触发子组件更新
 
-``` js
+``` diff
 type DataProps = {
   name: string,
   age: string,
@@ -113,4 +113,3 @@ React.Children.map(props.children, child => { // success
 `props.children` 根据children数量，并非一定是数组
 
 `React.Children.map(props.children, item ⇒ {...})` 则一定是数组
-
