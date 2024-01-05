@@ -21,17 +21,16 @@ Zhangjicheng's Docs
   @keyframes path-animate {
       0% {
         stroke-dashoffset: var(--path-length);
+        stroke-width: 2;
       }
 
-      20% {
+      90% {
         fill: transparent;
-      }
-
-      80% {
-        stroke-dashoffset: 0;
+        stroke-width: 2;
       }
 
       100% {
+        stroke-width: 0;
         fill: var(--font-color);
         stroke-dashoffset: 0;
       }
@@ -48,6 +47,6 @@ Zhangjicheng's Docs
       stroke-dasharray: var(--path-length);
       stroke-linecap: round;
       stroke-dashoffset: var(--path-length);
-      animation: 3s path-animate 1s forwards;
+      animation: 6s path-animate 1s forwards;
     }
   </style>
