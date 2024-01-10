@@ -1,6 +1,8 @@
-# launch.json 配置不完全指南
+# VScode 调试技巧
 
 官网地址: [https://code.visualstudio.com/docs/nodejs/nodejs-debugging](https://code.visualstudio.com/docs/nodejs/nodejs-debugging)
+
+**当你在 launch.json 中配置了 type 属性的值后，就可以使用VS Code的智能提示（command+I）来查看所有可用的属性**
 
 ``` json
 {
@@ -164,15 +166,126 @@ configurations
 
 - `processId` 指定nodejs进程id,由于每次启动都会变，传入`"${command:PickProcess}"`
 
-**变量替换**
+## 变量参考
 
-- ${workspaceFolder}：当前打开工程的路径。
-- ${file}：当前打开文件的路径。
-- ${fileBasename}：当前打开文件的名字，包含后缀名。
-- ${fileDirname}：当前打开文件所在的文件夹的路径。
-- ${fileExtname}：当前打开文件的后缀名。
-- ${cwd}：当前执行目录。
-- ...
+### 预定义变量
+
+``` bash
+${userHome} - 用户主文件夹的路径
+${workspaceFolder} - 在 VS Code 中打开的文件夹的路径
+${workspaceFolderBasename} - 在 VS Code 中打开的文件夹的名称，不带任何斜杠 (/)
+${file} - 当前打开的文件
+${fileWorkspaceFolder} - 当前打开文件的工作区文件夹
+${relativeFile} - 当前打开的文件相对于workspaceFolder
+${relativeFileDirname} - 当前打开的文件的目录名相对于workspaceFolder
+${fileBasename} - 当前打开的文件的基本名称
+${fileBasenameNoExtension} - 当前打开的文件的基本名称，没有文件扩展名
+${fileExtname} - 当前打开的文件的扩展名
+${fileDirname} - 当前打开文件的文件夹路径
+${fileDirnameBasename} - 当前打开文件的文件夹名称
+${cwd} - VS Code 启动时任务运行器的当前工作目录
+${lineNumber} - 活动文件中当前选定的行号
+${selectedText} - 活动文件中当前选定的文本
+${execPath} - 正在运行的 VS Code 可执行文件的路径
+${defaultBuildTask} - 默认构建任务的名称
+${pathSeparator} - 操作系统用于分隔文件路径中组件的字符
+```
+
+### 环境变量
+
+您还可以通过 `${env:Name}` 语法引用环境变量（例如，`${env:USERNAME}`）。
+
+``` json
+{
+  "type": "node",
+  "request": "launch",
+  "name": "Launch Program",
+  "program": "${workspaceFolder}/app.js",
+  "cwd": "${workspaceFolder}",
+  "args": ["${env:USERNAME}"]
+}
+```
+
+### 配置变量
+
+您可以通过`${config:Name}`语法（例如）引用 VS Code 设置（“配置”）`${config:editor.fontSize}`。
+
+### 命令变量
+
+如果上面的预定义变量不够，您可以通过 `${command:commandID}` 语法使用任何 VS Code 命令作为变量。
+
+### 输入变量
+
+> 命令变量已经很强大，但它们缺乏一种机制来配置针对特定用例运行的命令。例如，不可能将提示消息或默认值传递给通用“用户输入提示”。
+
+目前 VS Code 支持三种类型的输入变量：
+
+- `PromptString`：显示一个输入框以从用户处获取字符串。
+- `pickString`：显示快速选择下拉列表，让用户从多个选项中进行选择。
+- `command`：运行任意命令。
+
+每种类型都需要额外的配置属性：
+
+**promptString：**
+
+- description：显示在快速输入中，提供输入的上下文。
+- default：如果用户没有输入其他内容，将使用默认值。
+- password：设置为 true 以使用密码提示输入，但不会显示键入的值。
+
+**pickString：**
+
+- description：显示在快速选择中，提供输入的上下文。
+- options：供用户选择的选项数组。
+- default：如果用户没有输入其他内容，将使用默认值。它必须是选项值之一。
+
+选项可以是字符串值或同时具有标签和值的对象。下拉列表将显示label: value。
+
+**command：**
+
+- command：在变量插值上运行的命令。
+- args：传递给命令实现的可选选项包。
+
+示例：
+
+``` json
+{
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "inputs": [
+    // {
+    //   "type": "command",
+    //   "id": "commId",
+    //   "command": "qq"
+    // },
+    {
+      "type": "pickString",
+      "id": "initiator",
+      "description": "Please select an initiator",
+      "options": ["node", "esno", "ts-node"],
+      "default": "node"
+    },
+    {
+      "type": "promptString",
+      "id": "args",
+      "description": "Please enter parameters",
+      "default": ""
+    }
+  ],
+  "configurations": [
+    {
+      "name": "launch current file with input",
+      "type": "node",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${fileWorkspaceFolder}",
+      "runtimeExecutable": "${input:initiator}",
+      "runtimeArgs": ["${input:args} ${file}"]
+    },
+  ]
+}
+```
 
 ## Question
 
@@ -196,6 +309,10 @@ configurations
 - `"runtimeArgs" : ["-r", "esm"]` -使用[esm ES模块加载器](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fstandard-things%2Fesm)（请注意，`["-r esm"]`如果没有逗号，则无法使用）
 
 ## 参考文献
+
+[VScode 变量参考](https://code.visualstudio.com/docs/editor/variables-reference#_environment-variables)
+
+[在 Visual Studio Code 中调试](https://code.visualstudio.com/docs/editor/debugging#_global-launch-configuration)
 
 [如何使用 VS Code 来调试 Node.js 代码](https://wizardforcel.gitbooks.io/node-in-debugging/content/4.3.html)
 

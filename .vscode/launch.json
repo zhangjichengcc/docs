@@ -1,17 +1,48 @@
 {
-  // 使用 IntelliSense 了解相关属性。 
+  // 使用 IntelliSense 了解相关属性。
   // 悬停以查看现有属性的描述。
   // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
+  "inputs": [
+    // {
+    //   "type": "command",
+    //   "id": "commId",
+    //   "command": "qq"
+    // },
+    {
+      "type": "pickString",
+      "id": "initiator",
+      "description": "Please select an initiator",
+      "options": ["node", "esno", "ts-node"],
+      "default": "node"
+    },
+    {
+      "type": "promptString",
+      "id": "args",
+      "description": "Please enter parameters",
+      "default": ""
+    }
+  ],
   "configurations": [
     {
-      "type": "pwa-node",
+      "name": "launch current file with input",
+      "type": "node",
       "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${fileWorkspaceFolder}",
+      "runtimeExecutable": "${input:initiator}",
+      "runtimeArgs": ["${input:args} ${file}"]
+      // "args": ["${input:args}"]
+    },
+    {
       "name": "Launch Program Current File",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "program": "${file}"
+      "type": "node",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${file}",
+      "runtimeExecutable": "esno"
+      // "runtimeArgs": ["-r", "ts-node/register"]
+      // "args": ["${workspaceFolder}/src/index.ts"]
     }
   ]
 }
