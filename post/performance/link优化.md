@@ -102,7 +102,7 @@
 
 ## Ref 属性
 
-| `rel` 值                                                     | 描述                                                         | [<link>](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link) | [<a> 和 <area>](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area) | [<form>](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form) |
+| `rel` 值                                                     | 描aaa述                                                         | [\<link>](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link) | [\<a> 和 \<area>](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area) | [\<form>](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form) |
 | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | [`alternate`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/rel#attr-alternate) | 当前文档的替代描述。                                         | 链接                                                         | 链接                                                         | 不允许                                                       |
 | [`author`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/rel#attr-author) | 当前文档或文章的作者。                                       | 链接                                                         | 链接                                                         | 不允许                                                       |
@@ -132,6 +132,16 @@
 | [`tag`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/rel#attr-tag) | 给出一个适用于当前文档的标签（由给定地址识别）。             | 不允许                                                       | 链接                                                         | 链接                                                         |
 
 ## link vs @import
+
+#### 1.加载时机不同
+
+link 是 html 标签加载 dom 时会同步加载 link 标签的内容，@import引入的资源需要等 dom 加载完成之后加载
+
+#### 2.js的可操作性不同
+
+link 标签可以通过 js 动态插入到文档中，@import不可以
+
+#### 3.link方式引入的样式的权重高于@import
 
 ## 参考文献
 
