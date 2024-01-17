@@ -2,7 +2,7 @@
  * @Author: zhangjicheng
  * @Date: 2023-01-12 16:34:32
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2023-06-05 16:13:21
+ * @LastEditTime: 2024-01-17 15:28:41
  * @FilePath: /docs/sw.js
  */
 
@@ -31,7 +31,7 @@ const getFixedUrl = (req) => {
   // Until cache mode of Fetch API landed, we have to workaround cache-busting with query string.
   // Cache-Control-Bug: https://bugs.chromium.org/p/chromium/issues/detail?id=453190
   if (url.hostname === self.location.hostname) {
-    url.search += (url.search ? '&' : '?') + 'cache-bust=' + now;
+    // url.search += (url.search ? '&' : '?') + 'cache-bust=' + now;
   }
   return url.href;
 };
