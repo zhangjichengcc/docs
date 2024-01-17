@@ -132,6 +132,7 @@
     - [骨架屏方案](/post/performance/骨架屏方案.md)
   - PerformanceOptimization
     - [link优化](/post/performance/link优化.md)
+    - [浏览器缓存优化](/post/performance/浏览器缓存.md)
 - 拓展-Extension
   - [搭建Cli脚手架](/post/extension/搭建Cli脚手架.md)
   - VSCode
