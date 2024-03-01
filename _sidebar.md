@@ -6,6 +6,7 @@
 - 知识-Knowledge
   - JavaScript
     - JavaScript 基础
+      - [ES6入门](/post/knowledge/JavaScript/JavaScript基础/ES6入门.md)
       - [JavaScript 详解this](/post/knowledge/JavaScript/JavaScript基础/JavaScript详解this.md)
       - [JavaScript 原型原型链](/post/knowledge/JavaScript/JavaScript基础/JavaScript原型原型链.md)
       - [JavaScript 继承](/post/knowledge/JavaScript/JavaScript基础/JavaScript继承.md)
