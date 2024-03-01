@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangjicheng
  * @Date: 2021-05-30 15:09:33
- * @LastEditTime: 2024-03-01 10:01:11
+ * @LastEditTime: 2024-03-01 10:31:43
  * @LastEditors: zhangjicheng
  * @Description: 
  * @FilePath: /docs/post/knowledge/JavaScript/JavaScript基础/ES6入门.md
@@ -47,23 +47,28 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 
 - <input type="checkbox" checked="" disabled=""> **const命令**：声明常量
 - <input type="checkbox" checked="" disabled=""> **let命令**：声明变量
-    > 作用
+
+> 作用
 
 - 作用域
 
-        *   **全局作用域**
+  - **全局作用域**
   - **函数作用域**：`function() {}`
   - **块级作用域**：`{}`
+
 - 作用范围
 
-        *   `var命令`在全局代码中执行
+  - `var命令`在全局代码中执行
   - `const命令`和`let命令`只能在代码块中执行
+
 - 赋值使用
 
-        *   `const命令`声明常量后必须立马赋值
+  - `const命令`声明常量后必须立马赋值
   - `let命令`声明变量后可立马赋值或使用时赋值
+
 - 声明方法：`var`、`const`、`let`、`function`、`class`、`import`
-    > 重点难点
+
+> 重点难点
 
 - 不允许重复声明
 - 未定义就使用会报错：`const命令`和`let命令`不存在变量提升
@@ -76,18 +81,20 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - <input type="checkbox" checked="" disabled=""> **布尔解构**：`const { toString: b } = true`
 - <input type="checkbox" checked="" disabled=""> **对象解构**
 
-        *   形式：`const { x, y } = { x: 1, y: 2 }`
+  - 形式：`const { x, y } = { x: 1, y: 2 }`
   - 默认：`const { x, y = 2 } = { x: 1 }`
   - 改名：`const { x, y: z } = { x: 1, y: 2 }`
+
 - <input type="checkbox" checked="" disabled=""> **数组解构**
 
-        *   规则：数据结构具有`Iterator接口`可采用数组形式的解构赋值
+  - 规则：数据结构具有`Iterator接口`可采用数组形式的解构赋值
   - 形式：`const [x, y] = [1, 2]`
   - 默认：`const [x, y = 2] = [1]`
 - <input type="checkbox" checked="" disabled=""> **函数参数解构**
 
-        *   数组解构：`function Func([x = 0, y = 1]) {}`
+  - 数组解构：`function Func([x = 0, y = 1]) {}`
   - 对象解构：`function Func({ x = 0, y = 1 } = {}) {}`
+
     > 应用场景
 
 - 交换变量值：`[x, y] = [y, x]`
@@ -97,6 +104,7 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 定义函数参数默认值：`function Func({ x = 1, y = 2 } = {}) {}`
 - 遍历Map结构：`for (let [k, v] of Map) {}`
 - 输入模块指定属性和方法：`const { readFile, writeFile } = require("fs")`
+
     > 重点难点
 
 - 匹配模式：只要等号两边的模式相同，左边的变量就会被赋予对应的值
@@ -121,7 +129,8 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - <input type="checkbox" checked="" disabled=""> **includes()**：是否存在指定字符串
 - <input type="checkbox" checked="" disabled=""> **startsWith()**：是否存在字符串头部指定字符串
 - <input type="checkbox" checked="" disabled=""> **endsWith()**：是否存在字符串尾部指定字符串
-    > 重点难点
+
+> 重点难点
 
 - 以上扩展方法均可作用于由`4个字节储存`的`Unicode字符`上
 
@@ -162,9 +171,10 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - <input type="checkbox" checked="" disabled=""> **属性名表达式**：字面量定义对象时使用`[]`定义键(`[prop]`，不能与上同时使用)
 - <input type="checkbox" checked="" disabled=""> **方法的name属性**：返回方法函数名
 
-        *   取值函数(getter)和存值函数(setter)：`get/set 函数名`(属性的描述对象在`get`和`set`上)
+  - 取值函数(getter)和存值函数(setter)：`get/set 函数名`(属性的描述对象在`get`和`set`上)
   - bind返回的函数：`bound 函数名`
   - Function构造函数返回的函数实例：`anonymous`
+
 - <input type="checkbox" checked="" disabled=""> **属性的可枚举性和遍历**：描述对象的`enumerable`
 - <input type="checkbox" checked="" disabled=""> **super关键字**：指向当前对象的原型对象(只能用在对象的简写方法中`method() {}`)
 - <input type="checkbox" checked="" disabled=""> **Object.is()**：对比两值是否相等
@@ -177,14 +187,14 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 描述：`自身`、`可继承`、`可枚举`、`非枚举`、`Symbol`
 - 遍历
 
-        *   `for-in`：遍历对象`自身可继承可枚举`属性
+  - `for-in`：遍历对象`自身可继承可枚举`属性
   - `Object.keys()`：返回对象`自身可枚举`属性键组成的数组
   - `Object.getOwnPropertyNames()`：返回对象`自身非Symbol`属性键组成的数组
   - `Object.getOwnPropertySymbols()`：返回对象`自身Symbol`属性键组成的数组
   - `Reflect.ownKeys()`：返回对象`自身全部`属性键组成的数组
 - 规则
 
-        *   首先遍历所有数值键，按照数值升序排列
+  - 首先遍历所有数值键，按照数值升序排列
   - 其次遍历所有字符串键，按照加入时间升序排列
   - 最后遍历所有Symbol键，按照加入时间升序排列
 
@@ -214,7 +224,8 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 转换可遍历对象为数组：`[...String, ...Set, ...Map, ...Generator]`
 - 与数组解构赋值结合：`const [x, ...rest/spread] = [1, 2, 3]`
 - 计算Unicode字符长度：`Array.from("hello").length` =&gt; `[..."hello"].length`
-    > 重点难点
+
+> 重点难点
 
 - 使用`keys()`、`values()`、`entries()`返回的遍历器对象，可用`for-of`自动遍历或`next()`手动遍历
 
@@ -222,54 +233,61 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 
 - <input type="checkbox" checked="" disabled=""> **参数默认值**：为函数参数指定默认值
 
-        *   形式：`function Func(x = 1, y = 2) {}`
+  - 形式：`function Func(x = 1, y = 2) {}`
   - 参数赋值：惰性求值(函数调用后才求值)
   - 参数位置：尾参数
   - 参数作用域：函数作用域
   - 声明方式：默认声明，不能用`const`或`let`再次声明
   - length：返回没有指定默认值的参数个数
   - 与解构赋值默认值结合：`function Func({ x = 1, y = 2 } = {}) {}`
+
   - 应用
 
-                *   指定某个参数不得省略，省略即抛出错误：`function Func(x = throwMissing()) {}`
+    - 指定某个参数不得省略，省略即抛出错误：`function Func(x = throwMissing()) {}`
     - 将参数默认值设为`undefined`，表明此参数可省略：`Func(undefined, 1)`
+
 - <input type="checkbox" checked="" disabled=""> **rest/spread参数(...)**：返回函数多余参数
 
-        *   形式：以数组的形式存在，之后不能再有其他参数
+  - 形式：以数组的形式存在，之后不能再有其他参数
   - 作用：代替`Arguments对象`
   - length：返回没有指定默认值的参数个数但不包括`rest/spread参数`
+
 - <input type="checkbox" checked="" disabled=""> **严格模式**：在严格条件下运行JS
 
-        *   应用：只要函数参数使用默认值、解构赋值、扩展运算符，那么函数内部就不能显式设定为严格模式
+  - 应用：只要函数参数使用默认值、解构赋值、扩展运算符，那么函数内部就不能显式设定为严格模式
+  
 - <input type="checkbox" checked="" disabled=""> **name属性**：返回函数的函数名
 
-        *   将匿名函数赋值给变量：`空字符串`(**ES5**)、`变量名`(**ES6**)
+  - 将匿名函数赋值给变量：`空字符串`(**ES5**)、`变量名`(**ES6**)
   - 将具名函数赋值给变量：`函数名`(**ES5和ES6**)
   - bind返回的函数：`bound 函数名`(**ES5和ES6**)
   - Function构造函数返回的函数实例：`anonymous`(**ES5和ES6**)
+
 - <input type="checkbox" checked="" disabled=""> **箭头函数(=&gt;)**：函数简写
 
-        *   无参数：`() =&gt; {}`
+  - 无参数：`() =&gt; {}`
   - 单个参数：`x =&gt; {}`
   - 多个参数：`(x, y) =&gt; {}`
   - 解构参数：`({x, y}) =&gt; {}`
   - 嵌套使用：部署管道机制
   - this指向固定化
 
-                *   并非因为内部有绑定`this`的机制，而是根本没有自己的`this`，导致内部的`this`就是外层代码块的`this`
+    - 并非因为内部有绑定`this`的机制，而是根本没有自己的`this`，导致内部的`this`就是外层代码块的`this`
     - 因为没有`this`，因此不能用作构造函数
+
 - <input type="checkbox" checked="" disabled=""> **尾调用优化**：只保留内层函数的调用帧
 
-        *   尾调用
+  - 尾调用
 
-                *   定义：某个函数的最后一步是调用另一个函数
-        *   形式：`function f(x) { return g(x); }`
+  - 定义：某个函数的最后一步是调用另一个函数
+  - 形式：`function f(x) { return g(x); }`
   - 尾递归
 
-                *   定义：函数尾调用自身
+  - 定义：函数尾调用自身
     - 作用：只要使用尾递归就不会发生栈溢出，相对节省内存
     - 实现：把所有用到的内部变量改写成函数的参数并使用参数默认值
-    > 箭头函数误区
+
+> 箭头函数误区
 
 - 函数体内的`this`是`定义时所在的对象`而不是`使用时所在的对象`
 - 可让`this`指向固定化，这种特性很有利于封装回调函数
@@ -284,17 +302,19 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - <input type="checkbox" checked="" disabled=""> **正则方法调用变更**：字符串对象的`match()`、`replace()`、`search()`、`split()`内部调用转为调用`RegExp`实例对应的`RegExp.prototype[Symbol.方法]`
 - <input type="checkbox" checked="" disabled=""> **u修饰符**：Unicode模式修饰符，正确处理大于`\uFFFF`的`Unicode字符`
 
-        *   `点字符`(.)
+  - `点字符`(.)
   - `Unicode表示法`
   - `量词`
   - `预定义模式`
   - `i修饰符`
   - `转义`
+
 - <input type="checkbox" checked="" disabled=""> **y修饰符**：粘连修饰符，确保匹配必须从剩余的第一个位置开始全局匹配(与`g修饰符`作用类似)
 - <input type="checkbox" checked="" disabled=""> **unicode**：是否设置`u修饰符`
 - <input type="checkbox" checked="" disabled=""> **sticky**：是否设置`y修饰符`
 - <input type="checkbox" checked="" disabled=""> **flags**：返回正则表达式的修饰符
-    > 重点难点
+
+> 重点难点
 
 - `y修饰符`隐含头部匹配标志`^`
 - 单单一个`y修饰符`对`match()`只能返回第一个匹配，必须与`g修饰符`联用才能返回所有匹配
@@ -306,13 +326,14 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 入参：字符串(可选)
 - 方法
 
-        *   **Symbol()**：创建以参数作为描述的`Symbol值`(不登记在全局环境)
+  - **Symbol()**：创建以参数作为描述的`Symbol值`(不登记在全局环境)
   - **Symbol.for()**：创建以参数作为描述的`Symbol值`，如存在此参数则返回原有的`Symbol值`(先搜索后创建，登记在全局环境)
   - **Symbol.keyFor()**：返回已登记的`Symbol值`的描述(只能返回`Symbol.for()`的`key`)
   - **Object.getOwnPropertySymbols()**：返回对象中所有用作属性名的`Symbol值`的数组
+
 - 内置
 
-        *   **Symbol.hasInstance**：指向一个内部方法，当其他对象使用`instanceof运算符`判断是否为此对象的实例时会调用此方法
+  - **Symbol.hasInstance**：指向一个内部方法，当其他对象使用`instanceof运算符`判断是否为此对象的实例时会调用此方法
   - **Symbol.isConcatSpreadable**：指向一个布尔，定义对象用于`Array.prototype.concat()`时是否可展开
   - **Symbol.species**：指向一个构造函数，当实例对象使用自身构造函数时会调用指定的构造函数
   - **Symbol.match**：指向一个函数，当实例对象被`String.prototype.match()`调用时会重新定义`match()`的行为
@@ -323,7 +344,8 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
   - **Symbol.toPrimitive**：指向一个函数，当实例对象被转为原始类型的值时会返回此对象对应的原始类型值
   - **Symbol.toStringTag**：指向一个函数，当实例对象被`Object.prototype.toString()`调用时其返回值会出现在`toString()`返回的字符串之中表示对象的类型
   - **Symbol.unscopables**：指向一个对象，指定使用`with`时哪些属性会被`with环境`排除
-    > 数据类型
+
+> 数据类型
 
 - **Undefined**
 - **Null**
@@ -332,13 +354,15 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - **Boolean**
 - **Object**(包含`Array`、`Function`、`Date`、`RegExp`、`Error`)
 - **Symbol**
-    > 应用场景
+
+> 应用场景
 
 - 唯一化对象属性名：属性名属于Symbol类型，就都是独一无二的，可保证不会与其他属性名产生冲突
 - 消除魔术字符串：在代码中多次出现且与代码形成强耦合的某一个具体的字符串或数值
 - 遍历属性名：无法通过`for-in`、`for-of`、`Object.keys()`、`Object.getOwnPropertyNames()`、`JSON.stringify()`返回，只能通过`Object.getOwnPropertySymbols`返回
 - 启用模块的Singleton模式：调用一个类在任何时候返回同一个实例(`window`和`global`)，使用`Symbol.for()`来模拟全局的`Singleton模式`
-    > 重点难点
+
+> 重点难点
 
 - `Symbol()`生成一个原始类型的值不是对象，因此`Symbol()`前不能使用`new命令`
 - `Symbol()`参数表示对当前`Symbol值`的描述，相同参数的`Symbol()`返回值不相等
@@ -357,11 +381,11 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 入参：具有`Iterator接口`的数据结构
 - 属性
 
-        *   **constructor**：构造函数，返回Set
+  - **constructor**：构造函数，返回Set
   - **size**：返回实例成员总数
 - 方法
 
-        *   **add()**：添加值，返回实例
+  - **add()**：添加值，返回实例
   - **delete()**：删除值，返回布尔
   - **has()**：检查值，返回布尔
   - **clear()**：清除所有成员
@@ -369,21 +393,24 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
   - **values()**：返回以属性值为遍历器的对象
   - **entries()**：返回以属性值和属性值为遍历器的对象
   - **forEach()**：使用回调函数遍历每个成员
-    > 应用场景
+
+> 应用场景
 
 - 去重字符串：`[...new Set(str)].join("")`
 - 去重数组：`[...new Set(arr)]`或`Array.from(new Set(arr))`
 - 集合数组
 
-        *   声明：`const a = new Set(arr1)`、`const b = new Set(arr2)`
+  - 声明：`const a = new Set(arr1)`、`const b = new Set(arr2)`
   - 并集：`new Set([...a, ...b])`
   - 交集：`new Set([...a].filter(v =&gt; b.has(v)))`
   - 差集：`new Set([...a].filter(v =&gt; !b.has(v)))`
+
 - 映射集合
 
-        *   声明：`let set = new Set(arr)`
+  - 声明：`let set = new Set(arr)`
   - 映射：`set = new Set([...set].map(v =&gt; v * 2))`或`set = new Set(Array.from(set, v =&gt; v * 2))`
-    > 重点难点
+
+> 重点难点
 
 - 遍历顺序：插入顺序
 - 没有键只有值，可认为键和值两值相等
@@ -399,17 +426,19 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 入参：具有`Iterator接口`的数据结构
 - 属性
 
-        *   **constructor**：构造函数，返回WeakSet
+  - **constructor**：构造函数，返回WeakSet
 - 方法
 
-        *   **add()**：添加值，返回实例
+  - **add()**：添加值，返回实例
   - **delete()**：删除值，返回布尔
   - **has()**：检查值，返回布尔
-    > 应用场景
+
+> 应用场景
 
 - 储存DOM节点：DOM节点被移除时自动释放此成员，不用担心这些节点从文档移除时会引发内存泄漏
 - 临时存放一组对象或存放跟对象绑定的信息：只要这些对象在外部消失，它在`WeakSet结构`中的引用就会自动消
-    > 重点难点
+
+> 重点难点
 
 - 成员都是`弱引用`，垃圾回收机制不考虑`WeakSet结构`对此成员的引用
 - 成员不适合引用，它会随时消失，因此ES6规定`WeakSet结构不可遍历`
@@ -424,11 +453,11 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 入参：具有`Iterator接口`且每个成员都是一个双元素数组的数据结构
 - 属性
 
-        *   **constructor**：构造函数，返回Map
+  - **constructor**：构造函数，返回Map
   - **size**：返回实例成员总数
 - 方法
 
-        *   **get()**：返回键值对
+  - **get()**：返回键值对
   - **set()**：添加键值对，返回实例
   - **delete()**：删除键值对，返回布尔
   - **has()**：检查键值对，返回布尔
@@ -437,7 +466,8 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
   - **values()**：返回以值为遍历器的对象
   - **entries()**：返回以键和值为遍历器的对象
   - **forEach()**：使用回调函数遍历每个成员
-    > 重点难点
+
+> 重点难点
 
 - 遍历顺序：插入顺序
 - 对同一个键多次赋值，后面的值将覆盖前面的值
@@ -454,18 +484,20 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 入参：具有`Iterator接口`且每个成员都是一个双元素数组的数据结构
 - 属性
 
-        *   **constructor**：构造函数，返回WeakMap
+  - **constructor**：构造函数，返回WeakMap
 - 方法
 
-        *   **get()**：返回键值对
+  - **get()**：返回键值对
   - **set()**：添加键值对，返回实例
   - **delete()**：删除键值对，返回布尔
   - **has()**：检查键值对，返回布尔
-    > 应用场景
+
+> 应用场景
 
 - 储存DOM节点：DOM节点被移除时自动释放此成员键，不用担心这些节点从文档移除时会引发内存泄漏
 - 部署私有属性：内部属性是实例的弱引用，删除实例时它们也随之消失，不会造成内存泄漏
-    > 重点难点
+
+> 重点难点
 
 - 成员键都是`弱引用`，垃圾回收机制不考虑`WeakMap结构`对此成员键的引用
 - 成员键不适合引用，它会随时消失，因此ES6规定`WeakMap结构不可遍历`
@@ -480,14 +512,15 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 声明：`const proxy = new Proxy(target, handler)`
 - 入参
 
-        *   **target**：拦截的目标对象
+  - **target**：拦截的目标对象
   - **handler**：定制拦截行为
 - 方法
 
-        *   **Proxy.revocable()**：返回可取消的Proxy实例(返回`{ proxy, revoke }`，通过revoke()取消代理)
+  - **Proxy.revocable()**：返回可取消的Proxy实例(返回`{ proxy, revoke }`，通过revoke()取消代理)
+
 - 拦截方式
 
-        *   **get()**：拦截对象属性读取
+  - **get()**：拦截对象属性读取
   - **set()**：拦截对象属性设置，返回布尔
   - **has()**：拦截对象属性检查`k in obj`，返回布尔
   - **deleteProperty()**：拦截对象属性删除`delete obj[k]`，返回布尔
@@ -500,7 +533,8 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
   - **preventExtensions()**：拦截对象不可扩展设置`Object.preventExtensions()`，返回布尔
   - **apply()**：拦截Proxy实例作为函数调用`proxy()`、`proxy.apply()`、`proxy.call()`
   - **construct()**：拦截Proxy实例作为构造函数调用`new proxy()`
-    > 应用场景
+
+> 应用场景
 
 - `Proxy.revocable()`：不允许直接访问对象，必须通过代理访问，一旦访问结束就收回代理权不允许再次访问
 - `get()`：读取未知属性报错、读取数组负数索引的值、封装链式操作、生成DOM嵌套节点
@@ -509,7 +543,8 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - `deleteProperty()`：保护内部属性不被删除
 - `defineProperty()`：阻止属性被外部定义
 - `ownKeys()`：保护内部属性不被遍历
-    > 重点难点
+
+> 重点难点
 
 - 要使`Proxy`起作用，必须针对`实例`进行操作，而不是针对`目标对象`进行操作
 - 没有设置任何拦截时，等同于`直接通向原对象`
@@ -521,7 +556,7 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 定义：保持`Object方法`的默认行为
 - 方法
 
-        *   **get()**：返回对象属性
+  - **get()**：返回对象属性
   - **set()**：设置对象属性，返回布尔
   - **has()**：检查对象属性，返回布尔
   - **deleteProperty()**：删除对象属性，返回布尔
@@ -534,36 +569,42 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
   - **preventExtensions()**：设置对象不可扩展，返回布尔
   - **apply()**：绑定this后执行指定函数
   - **construct()**：调用构造函数创建实例
-    > 设计目的
+
+> 设计目的
 
 - 将`Object`属于`语言内部的方法`放到`Reflect`上
 - 将某些Object方法报错情况改成返回`false`
 - 让`Object操作`变成`函数行为`
 - `Proxy`与`Reflect`相辅相成
-    > 废弃方法
+
+> 废弃方法
 
 - `Object.defineProperty()` =&gt; `Reflect.defineProperty()`
 - `Object.getOwnPropertyDescriptor()` =&gt; `Reflect.getOwnPropertyDescriptor()`
-    > 重点难点
+
+> 重点难点
 
 - `Proxy方法`和`Reflect方法`一一对应
 - `Proxy`和`Reflect`联合使用，前者负责`拦截赋值操作`，后者负责`完成赋值操作`
-    > 数据绑定：观察者模式
-    <pre>`<span class="hljs-keyword">const</span> observerQueue = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>();
-    <span class="hljs-keyword">const</span> observe = <span class="hljs-function"><span class="hljs-params">fn</span> =&gt;</span> observerQueue.add(fn);
-    <span class="hljs-keyword">const</span> observable = <span class="hljs-function"><span class="hljs-params">obj</span> =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(obj, {
-        <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">tgt, key, val, receiver</span>)</span> {
-            <span class="hljs-keyword">const</span> result = <span class="hljs-built_in">Reflect</span>.set(tgt, key, val, receiver);
-            observerQueue.forEach(<span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> v());
-            <span class="hljs-keyword">return</span> result;
-        }
-    });
 
-    <span class="hljs-keyword">const</span> person = observable({ <span class="hljs-attr">age</span>: <span class="hljs-number">25</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Yajun"</span> });
-    <span class="hljs-keyword">const</span> print = <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${person.name}</span> is <span class="hljs-subst">${person.age}</span> years old`</span>);
-    observe(print);
-    person.name = <span class="hljs-string">"Joway"</span>;
-    <span class="copy-code-btn">复制代码</span>`</pre>
+> 数据绑定：观察者模式
+
+``` js
+const observerQueue = new Set();
+const observe = fn => observerQueue.add(fn);
+const observable = obj => new Proxy(obj, {
+    set(tgt, key, val, receiver) {
+        const result = Reflect.set(tgt, key, val, receiver);
+        observerQueue.forEach(v => v());
+        return result;
+    }
+});
+
+const person = observable({ age: 25, name: "Yajun" });
+const print = () => console.log(`${person.name} is ${person.age} years old`);
+observe(print);
+person.name = "Joway";
+```
 
 ### Class
 
@@ -571,55 +612,56 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 原理：类本身指向构造函数，所有方法定义在`prototype`上，可看作构造函数的另一种写法(`Class === Class.prototype.constructor`)
 - 方法和关键字
 
-        *   **constructor()**：构造函数，`new命令`生成实例时自动调用
+  - **constructor()**：构造函数，`new命令`生成实例时自动调用
   - **extends**：继承父类
   - **super**：新建父类的`this`
   - **static**：定义静态属性方法
   - **get**：取值函数，拦截属性的取值行为
   - **set**：存值函数，拦截属性的存值行为
+
 - 属性
 
-        *   **__proto__**：`构造函数的继承`(总是指向`父类`)
+  - **\_\_proto\_\_**：`构造函数的继承`(总是指向`父类`)
   - ****proto**.**proto****：子类的原型的原型，即父类的原型(总是指向父类的`__proto__`)
   - **prototype.**proto****：`属性方法的继承`(总是指向父类的`prototype`)
 - 静态属性：定义类完成后赋值属性，该属性`不会被实例继承`，只能通过类来调用
 - 静态方法：使用`static`定义方法，该方法`不会被实例继承`，只能通过类来调用(方法中的`this`指向类，而不是实例)
 - 继承
-
-        *   实质
-
-                *   ES5实质：先创造子类实例的`this`，再将父类的属性方法添加到`this`上(`Parent.apply(this)`)
-        *   ES6实质：先将父类实例的属性方法加到`this`上(调用`super()`)，再用子类构造函数修改`this`
+  - 实质
+    - ES5实质：先创造子类实例的`this`，再将父类的属性方法添加到`this`上(`Parent.apply(this)`)
+    - ES6实质：先将父类实例的属性方法加到`this`上(调用`super()`)，再用子类构造函数修改`this`
   - super
-
-                *   作为函数调用：只能在构造函数中调用`super()`，内部`this`指向继承的`当前子类`(`super()`调用后才可在构造函数中使用`this`)
+    - 为函数调用：只能在构造函数中调用`super()`，内部`this`指向继承的`当前子类`(`super()`调用后才可在构造函数中使用`this`)
     - 作为对象调用：在`普通方法`中指向`父类的原型对象`，在`静态方法`中指向`父类`
   - 显示定义：使用`constructor() { super(); }`定义继承父类，没有书写则`显示定义`
-  - 子类继承父类：子类使用父类的属性方法时，必须在构造函数中调用`super()`，否则得不到父类的`this`
 
-                *   父类静态属性方法可被子类继承
+  - 子类继承父类：子类使用父类的属性方法时，必须在构造函数中调用`super()`，否则得不到父类的`this`
+    - 父类静态属性方法可被子类继承
     - 子类继承父类后，可从`super`上调用父类静态属性方法
+
 - 实例：类相当于`实例的原型`，所有在类中定义的属性方法都会被实例继承
 
-        *   显式指定属性方法：使用`this`指定到自身上(使用`Class.hasOwnProperty()`可检测到)
+  - 显式指定属性方法：使用`this`指定到自身上(使用`Class.hasOwnProperty()`可检测到)
   - 隐式指定属性方法：直接声明定义在对象原型上(使用`Class.__proto__.hasOwnProperty()`可检测到)
+
 - 表达式
 
-        *   类表达式：`const Class = class {}`
+  - 类表达式：`const Class = class {}`
   - name属性：返回紧跟`class`后的类名
   - 属性表达式：`[prop]`
-  - Generator方法：`* mothod() {}`
-  - Async方法：`async mothod() {}`
+  - Generator方法：`* method() {}`
+  - Async方法：`async method() {}`
 - this指向：解构实例属性或方法时会报错
 
-        *   绑定this：`this.mothod = this.mothod.bind(this)`
-  - 箭头函数：`this.mothod = () =&gt; this.mothod()`
+  - 绑定this：`this.method = this.method.bind(this)`
+  - 箭头函数：`this.method = () =&gt; this.method()`
 - 属性定义位置
 
-        *   定义在构造函数中并使用`this`指向
+  - 定义在构造函数中并使用`this`指向
   - 定义在`类最顶层`
 - **new.target**：确定构造函数是如何调用
-    > 原生构造函数
+
+> 原生构造函数
 
 - **String()**
 - **Number()**
@@ -630,7 +672,8 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - **Date()**
 - **RegExp()**
 - **Error()**
-    > 重点难点
+
+> 重点难点
 
 - 在实例上调用方法，实质是调用原型上的方法
 - `Object.assign()`可方便地一次向类添加多个方法(`Object.assign(Class.prototype, { ... })`)
@@ -642,58 +685,65 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 子类继承父类后，`this`指向子类实例，通过`super`对某个属性赋值，赋值的属性会变成子类实例的属性
 - 使用`super`时，必须显式指定是作为函数还是作为对象使用
 - `extends`不仅可继承类还可继承原生的构造函数
+
     > 私有属性方法
-    <pre>`<span class="hljs-keyword">const</span> name = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">"name"</span>);
-    <span class="hljs-keyword">const</span> print = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">"print"</span>);
-    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
-        <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">age</span>)</span> {
-            <span class="hljs-built_in">this</span>[name] = <span class="hljs-string">"Bruce"</span>;
-            <span class="hljs-built_in">this</span>.age = age;
+
+    ``` js
+    const name = Symbol("name");
+    const print = Symbol("print");
+    class Person {
+        constructor(age) {
+            this[name] = "Bruce";
+            this.age = age;
         }
         [print]() {
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">this</span>[name]}</span> is <span class="hljs-subst">${<span class="hljs-built_in">this</span>.age}</span> years old`</span>);
+            console.log(`${this[name]} is ${this.age} years old`);
         }
     }
-    <span class="copy-code-btn">复制代码</span>`</pre>
+    ```
+
     > 继承混合类
-    <pre>`<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">CopyProperties</span>(<span class="hljs-params">target, source</span>) </span>{
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> key <span class="hljs-keyword">of</span> <span class="hljs-built_in">Reflect</span>.ownKeys(source)) {
-            <span class="hljs-keyword">if</span> (key !== <span class="hljs-string">"constructor"</span> &amp;&amp; key !== <span class="hljs-string">"prototype"</span> &amp;&amp; key !== <span class="hljs-string">"name"</span>) {
-                <span class="hljs-keyword">const</span> desc = <span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor(source, key);
-                <span class="hljs-built_in">Object</span>.defineProperty(target, key, desc);
+
+    ``` js
+    function CopyProperties(target, source) {
+        for (const key of Reflect.ownKeys(source)) {
+            if (key !== "constructor" && key !== "prototype" && key !== "name") {
+                const desc = Object.getOwnPropertyDescriptor(source, key);
+                Object.defineProperty(target, key, desc);
             }
         }
     }
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MixClass</span>(<span class="hljs-params">...mixins</span>) </span>{
-        <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mix</span> </span>{
-            <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
-                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> mixin <span class="hljs-keyword">of</span> mixins) {
-                    CopyProperties(<span class="hljs-built_in">this</span>, <span class="hljs-keyword">new</span> mixin());
+    function MixClass(...mixins) {
+        class Mix {
+            constructor() {
+                for (const mixin of mixins) {
+                    CopyProperties(this, new mixin());
                 }
             }
         }
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> mixin <span class="hljs-keyword">of</span> mixins) {
+        for (const mixin of mixins) {
             CopyProperties(Mix, mixin);
             CopyProperties(Mix.prototype, mixin.prototype);
         }
-        <span class="hljs-keyword">return</span> Mix;
+        return Mix;
     }
-    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">MixClass</span>(<span class="hljs-title">Person</span>, <span class="hljs-title">Kid</span>) </span>{}
-    <span class="copy-code-btn">复制代码</span>`</pre>
+    class Student extends MixClass(Person, Kid) {}
+    ```
 
 ### Module
 
 - 命令
 
-        *   **export**：规定模块对外接口
+  - **export**：规定模块对外接口
 
-                *   **默认导出**：`export default Person`(导入时可指定模块任意名称，无需知晓内部真实名称)
-        *   **单独导出**：`export const name = "Bruce"`
-        *   **按需导出**：`export { age, name, sex }`(推荐)
-        *   **改名导出**：`export { name as newName }`
+    - **默认导出**：`export default Person`(导入时可指定模块任意名称，无需知晓内部真实名称)
+
+  - **单独导出**：`export const name = "Bruce"`
+  - **按需导出**：`export { age, name, sex }`(推荐)
+  - **改名导出**：`export { name as newName }`
   - **import**：导入模块内部功能
 
-                *   **默认导入**：`import Person from "person"`
+    - **默认导入**：`import Person from "person"`
     - **整体导入**：`import * as Person from "person"`
     - **按需导入**：`import { age, name, sex } from "person"`
     - **改名导入**：`import { name as newName } from "person"`
@@ -701,7 +751,7 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
     - **复合导入**：`import Person, { name } from "person"`
   - **复合模式**：`export命令`和`import命令`结合在一起写成一行，变量实质没有被导入当前模块，相当于对外转发接口，导致当前模块无法直接使用其导入变量
 
-                *   **默认导入导出**：`export { default } from "person"`
+    - **默认导入导出**：`export { default } from "person"`
     - **整体导入导出**：`export * from "person"`
     - **按需导入导出**：`export { age, name, sex } from "person"`
     - **改名导入导出**：`export { name as newName } from "person"`
@@ -710,77 +760,82 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 继承：`默认导出`和`改名导出`结合使用可使模块具备继承性
 - 设计思想：尽量地静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量
 - 严格模式：ES6模块自动采用严格模式(不管模块头部是否添加`use strict`)
-    > 模块方案
+
+> 模块方案
 
 - **CommonJS**：用于服务器(动态化依赖)
 - **AMD**：用于浏览器(动态化依赖)
 - **CMD**：用于浏览器(动态化依赖)
 - **UMD**：用于浏览器和服务器(动态化依赖)
 - **ESM**：用于浏览器和服务器(静态化依赖)
+
     > 加载方式
 
 - **运行时加载**
 
-        *   定义：整体加载模块生成一个对象，再从对象上获取需要的属性和方法进行加载(全部加载)
+  - 定义：整体加载模块生成一个对象，再从对象上获取需要的属性和方法进行加载(全部加载)
   - 影响：只有运行时才能得到这个对象，导致无法在编译时做静态优化
 - **编译时加载**
 
-        *   定义：直接从模块中获取需要的属性和方法进行加载(按需加载)
+  - 定义：直接从模块中获取需要的属性和方法进行加载(按需加载)
   - 影响：在编译时就完成模块加载，效率比其他方案高，但无法引用模块本身(**本身不是对象**)，可拓展JS高级语法(**宏和类型校验**)
     > 加载实现
 
 - **传统加载**：通过`&lt;script&gt;`进行同步或异步加载脚本
 
-        *   同步加载：`&lt;script src=""&gt;&lt;/script&gt;`
+  - 同步加载：`&lt;script src=""&gt;&lt;/script&gt;`
   - Defer异步加载：`&lt;script src="" defer&gt;&lt;/script&gt;`(顺序加载，渲染完再执行)
   - Async异步加载：`&lt;script src="" async&gt;&lt;/script&gt;`(乱序加载，下载完就执行)
 - **模块加载**：`&lt;script type="module" src=""&gt;&lt;/script&gt;`(默认是Defer异步加载)
-    > CommonJS和ESM的区别
+
+> CommonJS和ESM的区别
 
 - `CommonJS`输出`值的拷贝`，`ESM`输出`值的引用`
 
-        *   `CommonJS`一旦输出一个值，模块内部的变化就影响不到这个值
+  - `CommonJS`一旦输出一个值，模块内部的变化就影响不到这个值
   - `ESM`是动态引用且不会缓存值，模块里的变量绑定其所在的模块，等到脚本真正执行时，再根据这个只读引用到被加载的那个模块里去取值
 - `CommonJS`是运行时加载，`ESM`是编译时加载
 
-        *   `CommonJS`加载模块是对象(即`module.exports`)，该对象只有在脚本运行完才会生成
+  - `CommonJS`加载模块是对象(即`module.exports`)，该对象只有在脚本运行完才会生成
   - `ESM`加载模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成
     > Node加载
 
 - 背景：`CommonJS`和`ESM`互不兼容，目前解决方案是将两者分开，采用各自的加载方案
 - 区分：要求`ESM`采用`.mjs`后缀文件名
 
-        *   `require()`不能加载`.mjs文件`，只有`import命令`才可加载`.mjs文件`
+  - `require()`不能加载`.mjs文件`，只有`import命令`才可加载`.mjs文件`
   - `.mjs文件`里不能使用`require()`，必须使用`import命令`加载文件
 - 驱动：`node --experimental-modules file.mjs`
 - 限制：Node的`import命令`目前只支持加载本地模块(`file:协议`)，不支持加载远程模块
 - 加载优先级
 
-        *   脚本文件省略后缀名：依次尝试加载四个后缀名文件(`.mjs`、`.js`、`.json`、`node`)
+  - 脚本文件省略后缀名：依次尝试加载四个后缀名文件(`.mjs`、`.js`、`.json`、`node`)
   - 以上不存在：尝试加载`package.json`的`main字段`指定的脚本
   - 以上不存在：依次尝试加载名称为`index`四个后缀名文件(`.mjs`、`.js`、`.json`、`node`)
   - 以上不存在：报错
 - 不存在的内部变量：`arguments`、`exports`、`module`、`require`、`this`、`__dirname`、`__filename`
 - CommonJS加载ESM
 
-        *   不能使用`require()`，只能使用`import()`
+- 不能使用`require()`，只能使用`import()`
 - ESM加载CommonJS
 
-        *   自动将`module.exports`转化成`export default`
+  - 自动将`module.exports`转化成`export default`
   - `CommonJS`输出缓存机制在`ESM`加载方式下依然有效
   - 采用`import命令`加载`CommonJS模块`时，不允许采用`按需导入`，应使用`默认导入`或`整体导入`
-    > 循环加载
+  
+> 循环加载
 
 - 定义：`脚本A`的执行依赖`脚本B`，而`脚本A`的执行又依赖`脚本B`
 - 加载原理
 
-        *   CommonJS：`require()`首次加载脚本就会执行整个脚本，在内存里生成一个对象缓存下来，二次加载脚本时直接从缓存中获取
+  - CommonJS：`require()`首次加载脚本就会执行整个脚本，在内存里生成一个对象缓存下来，二次加载脚本时直接从缓存中获取
   - ESM：`import命令`加载变量不会被缓存，而是成为一个指向被加载模块的引用
 - 循环加载
 
-        *   CommonJS：只输出已经执行的部分，还未执行的部分不会输出
+  - CommonJS：只输出已经执行的部分，还未执行的部分不会输出
   - ESM：需开发者自己保证真正取值时能够取到值(可把变量写成函数形式，函数具有提升作用)
-    > 重点难点
+
+> 重点难点
 
 - ES6模块中，顶层`this`指向`undefined`，不应该在顶层代码使用`this`
 - 一个模块就是一个独立的文件，该文件内部的所有变量，外部无法获取
@@ -798,29 +853,41 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - `import()`加载模块成功后，此模块会作为一个对象，当作`then()`的参数，可使用`对象解构赋值`来获取输出接口
 - 同时动态加载多个模块时，可使用`Promise.all()`和`import()`相结合来实现
 - `import()`和结合`async/await`来书写同步操作的代码
-    > 单例模式：跨模块常量
-    <pre>`<span class="hljs-comment">// 常量跨文件共享</span>
-    <span class="hljs-comment">// person.js</span>
-    <span class="hljs-keyword">const</span> NAME = <span class="hljs-string">"Bruce"</span>;
-    <span class="hljs-keyword">const</span> AGE = <span class="hljs-number">25</span>;
-    <span class="hljs-keyword">const</span> SEX = <span class="hljs-string">"male"</span>;
-    <span class="hljs-keyword">export</span> { AGE, NAME, SEX };
-    <span class="copy-code-btn">复制代码</span>`</pre>
-    <pre>`<span class="hljs-comment">// file1.js</span>
-    <span class="hljs-keyword">import</span> { AGE } <span class="hljs-keyword">from</span> <span class="hljs-string">"person"</span>;
-    <span class="hljs-built_in">console</span>.log(AGE);
-    <span class="copy-code-btn">复制代码</span>`</pre>
-    <pre>`<span class="hljs-comment">// file2.js</span>
-    <span class="hljs-keyword">import</span> { AGE, NAME, SEX } <span class="hljs-keyword">from</span> <span class="hljs-string">"person"</span>;
-    <span class="hljs-built_in">console</span>.log(AGE, NAME, SEX);
-    <span class="copy-code-btn">复制代码</span>`</pre>
-    > 默认导入互换整体导入
-    <pre>`<span class="hljs-keyword">import</span> Person <span class="hljs-keyword">from</span> <span class="hljs-string">"person"</span>;
-    <span class="hljs-built_in">console</span>.log(Person.AGE);
-    <span class="copy-code-btn">复制代码</span>`</pre>
-    <pre>`<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> Person <span class="hljs-keyword">from</span> <span class="hljs-string">"person"</span>;
-    <span class="hljs-built_in">console</span>.log(Person.default.AGE);
-    <span class="copy-code-btn">复制代码</span>`</pre>
+
+> 单例模式：跨模块常量
+  
+  ``` js
+  // 常量跨文件共享
+  // person.js
+  const NAME = "Bruce";
+  const AGE = 25;
+  const SEX = "male";
+  export { AGE, NAME, SEX };
+  ```
+
+  ``` js
+  // file1.js
+  import { AGE } from "person";
+  console.log(AGE);
+  ```
+
+  ``` js
+  // file2.js
+  import { AGE, NAME, SEX } from "person";
+  console.log(AGE, NAME, SEX);
+  ```
+
+> 默认导入互换整体导入
+
+  ``` js
+  import Person from "person";
+  console.log(Person.AGE);
+  ```
+
+  ``` js
+  import * as Person from "person";
+  console.log(Person.default.AGE);
+  ```
 
 ### Iterator
 
@@ -828,21 +895,22 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 原理：创建一个指针指向首个成员，按照次序使用`next()`指向下一个成员，直接到结束位置(数据结构只要部署`Iterator接口`就可完成遍历操作)
 - 作用
 
-        *   为各种数据结构提供一个统一的简便的访问接口
+  - 为各种数据结构提供一个统一的简便的访问接口
   - 使得数据结构成员能够按某种次序排列
   - ES6创造了新的遍历命令`for-of`，`Iterator接口`主要供`for-of`消费
 - 形式：`for-of`(自动去寻找Iterator接口)
 - 数据结构
 
-        *   集合：`Array`、`Object`、`Set`、`Map`
+  - 集合：`Array`、`Object`、`Set`、`Map`
   - 原生具备接口的数据结构：`String`、`Array`、`Set`、`Map`、`TypedArray`、`Arguments`、`NodeList`
 - 部署：默认部署在`Symbol.iterator`(具备此属性被认为`可遍历的iterable`)
 - 遍历器对象
 
-        *   **next()**：下一步操作，返回`{ done, value }`(必须部署)
+  - **next()**：下一步操作，返回`{ done, value }`(必须部署)
   - **return()**：`for-of`提前退出调用，返回`{ done: true }`
   - **throw()**：不使用，配合`Generator函数`使用
-    > ForOf循环
+
+> ForOf循环
 
 - 定义：调用`Iterator接口`产生遍历器对象(`for-of`内部调用数据结构的`Symbol.iterator()`)
 - 遍历字符串：`for-in`获取`索引`，`for-of`获取`值`(可识别32位UTF-16字符)
@@ -853,15 +921,16 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 遍历类数组：`包含length的对象`、`Arguments对象`、`NodeList对象`(无`Iterator接口的类数组`可用`Array.from()`转换)
 - 计算生成数据结构：`Array`、`Set`、`Map`
 
-        *   **keys()**：返回遍历器对象，遍历所有的键
+  - **keys()**：返回遍历器对象，遍历所有的键
   - **values()**：返回遍历器对象，遍历所有的值
   - **entries()**：返回遍历器对象，遍历所有的键值对
 - 与`for-in`区别
 
-        *   有着同`for-in`一样的简洁语法，但没有`for-in`那些缺点、
+  - 着同`for-in`一样的简洁语法，但没有`for-in`那些缺点、
   - 不同于`forEach()`，它可与`break`、`continue`和`return`配合使用
   - 提供遍历所有数据结构的统一操作接口
-    > 应用场景
+
+> 应用场景
 
 - 改写具有`Iterator接口`的数据结构的`Symbol.iterator`
 - 解构赋值：对Set进行结构
@@ -874,46 +943,47 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 定义：包含异步操作结果的对象
 - 状态
 
-        *   **进行中**：`pending`
+  - **进行中**：`pending`
   - **已成功**：`resolved`
   - **已失败**：`rejected`
 - 特点
 
-        *   对象的状态不受外界影响
+  - 对象的状态不受外界影响
   - 一旦状态改变就不会再变，任何时候都可得到这个结果
 - 声明：`new Promise((resolve, reject) =&gt; {})`
 - 出参
 
-        *   **resolve**：将状态从`未完成`变为`成功`，在异步操作成功时调用，并将异步操作的结果作为参数传递出去
+  - **resolve**：将状态从`未完成`变为`成功`，在异步操作成功时调用，并将异步操作的结果作为参数传递出去
   - **reject**：将状态从`未完成`变为`失败`，在异步操作失败时调用，并将异步操作的错误作为参数传递出去
 - 方法
 
-        *   **then()**：分别指定`resolved状态`和`rejected状态`的回调函数
-
-                *   **第一参数**：状态变为`resolved`时调用
-        *   **第二参数**：状态变为`rejected`时调用(可选)
+  - **then()**：分别指定`resolved状态`和`rejected状态`的回调函数
+    - **第一参数**：状态变为`resolved`时调用
+    - **第二参数**：状态变为`rejected`时调用(可选)
   - **catch()**：指定发生错误时的回调函数
   - **Promise.all()**：将多个实例包装成一个新实例，返回全部实例状态变更后的结果数组(齐变更再返回)
 
-                *   入参：具有`Iterator接口`的数据结构
+    - 入参：具有`Iterator接口`的数据结构
     - 成功：只有全部实例状态变成`fulfilled`，最终状态才会变成`fulfilled`
     - 失败：其中一个实例状态变成`rejected`，最终状态就会变成`rejected`
   - **Promise.race()**：将多个实例包装成一个新实例，返回全部实例状态优先变更后的结果(先变更先返回)
 
-                *   入参：具有`Iterator接口`的数据结构
+    - 入参：具有`Iterator接口`的数据结构
     - 成功失败：哪个实例率先改变状态就返回哪个实例的状态
   - **Promise.resolve()**：将对象转为Promise对象(等价于`new Promise(resolve =&gt; resolve())`)
 
-                *   **Promise实例**：原封不动地返回入参
+    - **Promise实例**：原封不动地返回入参
     - **Thenable对象**：将此对象转为Promise对象并返回(Thenable为包含`then()`的对象，执行`then()`相当于执行此对象的`then()`)
     - **不具有then()的对象**：将此对象转为Promise对象并返回，状态为`resolved`
     - **不带参数**：返回Promise对象，状态为`resolved`
   - **Promise.reject()**：将对象转为状态为`rejected`的Promise对象(等价于`new Promise((resolve, reject) =&gt; reject())`)
-    > 应用场景
+
+> 应用场景
 
 - 加载图片
 - AJAX转Promise对象
-    > 重点难点
+
+> 重点难点
 
 - 只有异步操作的结果可决定当前状态是哪一种，其他操作都无法改变这个状态
 - 状态改变只有两种可能：从`pending`变为`resolved`、从`pending`变为`rejected`
@@ -940,12 +1010,12 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 声明：`function* Func() {}`
 - 方法
 
-        *   **next()**：使指针移向下一个状态，返回`{ done, value }`(入参会被当作上一个`yield命令表达式`的返回值)
+  - **next()**：使指针移向下一个状态，返回`{ done, value }`(入参会被当作上一个`yield命令表达式`的返回值)
   - **return()**：返回指定值且终结遍历`Generator函数`，返回`{ done: true, value: 入参 }`
-  - **throw()**：在`Generator函数`体外抛出错误，在`Generator函数`体内捕获错误，返回自定义的`new Errow()`
+  - **throw()**：在`Generator函数`体外抛出错误，在`Generator函数`体内捕获错误，返回自定义的`new Error()`
 - yield命令：声明内部状态的值(`return`声明结束返回的值)
 
-        *   遇到`yield命令`就暂停执行后面的操作，并将其后表达式的值作为返回对象的`value`
+  - 遇到`yield命令`就暂停执行后面的操作，并将其后表达式的值作为返回对象的`value`
   - 下次调用`next()`时，再继续往下执行直到遇到下一个`yield命令`
   - 没有再遇到`yield命令`就一直运行到`Generator函数`结束，直到遇到`return语句`为止并将其后表达式的值作为返回对象的`value`
   - `Generator函数`没有`return语句`则返回对象的`value`为`undefined`
@@ -953,24 +1023,27 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - 遍历：通过`for-of`自动调用`next()`
 - 作为对象属性
 
-        *   全写：`const obj = { method: function*() {} }`
+  - 全写：`const obj = { method: function*() {} }`
   - 简写：`const obj = { * method() {} }`
 - 上下文：执行产生的`上下文环境`一旦遇到`yield命令`就会暂时退出堆栈(但并不消失)，所有变量和对象会冻结在`当前状态`，等到对它执行`next()`时，这个`上下文环境`又会重新加入调用栈，冻结的变量和对象恢复执行
-    > 方法异同
+
+> 方法异同
 
 - 相同点：`next()`、`throw()`、`return()`本质上是同一件事，作用都是让函数恢复执行且使用不同的语句替换`yield命令`
 - 不同点
 
-        *   **next()**：将`yield命令`替换成一个`值`
+  - **next()**：将`yield命令`替换成一个`值`
   - **return()**：将`yield命令`替换成一个`return语句`
   - **throw()**：将`yield命令`替换成一个`throw语句`
-    > 应用场景
+
+> 应用场景
 
 - 异步操作同步化表达
 - 控制流管理
 - 为对象部署Iterator接口：把`Generator函数`赋值给对象的`Symbol.iterator`，从而使该对象具有`Iterator接口`
 - 作为具有Iterator接口的数据结构
-    > 重点难点
+
+> 重点难点
 
 - 每次调用`next()`，指针就从`函数头部`或`上次停下的位置`开始执行，直到遇到下一个`yield命令`或`return语句`为止
 - 函数内部可不用`yield命令`，但会变成单纯的`暂缓执行函数`(还是需要`next()`触发)
@@ -989,20 +1062,24 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
 - `throw()`抛错要被内部捕获，前提是必须`至少执行过一次next()`
 - `throw()`被捕获以后，会附带执行下一条`yield命令`
 - 函数还未开始执行，这时`throw()`抛错只可能抛出在函数外部
-    > 首次next()可传值
-    <pre>`<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Wrapper</span>(<span class="hljs-params">func</span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args</span>) </span>{
-            <span class="hljs-keyword">const</span> generator = func(...args);
-            generator.next();
-            <span class="hljs-keyword">return</span> generator;
-        }
+
+> 首次`next()`可传值
+
+  ``` js
+  function Wrapper(func) {
+    return function(...args) {
+      const generator = func(...args);
+      generator.next();
+      return generator;
     }
-    <span class="hljs-keyword">const</span> print = Wrapper(<span class="hljs-function"><span class="hljs-keyword">function</span>*(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`First Input: <span class="hljs-subst">${<span class="hljs-keyword">yield</span>}</span>`</span>);
-        <span class="hljs-keyword">return</span> <span class="hljs-string">"done"</span>;
-    });
-    print().next(<span class="hljs-string">"hello"</span>);
-    <span class="copy-code-btn">复制代码</span>
+  }
+  const print = Wrapper(function*() {
+      console.log(`First Input: ${yield}`);
+      return "done";
+  });
+  print().next("hello");
+
+  ```
 
 ## ES2016
 
@@ -1126,7 +1203,7 @@ ES6既是一个历史名词也是一个泛指，含义是5.1版本以后的JavaS
   - 形式：`str.exec().groups.GroupName`
   - 解构赋值替换
 
-            *   声明：`const time = "2017-09-11"`、`const regexp = /(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})/u`
+    - 声明：`const time = "2017-09-11"`、`const regexp = /(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})/u`
     - 匹配：`time.replace(regexp, "$&lt;day&gt;/$&lt;month&gt;/$&lt;year&gt;")`
 
 ### Promise
