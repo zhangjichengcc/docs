@@ -61,6 +61,10 @@ Serverless 的核心思想是让作为计算资源的服务器不再成为用户
 
 ## 参考文献
 
+[你学BFF和Serverless了吗](https://juejin.cn/post/6844904185427673095?from=search-suggest)
+
+[serverless](https://github.com/phodal/serverless?tab=readme-ov-file)
+
 [Serverless（无服务）基础知识](https://juejin.cn/post/6844903904224903181?searchId=20240124144639C9ACD96EBEBAB309773D)
 
 [万字长文之 Serverless 实战指南](https://juejin.cn/post/6844904008700821511?searchId=20240124144639C9ACD96EBEBAB309773D)
