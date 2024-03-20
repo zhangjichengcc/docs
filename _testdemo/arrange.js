@@ -18,9 +18,16 @@ arrange('William')
 function arrange(name) {
   const stack = [];
 
+  // 加入首选方法，优先执行
   stack.push(() => console.log(`${name} is notified`));
 
+  /**
+   * 延迟方法
+   * @param {number} 延迟的秒数
+   * @returns
+   */
   function wait(s) {
+    // 向方法栈中插入一个promise，用于延迟执行
     stack.push(
       () =>
         new Promise((resolve) => {
@@ -31,12 +38,23 @@ function arrange(name) {
     return this;
   }
 
+  /**
+   * 插入任务
+   * @param {string} name
+   * @returns
+   */
   function doSomething(name) {
     stack.push(() => console.log(`Start to ${name}`));
     return this;
   }
 
+  /**
+   * 优先延迟执行
+   * @param {number} s
+   * @returns
+   */
   function waitFirst(s) {
+    // 同 wait 但是注意其优先级最高，通过unshift方法将其压入栈底
     stack.unshift(() => {
       console.log(`wait ${s}s`);
       return new Promise((resolve) => setTimeout(resolve, s * 1e3));
@@ -44,7 +62,11 @@ function arrange(name) {
     return this;
   }
 
+  /**
+   * 执行方法
+   */
   async function execute() {
+    // 从栈底取出方法依次执行，至栈为空，注意由于通过promise处理延迟，这里需要异步执行
     while (stack.length) {
       const fn = stack.shift();
       await fn();
