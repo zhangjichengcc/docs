@@ -23,6 +23,7 @@
       - [JavaScript 手写bind、call、apply](/post/knowledge/JavaScript/JavaScript手写方法/JavaScript手写bind_call_apply.md)
       - [JavaScript 手写new](/post/knowledge/JavaScript/JavaScript手写方法/JavaScript手写new.md)
       - [大数相加](/post/knowledge/JavaScript/JavaScript手写方法/大数相加.md)
+      - [手写Promise](/post/knowledge/JavaScript/JavaScript手写方法/JavaScript手写Promise.md)
     - JavaScript 技巧
       - [Proxy](/post/knowledge/JavaScript/JavaScript属性/Proxy.md)
       - [Array](/post/knowledge/JavaScript/JavaScript属性/Array.md)

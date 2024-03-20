@@ -52,7 +52,9 @@ type Handler = {
  * Promise 类
  */
 class MyPromise {
+  /** 当前状态 */
   #state: PromiseState = PromiseState.PENDING;
+  /** 暂存方法 */
   #handlers: Handler[] = [];
   /** 成功返回值 */
   #value: unknown = undefined;
@@ -61,51 +63,69 @@ class MyPromise {
 
   constructor(executor: Executor) {
     // ? 为什么不写在原型链上？ 因为this指向的问题，resolve和reject 是在外部调用，而方法需要this来获取class内部属性，若写在原型上，this会指向调用者，而无法获取内部属性
-    const resolve: Resolve = (data) => {
+    const resolve: Resolve = (value) => {
       this.#state = PromiseState.FULFILLED;
-      this.#value = data;
+      this.#value = value;
+      // ？这里调用run，【是针对异步情况】当then在状态改变前执行
       this.#run();
     };
-    const reject: Reject = (data) => {
+    const reject: Reject = (reason) => {
       this.#state = PromiseState.REJECTED;
-      this.#reason = data;
+      this.#reason = reason;
       this.#run();
     };
-
-    executor(resolve, reject);
+    try {
+      // 立即执行，将 resolve 和 reject 函数传给使用者
+      executor(resolve, reject);
+    } catch (error) {
+      // 发生异常时执行失败逻辑
+      reject(error);
+    }
   }
 
+  /**
+   * 工具方法，从暂存栈中取出方法执行
+   * @returns
+   */
   #run() {
+    // 当状态为pending时，不执行
     if (this.#state === PromiseState.PENDING) return;
-
+    // 取出暂存方法执行
     while (this.#handlers.length) {
       const handler = this.#handlers.shift();
       const { resolve, reject, onFulfilled, onRejected } = handler!;
+      // 成功或失败的回调函数
       const callback = {
         [PromiseState.FULFILLED]: onFulfilled,
         [PromiseState.REJECTED]: onRejected,
       }[this.#state];
+      // 返回promise的入参函数
       const settled = {
         [PromiseState.FULFILLED]: resolve,
         [PromiseState.REJECTED]: reject,
       }[this.#state];
+      // 成功或失败的原因
       const data = {
         [PromiseState.FULFILLED]: this.#value,
         [PromiseState.REJECTED]: this.#reason,
       }[this.#state];
+      // 当回调函数不是基本数据类型
       if (callback instanceof Object) {
         try {
           const res = callback(data);
+          // 若回调函数返回值为 promise，则返回该promise
           if (res instanceof MyPromise || res instanceof Promise) {
             res.then(resolve, reject);
+            // 否则将结果给promise
           } else {
             settled(res);
           }
         } catch (err) {
           reject(err);
         }
+        // 否则直接透传
       } else {
-        settled(callback);
+        settled(data);
       }
     }
   }
@@ -122,15 +142,15 @@ class MyPromise {
       // 将成功和失败的触发&回调函数压入任务栈，待状态改变后触发
       this.#handlers.push({
         // 值穿透，当回调函数不为方法时，直接返回结果
-        onFulfilled: typeof onfulfilled === 'function' ? onfulfilled : (v) => v,
-        onRejected: typeof onrejected === 'function' ? onrejected : (v) => v,
-        // : (e) => {
-        //     throw e;
-        //   },
+        // onFulfilled: typeof onfulfilled === 'function' ? onfulfilled : (v) => v,
+        // onRejected: typeof onrejected === 'function' ? onrejected : (v) => v,
+        onFulfilled: onfulfilled,
+        onRejected: onrejected,
         resolve,
         reject,
       });
 
+      // ？这里调用run，【是针对同步情况】执行then的时候，状态已经改变
       this.#run();
     });
   }
@@ -158,7 +178,6 @@ class MyPromise {
    * @returns
    */
   static asyncAll(promises: MyPromise[]) {
-    console.time('promise.asyncAll');
     promises = Array.from(promises);
     // ? 这里当所有promise均完成后，再执行resolve或reject，可以使用async await进行异步处理，但如此会导致执行时间变长，因为任务是一个接着一个执行的
     return new MyPromise(async (resolve, reject) => {
@@ -187,7 +206,6 @@ class MyPromise {
    * @returns
    */
   static all(promises: MyPromise[]) {
-    console.time('promise.all');
     promises = Array.from(promises);
     // ? 同步方式执行，通过记录promise执行数量来判断是否所有promise均完成
     return new MyPromise((resolve, reject) => {
@@ -203,7 +221,6 @@ class MyPromise {
             // 若已完成数等于promise数，则所有promise状态均改变
             if (++completedCount === promises.length) {
               resolve(result);
-              console.timeEnd('promise.all');
             }
           },
           (err) => {
@@ -301,29 +318,37 @@ function sleep(t: number): Promise<void> {
   });
 }
 
-var p1 = () =>
-  new MyPromise((resolve, reject) => {
-    sleep(4000).then((res) => {
-      reject('delay 4s p1');
-    });
+new MyPromise((resolve) => {
+  resolve(1);
+})
+  .then()
+  .then((res) => {
+    debugger;
   });
 
-var p2 = () =>
-  new MyPromise((resolve) => {
-    sleep(4000).then((res) => {
-      resolve('delay 4s p2');
-    });
-  });
+// var p1 = () =>
+//   new MyPromise((resolve, reject) => {
+//     sleep(4000).then((res) => {
+//       reject('delay 4s p1');
+//     });
+//   });
+
+// var p2 = () =>
+//   new MyPromise((resolve) => {
+//     sleep(4000).then((res) => {
+//       resolve('delay 4s p2');
+//     });
+//   });
 
 // MyPromise.allSelected([p1(), p2()]).then((res) => {
 //   debugger;
 // });
 
-p1()
-  .then()
-  .catch((res) => {
-    debugger;
-  });
+// p1()
+//   .then()
+//   .catch((res) => {
+//     debugger;
+//   });
 
 // MyPromise.all([p1(), p2()])
 //   .then(
