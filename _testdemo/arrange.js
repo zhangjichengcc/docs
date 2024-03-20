@@ -1,8 +1,5 @@
-# 链式调用及延迟执行
+/**
 
-实现下面方法
-
-``` js
 function arrange(name) {}
 
 arrange('William')
@@ -15,29 +12,22 @@ arrange('William')
 // > William is notified
 // 等待 5s
 // > Start to commit
-```
 
-思路：
+ */
 
-- 利用栈的特性，存储方法进行调用；
-- 通过返回 `this` 实现链式调用；
-
-实现：
-
-``` js
 function arrange(name) {
-
   const stack = [];
 
-  // 首先将默认方法如栈，优先执行
-  stack.push(() => console.log(`${name} is notified`))
+  stack.push(() => console.log(`${name} is notified`));
 
-  
   function wait(s) {
-    stack.push(() => new Promise(resolve => {
-      console.log(`wait ${s}s`);
-      return setTimeout(resolve, s * 1e3)
-    }));
+    stack.push(
+      () =>
+        new Promise((resolve) => {
+          console.log(`wait ${s}s`);
+          return setTimeout(resolve, s * 1e3);
+        })
+    );
     return this;
   }
 
@@ -49,7 +39,7 @@ function arrange(name) {
   function waitFirst(s) {
     stack.unshift(() => {
       console.log(`wait ${s}s`);
-      return new Promise(resolve => setTimeout(resolve, s * 1e3));
+      return new Promise((resolve) => setTimeout(resolve, s * 1e3));
     });
     return this;
   }
@@ -63,9 +53,10 @@ function arrange(name) {
 
   return {
     wait,
-    doSomething,
+    do: doSomething,
     waitFirst,
     execute,
-  }
+  };
 }
-```
+
+arrange('William').wait(5).do('commit').waitFirst(3).execute();
