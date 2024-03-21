@@ -4,5 +4,12 @@
   "short_name": "docs",
   "start_url": "https://docs.zhangjc.cn/#/",
   "lang": "zh-CN",
-  "display": "standalone"
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/assets/cover.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
 }
