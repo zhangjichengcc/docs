@@ -60,6 +60,7 @@
   - 服务
     - [浏览器跨域及解决方案](/post/knowledge/Service/前端跨域及解决方案.md)
     - [BFF&Serverless](/post/knowledge/Service/BFF_Serverless.md)
+    - [微前端](/post/knowledge/Service/微前端.md)
   <!-- Animation -->
   - 动画
     - [Flip 动画](/post/knowledge/Animation/Flip动画.md)
