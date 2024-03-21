@@ -2,7 +2,7 @@
  * @Author: zhangjicheng
  * @Date: 2023-01-12 16:34:32
  * @LastEditors: zhangjicheng
- * @LastEditTime: 2024-01-17 15:28:41
+ * @LastEditTime: 2024-03-21 15:08:19
  * @FilePath: /docs/sw.js
  */
 
@@ -39,6 +39,7 @@ const getFixedUrl = (req) => {
 /**
  *  @Lifecycle Activate
  *  New one activated when old isnt being used.
+ *  当旧的没有被使用时，新的激活。
  *
  *  waitUntil(): activating ====> activated
  */
@@ -49,6 +50,7 @@ self.addEventListener('activate', (event) => {
 /**
  *  @Functional Fetch
  *  All network requests are being intercepted here.
+ *  所有网络请求都在这里被拦截。
  *
  *  void respondWith(Promise<Response> r)
  */
@@ -76,6 +78,7 @@ self.addEventListener('fetch', (event) => {
     );
 
     // Update the cache with the version we fetched (only for ok status)
+    // 使用我们获取的版本更新缓存(仅针对ok状态)
     event.waitUntil(
       Promise.all([fetchedCopy, caches.open(RUNTIME)])
         .then(
