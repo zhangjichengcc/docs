@@ -1,0 +1,8 @@
+{
+  "name": "zhangjicheng`s docs",
+  "description": "Zhangjicheng`s personal learning document",
+  "short_name": "docs",
+  "start_url": "https://docs.zhangjc.cn/#/",
+  "lang": "zh-CN",
+  "display": "standalone"
+}
