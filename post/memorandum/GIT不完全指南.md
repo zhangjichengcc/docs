@@ -297,6 +297,8 @@ $ git merge <branchName>
 # 自由修改提交树
 # 将指定的提交复制到当前分支下
 $ git cherry-pick <HEAD|branchName|commitId>[^|~]...
+# 拉取多个连续的提交，您可以指定一个提交范围。 注意：^ 表示排除起始提交，.. 表示提交范围。
+git cherry-pick <start-commit-hash>^..<end-commit-hash>
 ```
 
 ### rebase
