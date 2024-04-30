@@ -189,3 +189,29 @@ const b = format(new Date(), (dateInfo) => {
 });
 
 debugger;
+
+// type UnionToIntersection<U> = (U extends any ? (v: U) => void : never) extends (v: infer T) => void ? T : never;
+// type UnionToIntersection<U> =
+//   (U extends U                 // 构建函数，将U置于函数参数位置
+//     ? (args: U) => void
+//     : never
+//   ) extends (args: infer T) => void    // 通过 infer 取出逆变位的参数，生成交叉类型
+//   ? T
+//   : never;
+
+// type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (
+//   x: infer I
+// ) => void
+//   ? I
+//   : never;
+
+type UnionToIntersection<U> = U extends U ? (x: U) => void : never;
+
+// type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends ((x: infer I) => void) ? I : never;
+
+// type UnionToIntersection<U> =
+//   (U extends any ? (x: U)=>void : never) extends ((x: infer I)=>void) ? I : never
+
+type A = UnionToIntersection<{ a: string } | { b: number }>;
+
+export {}
