@@ -175,13 +175,13 @@ function coinChange(coins: number[], amount: number): number {
 | 物品  | 重量 | 价值 |
 | ----- | ---- | ---- |
 | 物品0 | 1    | 15   |
-| 物品1 | 3    | 20   |
+| 物品1 | 2    | 20   |
 | 物品2 | 4    | 30   |
 
 ``` js
-weights = [1,3,4];
+weights = [1,2,4];
 values = [15, 20, 30];
-输入：weights = [1, 2, 5], values = [15, 20, 30], maxWeight = 4;
+输入：weights = [1, 2, 4], values = [15, 20, 30], maxWeight = 4;
 
 输出：35 (15 + 20)
 ```
@@ -189,7 +189,7 @@ values = [15, 20, 30];
 | 物品i/背包重量j | 0    | 1    | 2    | 3    | 4    |
 | --------------- | ---- | ---- | ---- | ---- | ---- |
 | 0（1/15）       | 0    | 15   | 15   | 15   | 15   |
-| 1（3/20）       | 0    | 15   | 15   | 20   | 35   |
+| 1（2/20）       | 0    | 15   | 15   | 20   | 35   |
 | 2（4/30）       | 0    | 15   | 15   | 20   | 35   |
 
 函数签名：
@@ -207,7 +207,7 @@ function knapsack(weights, values, W) {
 
 ```
 
-#### 解题思路
+**解题思路**
 
 **定义状态**:
 
@@ -215,9 +215,9 @@ function knapsack(weights, values, W) {
 
 **状态转移方程**:
 
-- 如果不选择第 `i` 件物品，那么 `dp[i][j]` 就等于前 `i-1` 件物品在重量不超过 `j` 时的最大价值，即 `dp[i][j] = dp[i-1][j]`。
-- 如果选择第 `i` 件物品，那么 `dp[i][j]` 等于前 `i-1` 件物品在重量不超过 `j - weights[i]` 时的最大价值加上第 `i` 件物品的价值，即 `dp[i][j] = dp[i-1][j-weights[i]] + values[i]`。
-- 综合上述两种情况，我们得到状态转移方程： `dp[i][j]=max⁡(dp[i−1][j],dp[i−1][j−weights[i]]+values[i])`
+- 如果不选择第 `i` 件物品，那么 `dp[i][j]` 就等于前 `i-1` 件物品在重量不超过 `j` 时的最大价值，即 `dp[i][j] = dp[i - 1][j]`。
+- 如果选择第 `i` 件物品，那么 `dp[i][j]` 等于前 `i-1` 件物品在重量不超过 `j - weights[i]` 时的最大价值加上第 `i` 件物品的价值，即 `dp[i][j] = dp[i - 1][j - weights[i]] + values[i]`。
+- 综合上述两种情况，我们得到状态转移方程： `dp[i][j] = max⁡(dp[i − 1][j], dp[i − 1][j − weights[i]] + values[i])`
 
 **初始化**:
 
@@ -272,3 +272,91 @@ function knapsack(
   return dp[weights.length - 1][maxWeight];
 }
 ```
+
+#### 2.2 完全背包
+
+问题描述：完全背包（unbounded knapsack problem）与01背包不同就是每种物品可以有无限多个：一共有N种物品，每种物品有无限多个，第i（i从1开始）种物品的重量为 `weights[i]`，价值为 `values[i]`。在总重量不超过背包承载上限 `maxWeight` 的情况下，能够装入背包的最大价值是多少？
+
+例子：
+
+| 物品  | 重量 | 价值 |
+| ----- | ---- | ---- |
+| 物品0 | 1    | 15   |
+| 物品1 | 2    | 20   |
+| 物品2 | 4    | 30   |
+
+``` js
+weights = [1,3,4];
+values = [15, 20, 30];
+输入：weights = [1, 2, 5], values = [15, 20, 30], maxWeight = 4;
+
+输出：35 (15 + 20)
+```
+
+| 物品i/背包重量j | 0    | 1    | 2    | 3    | 4    |
+| --------------- | ---- | ---- | ---- | ---- | ---- |
+| 0（1/15）       | 0    | 15   | 15   | 15   | 15   |
+| 1（2/20）       | 0    | 15   | 20   | 35   | 40   |
+| 2（4/30）       | 0    | 15   | 20   | 35   | 40   |
+
+函数签名：
+
+``` js
+/**
+ * @param {number[]} weights - 每件物品的重量
+ * @param {number[]} values - 每件物品的价值
+ * @param {number} maxWeight - 背包最大容量
+ * @return {number} - 背包所能容下最大价值
+ */
+function knapsack(weights, values, W) {
+  //...
+}
+
+```
+
+**解题思路**
+
+我们的目标和变量和01背包没有区别，所以我们可定义与01背包问题几乎完全相同的状态dp:
+
+``` bash
+dp[i][j]表示将前i种物品装进限重为j的背包可以获得的最大价值, 0 <= i <= N, 0 <= j <= maxWeight
+```
+
+初始化状态和 01背包 完全一样，当i>0 的时候，我们开始分析状态转移方程：
+
+- 如果不选择第i件物品，则和01背包相同，`dp[i][j] = dp[i - 1][j]`
+- 如果选择第i件物品，则有所不同，由于每件物品的数量不限，所以当你选择第i件物品，还可以再次选择该物品，`dp[i][j] = dp[i][j - weights[i]] + values[i]`
+- 综合上述两种情况，我们得到状态转移方程： `dp[i][j] = max⁡(dp[i − 1][j], dp[i][j − weights[i]] + values[i])`
+
+``` ts
+function knapsack(
+  weights: number[],
+  values: number[],
+  maxWeight: number
+): number {
+  const dp = Array.from({ length: weights.length }, () =>
+    new Array(maxWeight + 1).fill(0)
+  );
+
+  for (let j = weights[0]; j <= maxWeight; j++) {
+    dp[0][j] = values[0];
+  }
+
+  for (let i = 1; i < weights.length; i++) {
+    for (let j = 0; j <= maxWeight; j++) {
+      dp[i][j] =
+        weights[i] <= j
+          ? Math.max(dp[i - 1][j], dp[i][j - weights[i]] + values[i])
+          : dp[i - 1][j];
+    }
+  }
+
+  return dp[weights.length - 1][maxWeight];
+}
+
+knapsack([1, 2, 4], [15, 20, 30], 4);
+```
+
+## 参考文献
+
+[动态规划之背包问题系列](https://zhuanlan.zhihu.com/p/93857890)

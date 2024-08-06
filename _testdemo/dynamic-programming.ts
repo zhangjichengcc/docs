@@ -117,24 +117,29 @@ function coinChange3(coins: number[], amount: number): number {
 
 // knapsack([1, 3, 4], [15, 20, 30], 4);
 
-function knapsack(weights: number[], values: number[], maxWeight: number) {
-  // 定义dp数组，dp[i][j]表示前i件物品，总重量不超过j的最大价值
+function knapsack(
+  weights: number[],
+  values: number[],
+  maxWeight: number
+): number {
   const dp = Array.from({ length: weights.length }, () =>
-    Array(maxWeight + 1).fill(0)
+    new Array(maxWeight + 1).fill(0)
   );
-  // 填充第一行
+
   for (let j = weights[0]; j <= maxWeight; j++) {
     dp[0][j] = values[0];
   }
+
   for (let i = 1; i < weights.length; i++) {
     for (let j = 0; j <= maxWeight; j++) {
       dp[i][j] =
-        weights[i] < j
-          ? Math.max(dp[i - 1][j], dp[i - 1][j - weights[i]] + values[i])
+        weights[i] <= j
+          ? Math.max(dp[i - 1][j], dp[i][j - weights[i]] + values[i])
           : dp[i - 1][j];
     }
   }
+
   return dp[weights.length - 1][maxWeight];
 }
 
-knapsack([1, 3, 4], [15, 20, 30], 4);
+knapsack([1, 2, 4], [15, 20, 30], 4);
