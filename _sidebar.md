@@ -77,6 +77,7 @@
     - [ts+node执行器](/post/knowledge/NodeJS/node执行器.md)
   - Algorithm
     - [经典排序算法](/post/knowledge/Algorithm/sort-algorithm.md)
+    - [动态规划问题](/post/knowledge/Algorithm/dynamic-programming.md)
   - DesignMode
     - [README](/post/knowledge/DesignMode/README.md)
     - 行为型
