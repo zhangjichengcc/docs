@@ -13,7 +13,7 @@ jobs:
     env:
       REMOTE_HOST: 118.190.52.53
       REMOTE_USER: root
-      TARGET_PATH: /opt/webServer/my-docs
+      TARGET_PATH: /opt/service-container/webServer/my-docs
       TARGET_DIR: docs
 
     # 步骤
