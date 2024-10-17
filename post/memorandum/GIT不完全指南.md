@@ -367,6 +367,16 @@ error: cannot lock ref 'refs/remotes/origin/master': unable to resolve reference
 rm .git/refs/remotes/origin/master
 ```
 
+出现 `refusing to merge unrelated histories` 错误，通常是因为你在合并两个没有共同提交历史的 Git 分支或仓库时发生的。可以通过以下步骤来解决该问题：
+
+允许合并无关的历史： 你可以在执行 `git merge` 或 `git pull` 时，添加 `--allow-unrelated-histories` 选项来允许合并没有共同历史的代码库。
+
+``` bash
+git pull origin main --allow-unrelated-histories
+
+git merge origin/main --allow-unrelated-histories
+```
+
 **Git 大小写问题**
 
 ``` bash
