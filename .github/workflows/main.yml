@@ -49,10 +49,10 @@ jobs:
             fi
 
             # 显示当前路径并列出文件以确认上传内容
-            echo "当前路径: $(pwd)"
+            echo "上传代码路径: /github/workspace"
             ls -alh
 
             # 上传新的代码文件
-            rsync -avz --delete $GITHUB_WORKSPACE/ ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}/
+            # rsync -avz --delete $GITHUB_WORKSPACE/ ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}/
 
             echo "代码上传完成"
