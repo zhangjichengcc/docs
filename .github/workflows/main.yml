@@ -53,6 +53,6 @@ jobs:
             ls -alh $GITHUB_WORKSPACE
 
             # 上传新的代码文件
-            rsync -avz --delete /github/workspace/ ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}/
+            rsync -avz --delete $GITHUB_WORKSPACE/ ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}/
 
             echo "代码上传完成"
