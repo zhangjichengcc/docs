@@ -28,29 +28,24 @@ jobs:
           node-version: '16.x'
 
       # 链接服务器-备份原代码
-      - name: connect Server & backups
+      - name: Connect Server, Backup and Upload Code
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ env.REMOTE_HOST }} # 下面三个配置与上一步类似
+          host: ${{ env.REMOTE_HOST }}
           username: ${{ env.REMOTE_USER }}
           key: ${{ secrets.AL_ACCESS_TOKEN }}
           script: |
             cd ${{ env.TARGET_PATH }}
+            # 备份项目
             if [ -d "./${{ env.TARGET_DIR }}" ]; then
-              # 备份原项目，并新建空文件
               tar czvf ${{ env.TARGET_DIR }}_$(date "+%Y%m%d(%H%M%S)").tar.gz ${{ env.TARGET_DIR }} --remove-files
-              else
+              echo "原项目已备份"
+            else
               echo "无需备份"
             fi
 
-      # 上传代码到服务器
-      - name: upload code to Server
-        uses: easingthemes/ssh-deploy@main
-        with:
-          SSH_PRIVATE_KEY: ${{ secrets.AL_ACCESS_TOKEN }}
-          ARGS: '-avz --delete'
-          # SOURCE: "./"
-          REMOTE_HOST: ${{ env.REMOTE_HOST }}
-          REMOTE_USER: ${{ env.REMOTE_USER }}
-          TARGET: ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}/
-          EXCLUDE: '/.git/'
+            # 拉取最新的 Git 代码
+            git pull origin master
+
+            # 上传新的代码文件
+            rsync -avz --delete ./ ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}/
