@@ -27,6 +27,7 @@ jobs:
       - name: Print GITHUB_WORKSPACE
         run: |
           echo "GitHub 工作空间路径: $GITHUB_WORKSPACE"
+          echo "GitHub 工作空间路径: ./"
           ls -alh $GITHUB_WORKSPACE
 
       # 2. 安装 Node.js
