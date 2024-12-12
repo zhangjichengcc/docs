@@ -31,7 +31,7 @@ jobs:
 
       # 3. 设置 GITHUB_WORKSPACE 环境变量
       - name: Set GITHUB_WORKSPACE as ENV variable
-        run: echo "WORKSPACE_PATH=${GITHUB_WORKSPACE}" >> $GITHUB_ENV
+        run: echo "WORKSPACE_PATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
 
       # 链接服务器、备份原代码
       - name: Connect Server, Backup and Upload Code
