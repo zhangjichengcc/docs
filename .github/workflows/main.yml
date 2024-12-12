@@ -29,21 +29,9 @@ jobs:
         with:
           node-version: '16.x'
 
-      # # 2. 设置环境变量文件
-      # - name: Create Environment File
-      #   run: echo "WORKSPACE_PATH=${GITHUB_WORKSPACE}" >> $GITHUB_ENV
-
-      # - name: Setup SSH Key
-      #   run: |
-      #     mkdir -p ~/.ssh
-      #     echo "${{ secrets.AL_ACCESS_TOKEN }}" > ~/.ssh/id_rsa
-      #     chmod 600 ~/.ssh/id_rsa
-
-      # - name: Upload Code to Server
-      #   run: |
-      #     rsync -avz --delete \
-      #       -e "ssh -o StrictHostKeyChecking=no" \
-      #       $GITHUB_WORKSPACE/ ${{ env.REMOTE_USER }}@${{ env.REMOTE_HOST }}:${{ env.TARGET_PATH }}/
+      # 3. 设置 GITHUB_WORKSPACE 环境变量
+      - name: Set GITHUB_WORKSPACE as ENV variable
+        run: echo "WORKSPACE_PATH=${GITHUB_WORKSPACE}" >> $GITHUB_ENV
 
       # 链接服务器、备份原代码
       - name: Connect Server, Backup and Upload Code
@@ -63,8 +51,8 @@ jobs:
               echo "无需备份"
             fi
 
-            echo "上传项目: ${GITHUB_WORKSPACE}"
+            echo "上传项目: ${WORKSPACE_PATH}"
 
-            rsync -avz --delete \
-              -e "ssh -o StrictHostKeyChecking=no" \
-              ${GITHUB_WORKSPACE}/ ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}/
+            # rsync -avz --delete \
+            #   -e "ssh -o StrictHostKeyChecking=no" \
+            #   ${WORKSPACE_PATH}/ ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}/
