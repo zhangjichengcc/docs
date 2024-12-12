@@ -27,10 +27,10 @@ jobs:
       # 安装 Node.js 和 Docker
       - name: Install Node.js and Docker
         run: |
-          sudo apt-get update
-          sudo apt-get install -y docker.io
-          sudo systemctl start docker
-          sudo systemctl enable docker
+          # sudo apt-get update
+          # sudo apt-get install -y docker.io
+          # sudo systemctl start docker
+          # sudo systemctl enable docker
 
       # 链接服务器，备份镜像、删除旧容器，打包新镜像，创建新容器
       - name: Connect to Server, Backup Old Image, Delete Old Container, Build and Run New Image
