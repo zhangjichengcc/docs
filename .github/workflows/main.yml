@@ -54,7 +54,7 @@ jobs:
             fi
 
             # 显示当前路径并列出文件以确认上传内容
-            echo "上传代码路径: ${{GITHUB_WORKSPACE}}"
+            echo "上传代码路径: $GITHUB_WORKSPACE"
             ls -alh $GITHUB_WORKSPACE
 
             # 上传新的代码文件
