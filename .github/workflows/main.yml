@@ -65,6 +65,6 @@ jobs:
 
             echo "上传项目: ${GITHUB_WORKSPACE}"
 
-            # rsync -avz --delete \
-            #   -e "ssh -o StrictHostKeyChecking=no" \
-            #   ${GITHUB_WORKSPACE}/ ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}/
+            rsync -avz --delete \
+              -e "ssh -o StrictHostKeyChecking=no" \
+              ${GITHUB_WORKSPACE}/ ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}/
