@@ -16,42 +16,42 @@ jobs:
       TARGET_PATH: /opt/service-container/webServer/my-docs
       TARGET_DIR: docs
 
-    # 步骤
     steps:
-      # 1. 切换分支并获取代码
+      # 切换分支并获取代码
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
           ref: main # 确保拉取的是 main 分支
 
-      # 2. 安装 Node.js
+      # 安装 Node.js
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '16.x'
 
-      # 3. 链接服务器、备份原代码并上传新的代码
-      - name: Connect Server, Backup and Upload Code
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ env.REMOTE_HOST }}
-          username: ${{ env.REMOTE_USER }}
-          key: ${{ secrets.AL_ACCESS_TOKEN }}
-          script: |
-            cd ${{ env.TARGET_PATH }}
-
-            # # 备份项目
-            # if [ -d "./${{ env.TARGET_DIR }}" ]; then
-            #   tar czf ${{ env.TARGET_DIR }}_$(date "+%Y%m%d_%H%M%S").tar.gz ${{ env.TARGET_DIR }} --remove-files
-            #   echo "原项目已备份"
-            # else
-            #   echo "无需备份"
-            # fi
-
-            # 显示当前路径并列出文件以确认上传内容
-            echo "上传代码路径: $GITHUB_WORKSPACE"
-
-      - name: Print GITHUB_WORKSPACE
+      - name: Upload Code to Server
         run: |
-          echo "GitHub 工作空间路径: $GITHUB_WORKSPACE"
-          ls -alh ./
+          rsync -avz --delete \
+            -e "ssh -o StrictHostKeyChecking=no" \
+            $GITHUB_WORKSPACE/ ${{ env.REMOTE_USER }}@${{ env.REMOTE_HOST }}:${{ env.TARGET_PATH }}/
+
+      # 3. 链接服务器、备份原代码并上传新的代码
+      # - name: Connect Server, Backup and Upload Code
+      #   uses: appleboy/ssh-action@v1.2.0
+      #   with:
+      #     host: ${{ env.REMOTE_HOST }}
+      #     username: ${{ env.REMOTE_USER }}
+      #     key: ${{ secrets.AL_ACCESS_TOKEN }}
+      #     script: |
+      #       cd ${{ env.TARGET_PATH }}
+
+      #       # # 备份项目
+      #       if [ -d "./${{ env.TARGET_DIR }}" ]; then
+      #         tar czf ${{ env.TARGET_DIR }}_$(date "+%Y%m%d_%H%M%S").tar.gz ${{ env.TARGET_DIR }} --remove-files
+      #         echo "原项目已备份"
+      #       else
+      #         echo "无需备份"
+      #       fi
+
+      #       # 显示当前路径并列出文件以确认上传内容
+      #       echo "上传代码路径: $GITHUB_WORKSPACE"
