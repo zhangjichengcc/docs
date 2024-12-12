@@ -29,6 +29,12 @@ jobs:
         with:
           node-version: '16.x'
 
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.AL_ACCESS_TOKEN }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
       - name: Upload Code to Server
         run: |
           rsync -avz --delete \
