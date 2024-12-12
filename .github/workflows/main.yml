@@ -8,13 +8,14 @@ on:
 
 # 任务
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     env:
       REMOTE_HOST: 118.190.52.53
       REMOTE_USER: root
-      TARGET_PATH: /opt/service-container/webServer/my-docs
-      TARGET_DIR: docs
+      IMAGE_NAME: my-docs-image # Docker 镜像名称
+      CONTAINER_NAME: my-docs-container # Docker 容器名称
+      TARGET_PATH: /opt/docker-container
 
     steps:
       # 切换分支并获取代码
@@ -23,36 +24,45 @@ jobs:
         with:
           ref: main # 确保拉取的是 main 分支
 
-      # 安装 Node.js
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '16.x'
+      # 安装 Node.js 和 Docker
+      - name: Install Node.js and Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker.io
+          sudo systemctl start docker
+          sudo systemctl enable docker
 
-      # 3. 设置 GITHUB_WORKSPACE 环境变量
-      - name: Set GITHUB_WORKSPACE as ENV variable
-        run: echo "WORKSPACE_PATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
-
-      # 链接服务器、备份原代码
-      - name: Connect Server, Backup and Upload Code
+      # 链接服务器，备份镜像、删除旧容器，打包新镜像，创建新容器
+      - name: Connect to Server, Backup Old Image, Delete Old Container, Build and Run New Image
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ env.REMOTE_HOST }}
           username: ${{ env.REMOTE_USER }}
           key: ${{ secrets.AL_ACCESS_TOKEN }}
           script: |
+            # 进入目标路径
             cd ${{ env.TARGET_PATH }}
 
-            # 备份项目
-            if [ -d "./${{ env.TARGET_DIR }}" ]; then
-              tar czf ${{ env.TARGET_DIR }}_$(date "+%Y%m%d_%H%M%S").tar.gz ${{ env.TARGET_DIR }} --remove-files
-              echo "原项目已备份"
-            else
-              echo "无需备份"
-            fi
+            # 备份当前镜像
+            echo "备份当前镜像 ${IMAGE_NAME}..."
+            docker ps -q --filter "name=${{ env.CONTAINER_NAME }}" | xargs -I {} docker commit {} ${IMAGE_NAME}_backup_$(date "+%Y%m%d_%H%M%S")
 
-            echo "上传项目: ${WORKSPACE_PATH}"
+            # 停止并删除旧容器
+            echo "停止并删除旧容器 ${CONTAINER_NAME}..."
+            docker stop ${{ env.CONTAINER_NAME }} || true
+            docker rm ${{ env.CONTAINER_NAME }} || true
 
-            # rsync -avz --delete \
-            #   -e "ssh -o StrictHostKeyChecking=no" \
-            #   ${WORKSPACE_PATH}/ ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}/
+            # 删除旧镜像（如果存在）
+            echo "删除旧镜像 ${IMAGE_NAME}..."
+            docker rmi ${{ env.IMAGE_NAME }} || true
+
+            # 构建新的 Docker 镜像
+            echo "构建新镜像 ${IMAGE_NAME}..."
+            docker build -t ${{ env.IMAGE_NAME }} .
+
+            # 创建并启动新容器
+            echo "启动新容器 ${CONTAINER_NAME}..."
+            docker run -d --name ${{ env.CONTAINER_NAME }} -p 8101:8101 ${{ env.IMAGE_NAME }}
+
+            # 检查容器状态
+            docker ps
