@@ -29,35 +29,42 @@ jobs:
         with:
           node-version: '16.x'
 
-      - name: Setup SSH Key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.AL_ACCESS_TOKEN }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+      # # 2. 设置环境变量文件
+      # - name: Create Environment File
+      #   run: echo "WORKSPACE_PATH=${GITHUB_WORKSPACE}" >> $GITHUB_ENV
 
-      - name: Upload Code to Server
-        run: |
-          rsync -avz --delete \
-            -e "ssh -o StrictHostKeyChecking=no" \
-            $GITHUB_WORKSPACE/ ${{ env.REMOTE_USER }}@${{ env.REMOTE_HOST }}:${{ env.TARGET_PATH }}/
+      # - name: Setup SSH Key
+      #   run: |
+      #     mkdir -p ~/.ssh
+      #     echo "${{ secrets.AL_ACCESS_TOKEN }}" > ~/.ssh/id_rsa
+      #     chmod 600 ~/.ssh/id_rsa
 
-      # 3. 链接服务器、备份原代码并上传新的代码
-      # - name: Connect Server, Backup and Upload Code
-      #   uses: appleboy/ssh-action@v1.2.0
-      #   with:
-      #     host: ${{ env.REMOTE_HOST }}
-      #     username: ${{ env.REMOTE_USER }}
-      #     key: ${{ secrets.AL_ACCESS_TOKEN }}
-      #     script: |
-      #       cd ${{ env.TARGET_PATH }}
+      # - name: Upload Code to Server
+      #   run: |
+      #     rsync -avz --delete \
+      #       -e "ssh -o StrictHostKeyChecking=no" \
+      #       $GITHUB_WORKSPACE/ ${{ env.REMOTE_USER }}@${{ env.REMOTE_HOST }}:${{ env.TARGET_PATH }}/
 
-      #       # # 备份项目
-      #       if [ -d "./${{ env.TARGET_DIR }}" ]; then
-      #         tar czf ${{ env.TARGET_DIR }}_$(date "+%Y%m%d_%H%M%S").tar.gz ${{ env.TARGET_DIR }} --remove-files
-      #         echo "原项目已备份"
-      #       else
-      #         echo "无需备份"
-      #       fi
+      # 链接服务器、备份原代码
+      - name: Connect Server, Backup and Upload Code
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ env.REMOTE_HOST }}
+          username: ${{ env.REMOTE_USER }}
+          key: ${{ secrets.AL_ACCESS_TOKEN }}
+          script: |
+            cd ${{ env.TARGET_PATH }}
 
-      #       # 显示当前路径并列出文件以确认上传内容
-      #       echo "上传代码路径: $GITHUB_WORKSPACE"
+            # 备份项目
+            if [ -d "./${{ env.TARGET_DIR }}" ]; then
+              tar czf ${{ env.TARGET_DIR }}_$(date "+%Y%m%d_%H%M%S").tar.gz ${{ env.TARGET_DIR }} --remove-files
+              echo "原项目已备份"
+            else
+              echo "无需备份"
+            fi
+
+            echo "上传项目: ${GITHUB_WORKSPACE}"
+
+            # rsync -avz --delete \
+            #   -e "ssh -o StrictHostKeyChecking=no" \
+            #   ${GITHUB_WORKSPACE}/ ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}/
