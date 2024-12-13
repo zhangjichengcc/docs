@@ -142,7 +142,7 @@
     - [总览](/post/fullstack/Docker/README.md)
     - [DockerFile](/post/fullstack/Docker/docker-file.md)
     - [docker-compose](/post/fullstack/Docker/docker-compose.md)
-
+  - [pm2 守护进程管理器](/post/fullstack/pm2.md)
 - 优化-Performance
   - PageOptimization
     - [骨架屏方案](/post/performance/骨架屏方案.md)

@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# 使用 source 或 . 来加载 .env 文件
+source ./.env
+
 # 镜像名称
-IMAGE_NAME="my-docs-image"
-TAR_FILE="${IMAGE_NAME}.tar"
+TAR_FILE="$IMAGE_NAME.tar"
 
 # 构建 Docker 镜像
 echo "Building Docker image..."
