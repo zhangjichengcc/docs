@@ -65,7 +65,7 @@ jobs:
 
             # 创建并启动新容器
             echo "启动新容器 ${CONTAINER_NAME}..."
-            docker run -d --name ${{ env.CONTAINER_NAME }} -p 8101:8101 ${{ env.IMAGE_NAME }}
+            docker run -d --name ${{ env.CONTAINER_NAME }} -p 8101:80 ${{ env.IMAGE_NAME }}
 
             # 检查容器状态
             docker ps
