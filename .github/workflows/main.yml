@@ -48,31 +48,40 @@ jobs:
 
             # 定义备份镜像的命名规则
             BACKUP_PREFIX="${{ env.IMAGE_NAME }}_backup_"
+            MAX_BACKUPS=5  # 保留的最大备份数量
 
             # 进入目标路径
             echo "进入目标路径: ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}"
             cd ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}
-
-            # 清理旧的备份镜像
-            echo "清理旧的备份镜像..."
-            OLD_BACKUPS=$(docker images --filter "reference=${BACKUP_PREFIX}*" --format "{{.Repository}}:{{.Tag}}")
-            if [ -n "$OLD_BACKUPS" ]; then
-              echo "找到旧的备份镜像: $OLD_BACKUPS"
-              echo "$OLD_BACKUPS" | xargs -r docker rmi || true
-            else
-              echo "没有找到旧的备份镜像"
-            fi
 
             # 备份当前镜像
             echo "尝试备份当前镜像: ${IMAGE_NAME}..."
             CONTAINER_ID=$(docker ps -q --filter "name=${{ env.CONTAINER_NAME }}")
             if [ -n "$CONTAINER_ID" ]; then
               TIMESTAMP=$(date "+%Y%m%d_%H%M%S")
-              BACKUP_IMAGE="${{ env.IMAGE_NAME }}_backup_$TIMESTAMP"
+              BACKUP_IMAGE="${BACKUP_PREFIX}${TIMESTAMP}"
               docker commit "$CONTAINER_ID" "$BACKUP_IMAGE"
               echo "镜像已成功备份为: $BACKUP_IMAGE"
             else
               echo "没有找到正在运行的容器: ${{ env.CONTAINER_NAME }}，跳过备份步骤"
+            fi
+
+            # 获取当前已有的备份镜像列表，按时间降序排列
+            echo "获取现有备份镜像..."
+            BACKUP_IMAGES=$(docker images --filter "reference=${BACKUP_PREFIX}*" --format "{{.Repository}}:{{.Tag}}" | sort -r)
+
+            # 如果备份数量超过最大保留数，删除最旧的备份镜像
+            BACKUP_COUNT=$(echo "$BACKUP_IMAGES" | wc -l)
+            if [ "$BACKUP_COUNT" -ge "$MAX_BACKUPS" ]; then
+              # 计算需要删除的备份镜像数量
+              DELETE_COUNT=$((BACKUP_COUNT - MAX_BACKUPS))
+              echo "当前备份数量为 $BACKUP_COUNT，超出最大保留数量 $MAX_BACKUPS，删除 $DELETE_COUNT 个最旧备份镜像..."
+
+              # 删除最旧的备份镜像
+              BACKUP_IMAGES_TO_DELETE=$(echo "$BACKUP_IMAGES" | tail -n "$DELETE_COUNT")
+              echo "$BACKUP_IMAGES_TO_DELETE" | xargs -r docker rmi || true
+            else
+              echo "当前备份数量为 $BACKUP_COUNT，不需要删除任何备份镜像。"
             fi
 
             # 停止并删除旧容器
