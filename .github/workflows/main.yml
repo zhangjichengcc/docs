@@ -43,29 +43,42 @@ jobs:
           username: ${{ env.REMOTE_USER }}
           key: ${{ secrets.AL_ACCESS_TOKEN }}
           script: |
+            set -e  # 如果任意命令失败，则脚本停止运行
+            set -o pipefail  # 确保管道中任何一个命令失败会被捕获
+
             # 进入目标路径
+            echo "进入目标路径: ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}"
             cd ${{ env.TARGET_PATH }}/${{ env.TARGET_DIR }}
 
             # 备份当前镜像
-            echo "备份当前镜像 ${IMAGE_NAME}..."
-            docker ps -q --filter "name=${{ env.CONTAINER_NAME }}" | xargs -I {} docker commit {} ${IMAGE_NAME}_backup_$(date "+%Y%m%d_%H%M%S")
+            echo "尝试备份当前镜像: ${IMAGE_NAME}..."
+            CONTAINER_ID=$(docker ps -q --filter "name=${{ env.CONTAINER_NAME }}")
+            if [ -n "$CONTAINER_ID" ]; then
+                TIMESTAMP=$(date "+%Y%m%d_%H%M%S")
+                BACKUP_IMAGE="${{ env.IMAGE_NAME }}_backup_$TIMESTAMP"
+                docker commit "$CONTAINER_ID" "$BACKUP_IMAGE"
+                echo "镜像已成功备份为: $BACKUP_IMAGE"
+            else
+                echo "没有找到正在运行的容器: ${{ env.CONTAINER_NAME }}，跳过备份步骤"
+            fi
 
             # 停止并删除旧容器
-            echo "停止并删除旧容器 ${CONTAINER_NAME}..."
-            docker stop ${{ env.CONTAINER_NAME }} || true
-            docker rm ${{ env.CONTAINER_NAME }} || true
+            echo "停止并删除旧容器: ${CONTAINER_NAME}..."
+            docker stop ${{ env.CONTAINER_NAME }} 2>/dev/null || echo "容器未运行，跳过停止"
+            docker rm ${{ env.CONTAINER_NAME }} 2>/dev/null || echo "容器不存在，跳过删除"
 
             # 删除旧镜像（如果存在）
-            echo "删除旧镜像 ${IMAGE_NAME}..."
-            docker rmi ${{ env.IMAGE_NAME }} || true
+            echo "尝试删除旧镜像: ${IMAGE_NAME}..."
+            docker rmi ${{ env.IMAGE_NAME }} 2>/dev/null || echo "镜像不存在，跳过删除"
 
             # 构建新的 Docker 镜像
-            echo "构建新镜像 ${IMAGE_NAME}..."
+            echo "开始构建新镜像: ${IMAGE_NAME}..."
             docker build -t ${{ env.IMAGE_NAME }} .
 
             # 创建并启动新容器
-            echo "启动新容器 ${CONTAINER_NAME}..."
+            echo "启动新容器: ${CONTAINER_NAME}..."
             docker run -d --name ${{ env.CONTAINER_NAME }} -p 8101:80 ${{ env.IMAGE_NAME }}
 
             # 检查容器状态
+            echo "当前运行的容器:"
             docker ps
