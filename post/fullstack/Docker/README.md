@@ -32,9 +32,16 @@ $ docker inspect <container_id_or_name>
 
 # 查看容器的日志
 $ docker logs <container_id_or_name>
+# 常用参数
+-f : 实时跟随日志输出
+--tail N : 仅显示最后 N 行日志
+-t : 显示时间戳
 
 # 查看容器的资源使用情况 这个命令会实时显示所有容器的 CPU、内存、网络 I/O 和磁盘 I/O 等使用情况。
 $ docker stats
+# 常用参数
+--no-stream : 显示一次后退出
+--all : 显示所有容器的统计信息，包括已停止的容器
 
 # 查看特定容器的环境变量和配置
 $ docker inspect --format='{{json .Config.Env}}' <container_id_or_name>
@@ -77,6 +84,9 @@ $ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 --memory：限制容器可用的内存大小。
 
 $ docker run --cpus="1.5" --memory="512m" <image_name>
+
+# 限制重启策略
+--restart=always|on-failure[:max-retries]
 ```
 
 #### 启用/停用/重启容器
@@ -123,6 +133,9 @@ $ docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
 
 # 进入运行中的容器并执行命令
 $ docker exec -it <container_name_or_id> /bin/bash
+
+# 后台运行命令
+docker exec -d <container_name> <command>
 ```
 
 `CONTAINER`：运行的容器的名称或 ID。
@@ -189,6 +202,13 @@ $ docker build [OPTIONS] PATH | URL | -
 --no-catch: docker build --no-cache -t `images_name:images_tag` .
 # 传递构建时的变量
 --build-arg: docker build --build-arg `ENV=production` -t `images_name:images_tag` .
+
+# 设置构建缓存来源
+--cache-from: docker build --cache-from <image_name:tag> -t new_image:tag .
+# 输出构建过程详细信息
+--progress=plain
+# 指定目标构建阶段
+--target <stage_name>
 ```
 
 #### 删除镜像
@@ -216,6 +236,11 @@ docker network ls
 
 ``` bash
 docker network create <network_name>
+
+# 常用参数
+--driver bridge|overlay : 指定网络驱动
+--subnet : 指定子网
+--gateway : 指定网关
 ```
 
 #### 连接容器到网络
@@ -242,6 +267,9 @@ docker run -v <volume_name>:/path/in/container <image_name>
 
 ``` bash
 docker volume ls
+
+# 按名称过滤
+docker volume ls -f name=myvolume
 ```
 
 #### 删除数据卷
@@ -259,10 +287,77 @@ docker volume prune
 # 清理未使用的资源（容器、镜像、网络、数据卷等）
 $ docker system prune
 
+# 常用参数
+-f : 跳过确认
+--volumes : 同时清理未使用的卷
+
 # 清理所有未使用的资源（包括停止的容器、未被引用的镜像、未使用的网络和数据卷）
 $ docker system prune -a
 
 ```
+
+### 清理缓存
+
+#### 清理未使用的构建缓存
+
+```bash
+docker builder prune
+docker builder prune -f  # 跳过确认
+# 清理时跳过指定镜像缓存
+--filter "label!=keep"
+```
+
+- 删除所有未使用的构建缓存，不影响仍在使用的缓存。
+
+#### 按时间清理缓存
+
+```bash
+docker builder prune --filter "until=72h"
+```
+
+- 删除 72 小时前未使用的缓存。
+
+#### 按大小清理缓存
+
+```bash
+docker builder prune --filter "size=500MB"
+```
+
+- 删除超过 500MB 的未使用缓存。
+
+#### 指定构建器清理缓存
+
+```bash
+docker buildx prune --builder <builder-name>
+# 删除所有未使用的缓存，包括共享缓存
+--all
+# 非交互模式下使用
+-f
+```
+
+- 清理特定 builder 的缓存。
+
+#### 结合时间和大小过滤器
+
+```bash
+docker buildx prune --builder <builder-name> --filter "until=24h" --filter "size=1GB"
+```
+
+#### 指定应用相关缓存清理
+
+- 利用 `docker image prune` 仅清理特定仓库镜像：
+
+  ```bash
+  docker image prune --filter "reference=nginx:*"
+  ```
+
+  删除所有未使用的 nginx 镜像。
+
+- 删除特定容器停止后产生的缓存：
+
+  ```bash
+  docker container prune --filter "label=project=my-app"
+  ```
 
 ### Docker Compose 命令
 
@@ -277,6 +372,15 @@ docker-compose up -d
 
 # 停止服务
 docker-compose down
+
+# 查看服务日志
+docker-compose logs -f
+# 仅构建镜像
+docker-compose build
+# 重启服务
+docker-compose restart
+# 列出容器
+docker-compose ps
 ```
 
 ### 系统信息
@@ -284,6 +388,11 @@ docker-compose down
 ``` bash
 # 查看 Docker 系统信息
 docker info
+
+# 查看磁盘使用情况
+docker system df
+docker system df -v  # 显示详细占用，包括构建缓存、卷等
+
 # 查看 Docker 版本
 docker --version
 ```
@@ -433,6 +542,24 @@ CMD ["npm", "start"]
 # 将构建时的 ARG 值赋给运行时的 ENV
 ENV ENV_MODE=${ENV}
 ```
+
+### Buildx 构建缓存管理
+
+Buildx 支持更高级的构建缓存管理，可以结合过滤器定期清理缓存，例如：
+
+```bash
+docker buildx prune --builder mybuilder --filter "until=24h"
+```
+
+该命令会清理指定构建器 `mybuilder` 中 24 小时之前未使用的缓存，非常适合在 CI/CD 流水线中定期执行，保持构建环境的整洁和节省存储空间。
+
+# 按大小清理缓存
+
+docker buildx prune --builder mybuilder --filter "size=1GB"
+
+# 删除所有缓存（包括当前正在使用的）
+
+docker buildx prune --builder mybuilder --all
 
 ## 引用
 
