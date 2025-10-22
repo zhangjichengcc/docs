@@ -553,11 +553,11 @@ docker buildx prune --builder mybuilder --filter "until=24h"
 
 该命令会清理指定构建器 `mybuilder` 中 24 小时之前未使用的缓存，非常适合在 CI/CD 流水线中定期执行，保持构建环境的整洁和节省存储空间。
 
-# 按大小清理缓存
+#### 按大小清理缓存
 
 docker buildx prune --builder mybuilder --filter "size=1GB"
 
-# 删除所有缓存（包括当前正在使用的）
+#### 删除所有缓存（包括当前正在使用的）
 
 docker buildx prune --builder mybuilder --all
 

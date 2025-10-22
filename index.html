@@ -1,125 +1,178 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8">
-  <title>Zhangjicheng's Docs</title>
-  <link rel="icon" href="assets/favicon.ico">
-  <link rel="manifest" href="assets/manifest.json">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Zhangjicheng's Docs</title>
+    <link rel="icon" href="assets/favicon.ico" />
+    <link rel="manifest" href="assets/manifest.json" />
 
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="docs">
-  <meta name="apple-mobile-web-app-title" content="docs">
-  <meta name="msapplication-starturl" content="https://docs.zhangjc.cn/#/">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <link rel="alternate stylesheet" href="assets/themes/vue.css" data-style-theme title="light" disabled />
-  <link rel="alternate stylesheet" href="assets/themes/dark.css" data-style-theme title="dark" disabled />
-  <link rel="stylesheet" href="assets/style.css" />
-  <link rel="stylesheet" href="assets/theme-switch/index.css" />
-  <link rel="stylesheet" href="assets/spin/index.css" />
-  
-  
-  <!-- 文章生成目录导航 -->
-  <!-- <link rel="stylesheet" href="https://unpkg.com/docsify-toc@1.0.0/dist/toc.css"> -->
-  <link rel="stylesheet" href="assets/toc/index.css" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="docs" />
+    <meta name="apple-mobile-web-app-title" content="docs" />
+    <meta name="msapplication-starturl" content="https://docs.zhangjc.cn/#/" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Description" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link
+      rel="alternate stylesheet"
+      href="assets/themes/vue.css"
+      data-style-theme
+      title="light"
+      disabled
+    />
+    <link
+      rel="alternate stylesheet"
+      href="assets/themes/dark.css"
+      data-style-theme
+      title="dark"
+      disabled
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/theme-switch/index.css" />
+    <link rel="stylesheet" href="assets/spin/index.css" />
 
-  <!-- 侧边栏扩展与折叠 -->
-  <!-- 箭头样式 -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
-  <!-- 公式 -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
-</head>
-<body>
-  <!-- loading 蒙版 -->
-  <div id="spin">Loading</div>
-  <nav>
-    <p class="theme-bar">
-      <span class="label">Appearance</span>
-      <button class="theme-switch">
-        <span class="theme-switch-check">
-          <svg t="1679023013940" class="icon-moon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3665" id="mx_n_1679023013942" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="12">
-            <path d="M524.490551 1023.43355c-140.102939 0-271.81403-54.547017-370.878782-153.611769S0 639.045939 0 498.943c0-115.183242 36.995772-223.867918 106.944903-314.336142a523.825343 523.825343 0 0 1 119.276826-112.266563A533.035909 533.035909 0 0 1 376.55863 1.11192a25.584905 25.584905 0 0 1 30.036679 36.228225c-33.004527 64.320451-48.35547 125.621883-48.355471 193.012523 0 239.832899 195.110485 434.943383 434.943384 434.943383 67.39064 0 128.692072-15.350943 193.012523-48.35547a25.584905 25.584905 0 0 1 36.228225 30.036678 534.468663 534.468663 0 0 1-71.228375 150.336902 523.825343 523.825343 0 0 1-112.266563 119.276826 509.395457 509.395457 0 0 1-314.336142 106.944903zM336.18565 69.884144C163.538712 143.82452 51.16981 309.819383 51.16981 498.943 51.16981 759.90903 263.524521 972.26374 524.490551 972.26374c189.123617 0 355.11848-112.420072 429.058855-285.01584A451.98293 451.98293 0 0 1 793.132052 716.414691c-129.868977 0-251.908974-50.555772-343.707612-142.354411S307.018859 360.170475 307.018859 230.301498c0-55.109885 9.619924-108.019469 29.166791-160.417354z" p-id="3666"></path>
-          </svg>
-          <svg t="1679022885439" class="icon-sun" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2416" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16">
-            <path d="M480 96v160h64V96zM240 195.008L195.008 240l112.992 114.016 46.016-46.016z m544 0l-114.016 112.992 46.016 46.016L828.992 240zM512 288c-123.36 0-224 100.64-224 224s100.64 224 224 224 224-100.64 224-224-100.64-224-224-224z m0 64c88.736 0 160 71.264 160 160s-71.264 160-160 160-160-71.264-160-160 71.264-160 160-160zM96 480v64h160v-64z m672 0v64h160v-64zM308 670.016L195.008 784 240 828.992l114.016-112.992z m408 0l-46.016 45.984 114.016 112.992 44.992-44.992zM480 768v160h64v-160z" p-id="2417"></path>
-          </svg>
-        </span>
-      </button>
-    </p>
-  </nav>
-  <div id="app"></div>
-  <script>
+    <!-- 文章生成目录导航 -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/docsify-toc@1.0.0/dist/toc.css"> -->
+    <link rel="stylesheet" href="assets/toc/index.css" />
 
-    
-
-    window.$docsify = {
-      name: `<b>zhangjicheng's docs</b>`,
-      basePath: '/',
-      repo: '',
-      coverpage: true,
-      homepage: '_homepage.md',
-      loadSidebar: true,
-      loadNavbar: false,
-      maxLevel: 3,
-      subMaxLevel: 0,
-      executeScript: true,
-      mergeNavbar: true,
-      autoHeader: true,
-      relativePath: false,
-      auto2top: true,
-      formatUpdated: '{MM}/{DD} {HH}:{mm}',
-      alias: {
-        '/.*/_navbar.md': '/_navbar.md',
-        '/.*/_sidebar.md': '/_sidebar.md'
-      },
-      search: {
-        noData: 'No results!',
-        paths: 'auto',
-        placeholder: '',
-      },
-      // 文章生成目录导航
-      toc: {
-        scope: '.markdown-section',
-        headings: 'h1, h2, h3, h4, h5, h6',
-        title: '目录'
-      },
-      // 侧边栏扩展与折叠
-      sidebarDisplayLevel: 0,
-      // 页脚信息
-      loadFooter: '_footer.md',
-      plantuml: {
-        skin: 'default',
-      },
-    }
-    if (typeof navigator.serviceWorker !== 'undefined') {
-      navigator.serviceWorker.register('sw.js')
-    }
-  </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
-  <!-- <script src="/assets/docsify.js"></script> -->
-  <!-- 搜索插件 -->
-  <script defer src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
-  <!-- 图片缩放 -->
-  <script defer src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-  <!-- 复制到剪切板 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-  <!-- emoji表情支持 -->
-  <script defer src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
-  <!-- 侧边栏扩展与折叠 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
-  <!-- 页脚信息 -->
-  <script src="//cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script>
-  <!-- 文章生成目录导航 -->
-  <!-- <script src="https://unpkg.com/docsify-toc@1.0.0/dist/toc.js"></script> -->
-  <script src="/assets/toc/index.js"></script>
-  <!-- 公式 -->
-  <!-- <script src="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+    <!-- 侧边栏扩展与折叠 -->
+    <!-- 箭头样式 -->
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css"
+    />
+    <!-- 公式 -->
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"
+    />
+  </head>
+  <body>
+    <!-- loading 蒙版 -->
+    <div id="spin">Loading</div>
+    <nav>
+      <p class="theme-bar">
+        <span class="label">Appearance</span>
+        <button class="theme-switch">
+          <span class="theme-switch-check">
+            <svg
+              t="1679023013940"
+              class="icon-moon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="3665"
+              id="mx_n_1679023013942"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="12"
+              height="12"
+            >
+              <path
+                d="M524.490551 1023.43355c-140.102939 0-271.81403-54.547017-370.878782-153.611769S0 639.045939 0 498.943c0-115.183242 36.995772-223.867918 106.944903-314.336142a523.825343 523.825343 0 0 1 119.276826-112.266563A533.035909 533.035909 0 0 1 376.55863 1.11192a25.584905 25.584905 0 0 1 30.036679 36.228225c-33.004527 64.320451-48.35547 125.621883-48.355471 193.012523 0 239.832899 195.110485 434.943383 434.943384 434.943383 67.39064 0 128.692072-15.350943 193.012523-48.35547a25.584905 25.584905 0 0 1 36.228225 30.036678 534.468663 534.468663 0 0 1-71.228375 150.336902 523.825343 523.825343 0 0 1-112.266563 119.276826 509.395457 509.395457 0 0 1-314.336142 106.944903zM336.18565 69.884144C163.538712 143.82452 51.16981 309.819383 51.16981 498.943 51.16981 759.90903 263.524521 972.26374 524.490551 972.26374c189.123617 0 355.11848-112.420072 429.058855-285.01584A451.98293 451.98293 0 0 1 793.132052 716.414691c-129.868977 0-251.908974-50.555772-343.707612-142.354411S307.018859 360.170475 307.018859 230.301498c0-55.109885 9.619924-108.019469 29.166791-160.417354z"
+                p-id="3666"
+              ></path>
+            </svg>
+            <svg
+              t="1679022885439"
+              class="icon-sun"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="2416"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="16"
+              height="16"
+            >
+              <path
+                d="M480 96v160h64V96zM240 195.008L195.008 240l112.992 114.016 46.016-46.016z m544 0l-114.016 112.992 46.016 46.016L828.992 240zM512 288c-123.36 0-224 100.64-224 224s100.64 224 224 224 224-100.64 224-224-100.64-224-224-224z m0 64c88.736 0 160 71.264 160 160s-71.264 160-160 160-160-71.264-160-160 71.264-160 160-160zM96 480v64h160v-64z m672 0v64h160v-64zM308 670.016L195.008 784 240 828.992l114.016-112.992z m408 0l-46.016 45.984 114.016 112.992 44.992-44.992zM480 768v160h64v-160z"
+                p-id="2417"
+              ></path>
+            </svg>
+          </span>
+        </button>
+      </p>
+    </nav>
+    <div id="app"></div>
+    <script>
+      window.$docsify = {
+        name: `<b>zhangjicheng's docs</b>`,
+        basePath: '/',
+        repo: '',
+        coverpage: true,
+        homepage: '_homepage.md',
+        loadSidebar: true,
+        loadNavbar: false,
+        maxLevel: 5,
+        subMaxLevel: 0,
+        executeScript: true,
+        mergeNavbar: true,
+        autoHeader: true,
+        relativePath: false,
+        auto2top: true,
+        formatUpdated: '{MM}/{DD} {HH}:{mm}',
+        alias: {
+          '/.*/_navbar.md': '/_navbar.md',
+          '/.*/_sidebar.md': '/_sidebar.md',
+        },
+        search: {
+          noData: 'No results!',
+          paths: 'auto',
+          placeholder: '',
+        },
+        // 文章生成目录导航
+        toc: {
+          scope: '.markdown-section',
+          headings: 'h1, h2, h3, h4, h5, h6',
+          title: '目录',
+        },
+        // 侧边栏扩展与折叠
+        sidebarDisplayLevel: 0,
+        // 页脚信息
+        loadFooter: '_footer.md',
+        plantuml: {
+          skin: 'default',
+        },
+      };
+      if (typeof navigator.serviceWorker !== 'undefined') {
+        navigator.serviceWorker.register('sw.js');
+      }
+    </script>
+    <!-- Docsify v4 -->
+    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+    <!-- <script src="/assets/docsify.js"></script> -->
+    <!-- 搜索插件 -->
+    <script
+      defer
+      src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"
+    ></script>
+    <!-- 图片缩放 -->
+    <script
+      defer
+      src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"
+    ></script>
+    <!-- 复制到剪切板 -->
+    <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+    <!-- emoji表情支持 -->
+    <script
+      defer
+      src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"
+    ></script>
+    <!-- 侧边栏扩展与折叠 -->
+    <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+    <!-- 页脚信息 -->
+    <script src="//cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script>
+    <!-- 文章生成目录导航 -->
+    <!-- <script src="https://unpkg.com/docsify-toc@1.0.0/dist/toc.js"></script> -->
+    <script src="/assets/toc/index.js"></script>
+    <!-- 公式 -->
+    <!-- <script src="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/marked@4"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script> -->
-  <script src="/assets/index.js" type="module" defer></script>
-  <noscript>本页面需要浏览器支持 (启用) JavaScript</noscript>
-</body>
+    <script src="/assets/index.js" type="module" defer></script>
+    <noscript>本页面需要浏览器支持 (启用) JavaScript</noscript>
+  </body>
 </html>
